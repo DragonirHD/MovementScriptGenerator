@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33027.164
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovementScriptGenerator", "MovementScriptGenerator\MovementScriptGenerator.csproj", "{779FE5F9-F0F3-4EF3-8D9A-E8D7AEA8D29D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{779FE5F9-F0F3-4EF3-8D9A-E8D7AEA8D29D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{779FE5F9-F0F3-4EF3-8D9A-E8D7AEA8D29D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{779FE5F9-F0F3-4EF3-8D9A-E8D7AEA8D29D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{779FE5F9-F0F3-4EF3-8D9A-E8D7AEA8D29D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {086C821D-4E13-4658-8DFD-EB944A987C2B}
+	EndGlobalSection
+EndGlobal
