@@ -247,12 +247,12 @@ namespace MovementScriptGenerator
             this.lblEndHeight.AutoSize = true;
             this.lblEndHeight.Location = new System.Drawing.Point(3, 0);
             this.lblEndHeight.Name = "lblEndHeight";
-            this.lblEndHeight.Size = new System.Drawing.Size(60, 26);
+            this.lblEndHeight.Size = new System.Drawing.Size(38, 26);
             this.lblEndHeight.TabIndex = 1;
-            this.lblEndHeight.Text = "End Height";
+            this.lblEndHeight.Text = "Height";
             this.lblEndHeight.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ToolTip.SetToolTip(this.lblEndHeight, "Defines at what height (on the y-axis) the camera should be at the end of the mov" +
-        "e.");
+            this.ToolTip.SetToolTip(this.lblEndHeight, "Defines at what height (on the y-axis) the move will be executed at.\r\nIf End Dist" +
+        "ance is defined as 0, this will be the height at which the camera will stop at.");
             // 
             // tableLayoutPanel3
             // 

@@ -53,6 +53,9 @@ namespace MovementScriptGenerator
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.numStartingPoint = new System.Windows.Forms.NumericUpDown();
             this.lblStartingPoint = new System.Windows.Forms.Label();
+            this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
+            this.numSector = new System.Windows.Forms.NumericUpDown();
+            this.lblSector = new System.Windows.Forms.Label();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.cbRotation = new System.Windows.Forms.ComboBox();
             this.lblRotation = new System.Windows.Forms.Label();
@@ -60,9 +63,6 @@ namespace MovementScriptGenerator
             this.numDuration = new System.Windows.Forms.NumericUpDown();
             this.lblDuration = new System.Windows.Forms.Label();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
-            this.numSector = new System.Windows.Forms.NumericUpDown();
-            this.lblSector = new System.Windows.Forms.Label();
             this.lfCircleControl.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numDistance)).BeginInit();
@@ -78,11 +78,11 @@ namespace MovementScriptGenerator
             ((System.ComponentModel.ISupportInitialize)(this.numFOV)).BeginInit();
             this.tableLayoutPanel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numStartingPoint)).BeginInit();
+            this.tableLayoutPanel10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numSector)).BeginInit();
             this.tableLayoutPanel8.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numDuration)).BeginInit();
-            this.tableLayoutPanel10.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numSector)).BeginInit();
             this.SuspendLayout();
             // 
             // lfCircleControl
@@ -205,9 +205,7 @@ namespace MovementScriptGenerator
             this.lblIterations.TabIndex = 2;
             this.lblIterations.Text = "Iterations";
             this.lblIterations.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ToolTip.SetToolTip(this.lblIterations, "Describes how many points the circle should consist of.\r\nThe more points the more" +
-        " detailed the circle.\r\nOne iteration will create 360 points. Two -> 720 points. " +
-        "(if the sector is on 360)");
+            this.ToolTip.SetToolTip(this.lblIterations, resources.GetString("lblIterations.ToolTip"));
             // 
             // tableLayoutPanel3
             // 
@@ -251,8 +249,8 @@ namespace MovementScriptGenerator
             this.lblHeight.TabIndex = 1;
             this.lblHeight.Text = "Height";
             this.lblHeight.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ToolTip.SetToolTip(this.lblHeight, "describes the y-axis of the circle / how high the circle should be around the cha" +
-        "racter");
+            this.ToolTip.SetToolTip(this.lblHeight, "Defines the y-axis of the circle / how high the circle should be around the chara" +
+        "cter");
             // 
             // tableLayoutPanel4
             // 
@@ -449,6 +447,55 @@ namespace MovementScriptGenerator
         "t of the player\r\n0 -> directly infront of the player\r\n180 -> directly behind the" +
         " player");
             // 
+            // tableLayoutPanel10
+            // 
+            this.tableLayoutPanel10.AutoSize = true;
+            this.tableLayoutPanel10.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tableLayoutPanel10.ColumnCount = 2;
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel10.Controls.Add(this.numSector, 0, 0);
+            this.tableLayoutPanel10.Controls.Add(this.lblSector, 0, 0);
+            this.tableLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel10.Location = new System.Drawing.Point(3, 233);
+            this.tableLayoutPanel10.Name = "tableLayoutPanel10";
+            this.tableLayoutPanel10.RowCount = 1;
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.tableLayoutPanel10.Size = new System.Drawing.Size(254, 26);
+            this.tableLayoutPanel10.TabIndex = 9;
+            // 
+            // numSector
+            // 
+            this.numSector.Location = new System.Drawing.Point(130, 3);
+            this.numSector.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.numSector.Name = "numSector";
+            this.numSector.Size = new System.Drawing.Size(120, 20);
+            this.numSector.TabIndex = 1;
+            this.numSector.Value = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            // 
+            // lblSector
+            // 
+            this.lblSector.AccessibleDescription = "";
+            this.lblSector.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblSector.AutoSize = true;
+            this.lblSector.Location = new System.Drawing.Point(3, 0);
+            this.lblSector.Name = "lblSector";
+            this.lblSector.Size = new System.Drawing.Size(38, 26);
+            this.lblSector.TabIndex = 1;
+            this.lblSector.Text = "Sector";
+            this.lblSector.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ToolTip.SetToolTip(this.lblSector, resources.GetString("lblSector.ToolTip"));
+            // 
             // tableLayoutPanel8
             // 
             this.tableLayoutPanel8.AutoSize = true;
@@ -543,55 +590,6 @@ namespace MovementScriptGenerator
             this.ToolTip.IsBalloon = true;
             this.ToolTip.ReshowDelay = 100;
             // 
-            // tableLayoutPanel10
-            // 
-            this.tableLayoutPanel10.AutoSize = true;
-            this.tableLayoutPanel10.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tableLayoutPanel10.ColumnCount = 2;
-            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel10.Controls.Add(this.numSector, 0, 0);
-            this.tableLayoutPanel10.Controls.Add(this.lblSector, 0, 0);
-            this.tableLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel10.Location = new System.Drawing.Point(3, 233);
-            this.tableLayoutPanel10.Name = "tableLayoutPanel10";
-            this.tableLayoutPanel10.RowCount = 1;
-            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            this.tableLayoutPanel10.Size = new System.Drawing.Size(254, 26);
-            this.tableLayoutPanel10.TabIndex = 9;
-            // 
-            // numSector
-            // 
-            this.numSector.Location = new System.Drawing.Point(130, 3);
-            this.numSector.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.numSector.Name = "numSector";
-            this.numSector.Size = new System.Drawing.Size(120, 20);
-            this.numSector.TabIndex = 1;
-            this.numSector.Value = new decimal(new int[] {
-            360,
-            0,
-            0,
-            0});
-            // 
-            // lblSector
-            // 
-            this.lblSector.AccessibleDescription = "";
-            this.lblSector.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblSector.AutoSize = true;
-            this.lblSector.Location = new System.Drawing.Point(3, 0);
-            this.lblSector.Name = "lblSector";
-            this.lblSector.Size = new System.Drawing.Size(38, 26);
-            this.lblSector.TabIndex = 1;
-            this.lblSector.Text = "Sector";
-            this.lblSector.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ToolTip.SetToolTip(this.lblSector, resources.GetString("lblSector.ToolTip"));
-            // 
             // CircleControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -624,14 +622,14 @@ namespace MovementScriptGenerator
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numStartingPoint)).EndInit();
+            this.tableLayoutPanel10.ResumeLayout(false);
+            this.tableLayoutPanel10.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numSector)).EndInit();
             this.tableLayoutPanel8.ResumeLayout(false);
             this.tableLayoutPanel8.PerformLayout();
             this.tableLayoutPanel9.ResumeLayout(false);
             this.tableLayoutPanel9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numDuration)).EndInit();
-            this.tableLayoutPanel10.ResumeLayout(false);
-            this.tableLayoutPanel10.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numSector)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -18,17 +18,17 @@ namespace MovementScriptGenerator
         CircleControl circleControl = new CircleControl();
         SpiralControl spiralControl = new SpiralControl();
 
-        List<string> scriptTypes = new List<string>()
+        List<string> moveTypes = new List<string>()
             {
                 "circle",
                 "spiral",
                 "J-Turn"
             };
 
-        List<string> scriptDescription = new List<string>()
+        List<string> moveDescriptions = new List<string>()
             {
                 "The camera will move in a circle around the player.",
-                "The camera will move from the starting distance to the end distance while spinning around its axis, creating a spiralling shot",
+                "The camera will move from the starting distance to the end distance while spinning around its axis, creating a spiralling shot.",
                 "The camera will move from the given direction towards the player. Then at a surtain point, it will do a 180 degree turn, making the move into something that resembles a J.\nCurrently not implemented!"
             };
 
@@ -42,13 +42,13 @@ namespace MovementScriptGenerator
 
         private void initializeComboBoxes()
         {
-            cbType.DataSource = scriptTypes;
+            cbType.DataSource = moveTypes;
             cbType.SelectedIndex = 0;
         }
 
         private void updateDescription()
         {
-            lblScriptDescription.Text = scriptDescription[cbType.SelectedIndex];
+            lblMoveDescription.Text = moveDescriptions[cbType.SelectedIndex];
         }
 
         private void updateContent()

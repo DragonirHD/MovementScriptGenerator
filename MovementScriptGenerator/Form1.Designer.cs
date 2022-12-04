@@ -38,10 +38,10 @@ namespace MovementScriptGenerator
             this.cbType = new System.Windows.Forms.ComboBox();
             this.lblType = new System.Windows.Forms.Label();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.lblScriptDescriptionTitle = new System.Windows.Forms.Label();
+            this.lblMoveDescriptionTitle = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-            this.lblScriptDescription = new System.Windows.Forms.Label();
+            this.lblMoveDescription = new System.Windows.Forms.Label();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.lblSettingsTitle = new System.Windows.Forms.Label();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
@@ -160,14 +160,14 @@ namespace MovementScriptGenerator
             this.lblType.Name = "lblType";
             this.lblType.Size = new System.Drawing.Size(64, 13);
             this.lblType.TabIndex = 1;
-            this.lblType.Text = "Script Type:";
+            this.lblType.Text = "Move Type:";
             // 
             // tableLayoutPanel5
             // 
             this.tableLayoutPanel5.ColumnCount = 2;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.tableLayoutPanel5.Controls.Add(this.lblScriptDescriptionTitle, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.lblMoveDescriptionTitle, 0, 0);
             this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 35);
             this.tableLayoutPanel5.MinimumSize = new System.Drawing.Size(0, 26);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
@@ -177,16 +177,16 @@ namespace MovementScriptGenerator
             this.tableLayoutPanel5.Size = new System.Drawing.Size(295, 26);
             this.tableLayoutPanel5.TabIndex = 28;
             // 
-            // lblScriptDescriptionTitle
+            // lblMoveDescriptionTitle
             // 
-            this.lblScriptDescriptionTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblMoveDescriptionTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblScriptDescriptionTitle.AutoSize = true;
-            this.lblScriptDescriptionTitle.Location = new System.Drawing.Point(3, 0);
-            this.lblScriptDescriptionTitle.Name = "lblScriptDescriptionTitle";
-            this.lblScriptDescriptionTitle.Size = new System.Drawing.Size(82, 26);
-            this.lblScriptDescriptionTitle.TabIndex = 24;
-            this.lblScriptDescriptionTitle.Text = "Script Description:";
+            this.lblMoveDescriptionTitle.AutoSize = true;
+            this.lblMoveDescriptionTitle.Location = new System.Drawing.Point(3, 0);
+            this.lblMoveDescriptionTitle.Name = "lblMoveDescriptionTitle";
+            this.lblMoveDescriptionTitle.Size = new System.Drawing.Size(82, 26);
+            this.lblMoveDescriptionTitle.TabIndex = 24;
+            this.lblMoveDescriptionTitle.Text = "Move Description:";
             // 
             // tableLayoutPanel3
             // 
@@ -210,7 +210,7 @@ namespace MovementScriptGenerator
             this.tableLayoutPanel7.ColumnCount = 1;
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel7.Controls.Add(this.lblScriptDescription, 0, 0);
+            this.tableLayoutPanel7.Controls.Add(this.lblMoveDescription, 0, 0);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel7.Location = new System.Drawing.Point(9, 67);
             this.tableLayoutPanel7.MaximumSize = new System.Drawing.Size(300, 0);
@@ -218,20 +218,20 @@ namespace MovementScriptGenerator
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(277, 26);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(251, 26);
             this.tableLayoutPanel7.TabIndex = 31;
             // 
-            // lblScriptDescription
+            // lblMoveDescription
             // 
-            this.lblScriptDescription.AutoSize = true;
-            this.lblScriptDescription.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblScriptDescription.Location = new System.Drawing.Point(3, 0);
-            this.lblScriptDescription.MaximumSize = new System.Drawing.Size(290, 0);
-            this.lblScriptDescription.Name = "lblScriptDescription";
-            this.lblScriptDescription.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
-            this.lblScriptDescription.Size = new System.Drawing.Size(271, 26);
-            this.lblScriptDescription.TabIndex = 25;
-            this.lblScriptDescription.Text = "Description Text that is here incase no description exists";
+            this.lblMoveDescription.AutoSize = true;
+            this.lblMoveDescription.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblMoveDescription.Location = new System.Drawing.Point(3, 0);
+            this.lblMoveDescription.MaximumSize = new System.Drawing.Size(290, 0);
+            this.lblMoveDescription.Name = "lblMoveDescription";
+            this.lblMoveDescription.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
+            this.lblMoveDescription.Size = new System.Drawing.Size(245, 26);
+            this.lblMoveDescription.TabIndex = 25;
+            this.lblMoveDescription.Text = "Description Text that is here if no description exists";
             // 
             // tableLayoutPanel6
             // 
@@ -558,8 +558,8 @@ namespace MovementScriptGenerator
         private System.Windows.Forms.Label lblSyncToSong;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
         private System.Windows.Forms.CheckBox checkSyncToSong;
-        private System.Windows.Forms.Label lblScriptDescriptionTitle;
-        private System.Windows.Forms.Label lblScriptDescription;
+        private System.Windows.Forms.Label lblMoveDescriptionTitle;
+        private System.Windows.Forms.Label lblMoveDescription;
         private System.Windows.Forms.TableLayoutPanel tlContent;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
