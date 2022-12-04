@@ -6,6 +6,8 @@ This can be used to create interesting and complex shots for distinct maps (danc
 
 Check out the [wiki](https://github.com/DragonirHD/MovementScriptGenerator/wiki) to find detailed explanations on how to use the tool.
 
+Downloads to the mod can be found on the [releases](https://github.com/DragonirHD/MovementScriptGenerator/releases) tab. Make sure to download the newest version.
+
 See the promotional video [here](https://youtu.be/YGpfWJvm4Hs) to find out what the tool is currently capable of.
 
 ## Move Presets
