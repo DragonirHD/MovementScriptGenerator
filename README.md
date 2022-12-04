@@ -43,3 +43,6 @@ I wanted to use movement scripts to enhance my own videos and add more dynamics 
 After trying to create a circular motion by hand in a movement script file and noticing that around 360 points would have to be defined
 I tried to do it programmatically to simplify the process.
 This idea culminated into this tool.
+
+##Contact
+If you have questions, requests or other things you want to tell me you can find me on discord as Dragonir#5174
