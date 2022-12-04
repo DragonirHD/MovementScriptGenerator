@@ -44,5 +44,5 @@ After trying to create a circular motion by hand in a movement script file and n
 I tried to do it programmatically to simplify the process.
 This idea culminated into this tool.
 
-##Contact
+## Contact
 If you have questions, requests or other things you want to tell me you can find me on discord as Dragonir#5174
