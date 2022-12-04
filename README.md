@@ -2,8 +2,7 @@
 A tool to simplify the creation of movement scripts for Beat Saber
 
 This tool enables you to create camera moves for the [Camera2](https://github.com/kinsi55/CS_BeatSaber_Camera2) mod and chain them together.
-This can be used to create interesting and complex shots for distinct maps (dance videos / lightshows / etc.) or simpler, repeating shots as general camera movement (streaming content)
-All of this on the same camera, without any editing afterwards.
+This can be used to create interesting and complex shots for distinct maps (dance videos / lightshows / etc.) or simpler, repeating shots as general camera movement (streaming content) all on a single camera, without needing any editing afterwards.
 
 Check out the [wiki](https://github.com/DragonirHD/MovementScriptGenerator/wiki) to find detailed explanations on how to use the tool.
 
