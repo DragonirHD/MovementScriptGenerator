@@ -127,11 +127,12 @@ Off -&gt; the script will start playing at the start of the song and not stop in
 (this has no effect on if the script will play in the normal menu / outside of songs)</value>
   </data>
   <data name="lblAddToScript.ToolTip" xml:space="preserve">
-    <value>On -&gt; if a file with the given name exists, the move will be added to that file. Useful to chain moves together.
-Will overwrite the "Sync To Song" of the existing file!
+    <value>On -&gt; if a movement script file with the given name exists, the moves will be added to that files moves.
+Will overwrite the "Sync To Song" and "Loop" options of the existing file!
 (Make sure that the file is a MovementScript File!)
 
-Off -&gt; A new file will be created for the move. If a file with the same name exists, that file will be overwritten!</value>
+Off -&gt; A new movement script file will be created for the move.
+If a file with the same name exists, that file will be overwritten!</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

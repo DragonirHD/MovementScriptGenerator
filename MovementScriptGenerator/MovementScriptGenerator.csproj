@@ -36,6 +36,7 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Build.Framework" />
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -52,14 +53,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Circle.cs" />
+    <Compile Include="Modules\Moves\Circle.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modules\Chain.cs" />
+    <Compile Include="Modules\ChainElement.cs" />
     <Compile Include="Modules\Frame.cs" />
+    <Compile Include="Modules\Move.cs" />
     <Compile Include="Modules\MovementScript.cs" />
     <Compile Include="Modules\Position.cs" />
     <Compile Include="Program.cs" />
@@ -71,7 +75,7 @@
     <Compile Include="CircleControl.Designer.cs">
       <DependentUpon>CircleControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Spiral.cs" />
+    <Compile Include="Modules\Moves\Spiral.cs" />
     <Compile Include="SpiralControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -112,6 +116,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Modules\OtherChainElements\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

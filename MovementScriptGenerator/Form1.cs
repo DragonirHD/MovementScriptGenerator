@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using MovementScriptGenerator.Modules;
 using Newtonsoft.Json;
@@ -17,6 +12,13 @@ namespace MovementScriptGenerator
     {
         CircleControl circleControl = new CircleControl();
         SpiralControl spiralControl = new SpiralControl();
+
+        private static readonly char[] illegalCharsForExplorer = "/<>:/\\\"|?*".ToCharArray();
+
+        Chain chain = new Chain()
+        {
+            Elements = new List<ChainElement>()
+        };
 
         List<string> moveTypes = new List<string>()
             {
@@ -35,23 +37,24 @@ namespace MovementScriptGenerator
         public Main()
         {
             InitializeComponent();
-            initializeComboBoxes();
-            updateDescription();
-            updateContent();
+            InitializeComboBoxes();
+            UpdateDescription();
+            UpdateContent();
+            UpdateChainWindow();
         }
 
-        private void initializeComboBoxes()
+        private void InitializeComboBoxes()
         {
             cbType.DataSource = moveTypes;
             cbType.SelectedIndex = 0;
         }
 
-        private void updateDescription()
+        private void UpdateDescription()
         {
             lblMoveDescription.Text = moveDescriptions[cbType.SelectedIndex];
         }
 
-        private void updateContent()
+        private void UpdateContent()
         {
             tlContent.Controls.Clear();
             switch (cbType.SelectedIndex)
@@ -65,11 +68,30 @@ namespace MovementScriptGenerator
             }
         }
 
-        private bool GenerateMovementScriptFile(MovementScript script, string path)
+        private void UpdateChainWindow()
         {
+            foreach(ChainElement el in chain.Elements)
+            {
+                tvChain.BeginUpdate();
+                tvChain.Nodes.Clear();
+                tvChain.Nodes.Add(el.Name);
+                tvChain.EndUpdate();
+            }
+        }
+
+        private bool GenerateMovementScriptFile(MovementScript script, string filePath)
+        {
+            if (File.Exists(filePath))
+            {
+                if(MessageBox.Show("A file with the given name already exists.\nWould you like to overwrite that file?", "Overwrite existing File", MessageBoxButtons.YesNo) == DialogResult.No)
+                {
+                    return false;
+                }
+            }
+
             try
             {
-                using (StreamWriter file = File.CreateText(path))
+                using (StreamWriter file = File.CreateText(filePath))
                 {
                     JsonSerializer serializer = new JsonSerializer();
                     serializer.Formatting = Formatting.Indented;
@@ -80,31 +102,31 @@ namespace MovementScriptGenerator
             }
             catch
             {
-                MessageBox.Show($"File could not be generated.\nPlease dont use any special characters in the file name");
+                MessageBox.Show($"Something went wrong while generating the file.\nPlease make sure that the file name and file path are viable and don't contain any not allowed characters.");
                 return false;
             }
 
         }
 
-        private bool AddToMovementScriptFile(MovementScript script, string path)
+        private bool AddToMovementScriptFile(MovementScript script, string filePath)
         {
             JsonSerializer serializer = new JsonSerializer();
 
-            if (!File.Exists(path))
+            if (!File.Exists(filePath))
             {
                 MessageBox.Show("File doesn't exist!");
                 return false;
             }
 
-            string previousFileContent = File.ReadAllText(path);
+            string previousFileContent = File.ReadAllText(filePath);
 
             try
             {
                 MovementScript previousMovementScript = JsonConvert.DeserializeObject<MovementScript>(previousFileContent);
 
-                script.frames.InsertRange(0, previousMovementScript.frames);
+                script.Frames.InsertRange(0, previousMovementScript.Frames);
 
-                using (StreamWriter file = File.CreateText(path))
+                using (StreamWriter file = File.CreateText(filePath))
                 {
                     serializer.Formatting = Formatting.Indented;
 
@@ -120,50 +142,102 @@ namespace MovementScriptGenerator
             };
         }
 
-        private void btnGenerate_Click(object sender, EventArgs e)
+        private void cbType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string filePath = $@"{txtPath.Text}{txtName.Text}.Json";
+            UpdateDescription();
+            UpdateContent();
+        }
 
-            if (txtName.Text.Replace(" ", String.Empty) == "")
+        private void btnAddMoveToChain_Click(object sender, EventArgs e)
+        {
+            string moveName = txtMoveName.Text;
+            if (moveName.Replace(" ", String.Empty) == "")
             {
-                MessageBox.Show("Filename is missing!");
-                txtName.Focus();
-                return;
+                moveName = null;
             }
-            MovementScript movementScript = new MovementScript();
-
             switch (cbType.SelectedIndex)
             {
                 case 0:
-                    movementScript = circleControl.CreateMovementScript();
+                    Circle circle = circleControl.CreateMove(moveName);
+                    chain.Elements.Add(circle);
                     break;
                 case 1:
-                    movementScript = spiralControl.CreateMovementScript();
+                    Spiral spiral = spiralControl.CreateMove(moveName);
+                    chain.Elements.Add(spiral);
                     break;
             }
 
-            movementScript.syncToSong = checkSyncToSong.Checked;
+            tvChain.Nodes.Add(chain.Elements.Last().Name);
+        }
+
+        private void btnGenerateScript_Click(object sender, EventArgs e)
+        {
+            string filePath = $@"{txtPath.Text}{txtFileName.Text}.Json";
+
+            if (txtFileName.Text.Replace(" ", String.Empty) == "")
+            {
+                MessageBox.Show("Filename is missing!");
+                txtFileName.Focus();
+                return;
+            }
+
+            if (txtFileName.Text.IndexOfAny(illegalCharsForExplorer) != -1)
+            {
+                MessageBox.Show($"Couldn't generate the file because there are not allowed special characters in the filename.\nPlease make sure to not use any of these characters:\n{new string(illegalCharsForExplorer)}");
+                return;
+            }
+
+            if (filePath.IndexOfAny(Path.GetInvalidPathChars()) != -1)
+            {
+                MessageBox.Show($"Couldn't generate the file because the file path is invalid.\nPlease check that the file path is correct and pointing to the right folder.");
+                return;
+            }
+
+            if (!Directory.Exists(txtPath.Text))
+            {
+                MessageBox.Show("Couldn't find a directory at the given path.\nPlease make sure that the path points to an existsing directory on your device.");
+                return;
+            }
+
+            if(chain.Elements.Count <= 0)
+            {
+                MessageBox.Show("Can't create a movement script without any moves.\nPlease add moves to the chain before trying to generate a movement script.");
+                return;
+            }
+
+            List<Frame> scriptFrames = new List<Frame>();
+
+            foreach (ChainElement chainEl in chain.Elements)
+            {
+                if (chainEl is Move moveEl)
+                {
+                    List<Frame> moveFrames = moveEl.GenerateFrames();
+                    scriptFrames.AddRange(moveFrames);
+                }
+            }
+
+            MovementScript movementScript = new MovementScript()
+            {
+                Frames = scriptFrames,
+                SyncToSong = checkSyncToSong.Checked,
+                Loop = checkLoop.Checked
+            };
+
 
             if (checkAddToScript.Checked)
             {
-                if(AddToMovementScriptFile(movementScript, filePath))
+                if (AddToMovementScriptFile(movementScript, filePath))
                 {
-                    MessageBox.Show("Move added to MovementScript");
+                    MessageBox.Show("Chain added to Movement Script");
                 };
             }
             else
             {
-                if(GenerateMovementScriptFile(movementScript, filePath))
+                if (GenerateMovementScriptFile(movementScript, filePath))
                 {
                     MessageBox.Show("Movement Script generated");
                 };
             }
-        }
-
-        private void cbType_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            updateDescription();
-            updateContent();
         }
     }
 }

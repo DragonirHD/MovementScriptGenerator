@@ -38,8 +38,8 @@ namespace MovementScriptGenerator
             this.numEndDistance = new System.Windows.Forms.NumericUpDown();
             this.lblEndDistance = new System.Windows.Forms.Label();
             this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
-            this.numEndHeight = new System.Windows.Forms.NumericUpDown();
-            this.lblEndHeight = new System.Windows.Forms.Label();
+            this.numHeight = new System.Windows.Forms.NumericUpDown();
+            this.lblHeight = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.numHorizontalRot = new System.Windows.Forms.NumericUpDown();
             this.lblHorizontalRot = new System.Windows.Forms.Label();
@@ -74,7 +74,7 @@ namespace MovementScriptGenerator
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numEndDistance)).BeginInit();
             this.tableLayoutPanel11.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numEndHeight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numHeight)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numHorizontalRot)).BeginInit();
             this.tableLayoutPanel10.SuspendLayout();
@@ -216,8 +216,8 @@ namespace MovementScriptGenerator
             this.tableLayoutPanel11.ColumnCount = 2;
             this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel11.Controls.Add(this.numEndHeight, 0, 0);
-            this.tableLayoutPanel11.Controls.Add(this.lblEndHeight, 0, 0);
+            this.tableLayoutPanel11.Controls.Add(this.numHeight, 0, 0);
+            this.tableLayoutPanel11.Controls.Add(this.lblHeight, 0, 0);
             this.tableLayoutPanel11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel11.Location = new System.Drawing.Point(3, 73);
             this.tableLayoutPanel11.Name = "tableLayoutPanel11";
@@ -227,31 +227,31 @@ namespace MovementScriptGenerator
             this.tableLayoutPanel11.Size = new System.Drawing.Size(254, 26);
             this.tableLayoutPanel11.TabIndex = 3;
             // 
-            // numEndHeight
+            // numHeight
             // 
-            this.numEndHeight.DecimalPlaces = 5;
-            this.numEndHeight.Location = new System.Drawing.Point(130, 3);
-            this.numEndHeight.Minimum = new decimal(new int[] {
+            this.numHeight.DecimalPlaces = 5;
+            this.numHeight.Location = new System.Drawing.Point(130, 3);
+            this.numHeight.Minimum = new decimal(new int[] {
             100,
             0,
             0,
             -2147483648});
-            this.numEndHeight.Name = "numEndHeight";
-            this.numEndHeight.Size = new System.Drawing.Size(120, 20);
-            this.numEndHeight.TabIndex = 1;
+            this.numHeight.Name = "numHeight";
+            this.numHeight.Size = new System.Drawing.Size(120, 20);
+            this.numHeight.TabIndex = 1;
             // 
-            // lblEndHeight
+            // lblHeight
             // 
-            this.lblEndHeight.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lblHeight.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblEndHeight.AutoSize = true;
-            this.lblEndHeight.Location = new System.Drawing.Point(3, 0);
-            this.lblEndHeight.Name = "lblEndHeight";
-            this.lblEndHeight.Size = new System.Drawing.Size(38, 26);
-            this.lblEndHeight.TabIndex = 1;
-            this.lblEndHeight.Text = "Height";
-            this.lblEndHeight.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ToolTip.SetToolTip(this.lblEndHeight, "Defines at what height (on the y-axis) the move will be executed at.\r\nIf End Dist" +
+            this.lblHeight.AutoSize = true;
+            this.lblHeight.Location = new System.Drawing.Point(3, 0);
+            this.lblHeight.Name = "lblHeight";
+            this.lblHeight.Size = new System.Drawing.Size(38, 26);
+            this.lblHeight.TabIndex = 1;
+            this.lblHeight.Text = "Height";
+            this.lblHeight.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ToolTip.SetToolTip(this.lblHeight, "Defines at what height (on the y-axis) the move will be executed at.\r\nIf End Dist" +
         "ance is defined as 0, this will be the height at which the camera will stop at.");
             // 
             // tableLayoutPanel3
@@ -702,7 +702,7 @@ namespace MovementScriptGenerator
             ((System.ComponentModel.ISupportInitialize)(this.numEndDistance)).EndInit();
             this.tableLayoutPanel11.ResumeLayout(false);
             this.tableLayoutPanel11.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numEndHeight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numHeight)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numHorizontalRot)).EndInit();
@@ -768,8 +768,8 @@ namespace MovementScriptGenerator
         private System.Windows.Forms.Label lblEndHoldTime;
         private System.Windows.Forms.NumericUpDown numEndDistance;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
-        private System.Windows.Forms.NumericUpDown numEndHeight;
-        private System.Windows.Forms.Label lblEndHeight;
+        private System.Windows.Forms.NumericUpDown numHeight;
+        private System.Windows.Forms.Label lblHeight;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
         private System.Windows.Forms.Label lblEase;
         private System.Windows.Forms.CheckBox checkEase;
