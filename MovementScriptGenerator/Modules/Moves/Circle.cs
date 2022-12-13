@@ -6,13 +6,13 @@ namespace MovementScriptGenerator
 {
     public class Circle : Move
     {
-        private float rotX;
-        private float rotZ;
-        private float distance;
-        private float startingPointDegree;
-        private float sectorDegrees;
-        private int iterations;
-        private bool rotateClockwise;
+        public float RotX { get; }
+        public float RotZ { get; }
+        public float Distance { get; }
+        public float StartingPointDegree { get; }
+        public float SectorDegrees { get; }
+        public int Iterations { get; }
+        public bool RotateClockwise { get; }
         public Circle(
             string name,
             int fov,
@@ -30,43 +30,44 @@ namespace MovementScriptGenerator
             Fov = fov;
             Duration = duration;
             Height = height;
-            this.rotX = rotX;
-            this.rotZ = rotZ;
-            this.distance = distance;
-            this.startingPointDegree = startingPointDegree;
-            this.sectorDegrees = sectorDegrees;
-            this.iterations = iterations;
-            this.rotateClockwise = rotateClockwise;
+            RotX = rotX;
+            RotZ = rotZ;
+            Distance = distance;
+            StartingPointDegree = startingPointDegree;
+            SectorDegrees = sectorDegrees;
+            Iterations = iterations;
+            RotateClockwise = rotateClockwise;
         }
+
         public override List<Frame> GenerateFrames()
         {
             List<Frame> frames = new List<Frame>();
 
             float initialDegree = 0;
-            float maxDegrees = sectorDegrees - 1;
+            float maxDegrees = SectorDegrees - 1;
             float initialDegreeAddend = 1;
 
-            if (!rotateClockwise) {
+            if (!RotateClockwise) {
                 initialDegree *= -1;
                 maxDegrees *= -1;
                 initialDegreeAddend *= -1;
             }
 
-            for (float i = initialDegree; (rotateClockwise && i <= maxDegrees) || (!rotateClockwise && i >= maxDegrees); i += (float)initialDegreeAddend / iterations)
+            for (float i = initialDegree; (RotateClockwise && i <= maxDegrees) || (!RotateClockwise && i >= maxDegrees); i += (float)initialDegreeAddend / Iterations)
             {
-                float usedDegree = i + startingPointDegree;
+                float usedDegree = i + StartingPointDegree;
                 double radiant = usedDegree * Math.PI / 180;
 
                 Frame frame = new Frame();
                 frame.Position = new Position();
                 frame.Rotation = new Rotation();
 
-                frame.Position.X = (float)Math.Sin(radiant) * distance;
+                frame.Position.X = (float)Math.Sin(radiant) * Distance;
                 frame.Position.Y = Height;
-                frame.Position.Z = (float)Math.Cos(radiant) * distance;
+                frame.Position.Z = (float)Math.Cos(radiant) * Distance;
 
-                frame.Rotation.Z = rotZ;
-                frame.Rotation.X = rotX;
+                frame.Rotation.Z = RotZ;
+                frame.Rotation.X = RotX;
                 frame.Rotation.Y = usedDegree -180;
 
                 if (usedDegree == 0 || usedDegree == 180 || usedDegree == 360)
@@ -79,7 +80,7 @@ namespace MovementScriptGenerator
                 }
 
 
-                frame.Duration = Duration / Math.Abs(maxDegrees) / iterations;
+                frame.Duration = Duration / Math.Abs(maxDegrees) / Iterations;
 
                 if(Fov > 0)
                 {

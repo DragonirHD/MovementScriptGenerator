@@ -6,15 +6,15 @@ namespace MovementScriptGenerator
 {
     public class Spiral : Move
     {
-        private float startDistance;
-        private float endDistance;
-        private float horizontalRot;
-        private float verticalRot;
-        private float spiralAmmount;
-        private bool spiralClockwise;
-        private float startHold;
-        private float endHold;
-        private bool ease;
+        public float StartDistance { get; }
+        public float EndDistance { get; }
+        public float HorizontalRot { get; }
+        public float VerticalRot { get; }
+        public float SpiralAmmount { get; }
+        public bool SpiralClockwise { get; }
+        public float StartHold { get; }
+        public float EndHold { get; }
+        public bool Ease { get; }
         public Spiral(
             string name,
             int fov,
@@ -34,34 +34,34 @@ namespace MovementScriptGenerator
             Fov = fov;
             Duration = duration;
             Height = height;
-            this.startDistance = startDistance;
-            this.endDistance = endDistance;
-            this.horizontalRot = horizontalRot;
-            this.verticalRot = verticalRot;
-            this.spiralAmmount = spiralAmmount;
-            this.spiralClockwise = spiralClockwise;
-            this.startHold = startHold;
-            this.endHold = endHold;
-            this.ease = ease;
+            StartDistance = startDistance;
+            EndDistance = endDistance;
+            HorizontalRot = horizontalRot;
+            VerticalRot = verticalRot;
+            SpiralAmmount = spiralAmmount;
+            SpiralClockwise = spiralClockwise;
+            StartHold = startHold;
+            EndHold = endHold;
+            Ease = ease;
         }
         public override List<Frame> GenerateFrames()
         {
             List<Frame> frames = new List<Frame>();
 
-            double horizontalRadiant = horizontalRot * Math.PI / 180;
+            double horizontalRadiant = HorizontalRot * Math.PI / 180;
 
             float xHorizontal = (float)Math.Sin(horizontalRadiant);
             float zHorizontal = (float)Math.Cos(horizontalRadiant);
 
-            double verticalRadiant = verticalRot * Math.PI / 180;
+            double verticalRadiant = VerticalRot * Math.PI / 180;
 
             float yVertical = (float)Math.Sin(verticalRadiant);
             float zVertical = (float)Math.Cos(verticalRadiant);
 
-            float pathLength = startDistance - endDistance;
-            float spiralLength = pathLength / spiralAmmount;
+            float pathLength = StartDistance - EndDistance;
+            float spiralLength = pathLength / SpiralAmmount;
 
-            switch (horizontalRot)
+            switch (HorizontalRot)
             {
                 case 0:
                     zHorizontal = 1;
@@ -80,7 +80,7 @@ namespace MovementScriptGenerator
                     break;
             }
 
-            switch (verticalRot)
+            switch (VerticalRot)
             {
                 case 0:
                     yVertical = 0;
@@ -97,29 +97,29 @@ namespace MovementScriptGenerator
             {
                 Position = new Position()
                 {
-                    X = xHorizontal * zVertical * startDistance,
-                    Y = yVertical * startDistance + Height,
-                    Z = zHorizontal * zVertical * startDistance
+                    X = xHorizontal * zVertical * StartDistance,
+                    Y = yVertical * StartDistance + Height,
+                    Z = zHorizontal * zVertical * StartDistance
                 },
 
                 Rotation = new Rotation()
                 {
-                    X = verticalRot,
-                    Y = horizontalRot - 180,
+                    X = VerticalRot,
+                    Y = HorizontalRot - 180,
                     Z = 0
                 },
                 
-                HoldTime = startHold,
+                HoldTime = StartHold,
 
                 Fov = Fov
             };
             frames.Add(startFrame);
 
-            for(int i = 0; i < spiralAmmount; i++)
+            for(int i = 0; i < SpiralAmmount; i++)
             {
                 List<Frame> spiralFrames = new List<Frame>();
 
-                float SpiralStartDistance = startDistance - (i*spiralLength);
+                float SpiralStartDistance = StartDistance - (i*spiralLength);
                 float spiralHalfwayDistance = SpiralStartDistance - (spiralLength / 2);
                 float spiralEndDistance = spiralHalfwayDistance - (spiralLength / 2);
 
@@ -138,12 +138,12 @@ namespace MovementScriptGenerator
 
                         Rotation = new Rotation()
                         {
-                            X = verticalRot,
-                            Y = horizontalRot - 180,
-                            Z = spiralClockwise ? -rotation : rotation
+                            X = VerticalRot,
+                            Y = HorizontalRot - 180,
+                            Z = SpiralClockwise ? -rotation : rotation
                         },
 
-                        Duration = Duration / spiralAmmount / 360,
+                        Duration = Duration / SpiralAmmount / 360,
 
                         Fov = Fov
                     };
@@ -158,23 +158,23 @@ namespace MovementScriptGenerator
             {
                 Position = new Position()
                 {
-                    X = xHorizontal * zVertical * endDistance,
-                    Y = yVertical * endDistance + Height,
-                    Z = zHorizontal * zVertical * endDistance
+                    X = xHorizontal * zVertical * EndDistance,
+                    Y = yVertical * EndDistance + Height,
+                    Z = zHorizontal * zVertical * EndDistance
                 },
 
                 Rotation = new Rotation()
                 {
-                    X = verticalRot,
-                    Y = horizontalRot - 180,
-                    Z = spiralAmmount > 0 ? (spiralClockwise ? -360 : 360) : 0
+                    X = VerticalRot,
+                    Y = HorizontalRot - 180,
+                    Z = SpiralAmmount > 0 ? (SpiralClockwise ? -360 : 360) : 0
                 },
 
-                HoldTime = endHold,
+                HoldTime = EndHold,
 
-                Transition = ease && spiralAmmount <= 0 ? "Eased" : "Linear",
+                Transition = Ease && SpiralAmmount <= 0 ? "Eased" : "Linear",
 
-                Duration = spiralAmmount > 0 ? (Duration / spiralAmmount / 360) : Duration,
+                Duration = SpiralAmmount > 0 ? (Duration / SpiralAmmount / 360) : Duration,
 
                 Fov = Fov
             };

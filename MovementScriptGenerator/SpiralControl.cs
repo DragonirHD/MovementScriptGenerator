@@ -25,6 +25,31 @@ namespace MovementScriptGenerator
             cbSpiralRotation.SelectedIndex = 0;
         }
 
+        public bool Populate(Spiral original)
+        {
+            try
+            {
+                numFOV.Value = original.Fov;
+                numDuration.Value = (decimal)original.Duration;
+                numHeight.Value = (decimal)original.Height;
+                numStartDistance.Value = (decimal)original.StartDistance;
+                numEndDistance.Value = (decimal)original.EndDistance;
+                numHorizontalRot.Value = (decimal)original.HorizontalRot;
+                numVerticalRot.Value = (decimal)original.VerticalRot;
+                numSpiralAmmount.Value = (decimal)original.SpiralAmmount;
+                cbSpiralRotation.SelectedIndex = original.SpiralClockwise ? 0 : 1;
+                numStartHoldTime.Value = (decimal)original.StartHold;
+                numEndHoldTime.Value = (decimal)original.EndHold;
+                checkEase.Checked = original.Ease;
+            }
+            catch
+            {
+                return false;
+            }
+
+            return true;
+        }
+
         private void numSpiralAmmount_ValueChanged(object sender, EventArgs e)
         {
             if (numSpiralAmmount.Value > 0)

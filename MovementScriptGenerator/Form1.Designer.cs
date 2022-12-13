@@ -54,9 +54,22 @@ namespace MovementScriptGenerator
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
             this.lblAddToScript = new System.Windows.Forms.Label();
             this.checkAddToScript = new System.Windows.Forms.CheckBox();
+            this.tableLayoutPanel18 = new System.Windows.Forms.TableLayoutPanel();
             this.tvChain = new System.Windows.Forms.TreeView();
+            this.tableLayoutPanel19 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblElementOptions = new System.Windows.Forms.Label();
+            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            this.tableLayoutPanel20 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnElementMoveDown = new System.Windows.Forms.Button();
+            this.btnElementMoveUp = new System.Windows.Forms.Button();
+            this.btnElementDuplicate = new System.Windows.Forms.Button();
+            this.btnElementEditSettings = new System.Windows.Forms.Button();
+            this.btnElementApplySettings = new System.Windows.Forms.Button();
+            this.btnElementDelete = new System.Windows.Forms.Button();
             this.tableLayoutPanel16 = new System.Windows.Forms.TableLayoutPanel();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnAddMoveToChain = new System.Windows.Forms.Button();
+            this.btnResetMoveSettings = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.flpContent = new System.Windows.Forms.FlowLayoutPanel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
@@ -87,7 +100,12 @@ namespace MovementScriptGenerator
             this.tableLayoutPanel10.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
             this.tableLayoutPanel12.SuspendLayout();
+            this.tableLayoutPanel18.SuspendLayout();
+            this.tableLayoutPanel19.SuspendLayout();
+            this.flowLayoutPanel4.SuspendLayout();
+            this.tableLayoutPanel20.SuspendLayout();
             this.tableLayoutPanel16.SuspendLayout();
+            this.flowLayoutPanel3.SuspendLayout();
             this.flpContent.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
@@ -150,7 +168,7 @@ namespace MovementScriptGenerator
             this.tableLayoutPanel14.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel14.Controls.Add(this.tableLayoutPanel15, 0, 3);
             this.tableLayoutPanel14.Controls.Add(this.flowLayoutPanel1, 0, 1);
-            this.tableLayoutPanel14.Controls.Add(this.tvChain, 0, 2);
+            this.tableLayoutPanel14.Controls.Add(this.tableLayoutPanel18, 0, 2);
             this.tableLayoutPanel14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel14.Location = new System.Drawing.Point(303, 0);
             this.tableLayoutPanel14.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
@@ -427,19 +445,176 @@ namespace MovementScriptGenerator
             this.checkAddToScript.TabIndex = 1;
             this.checkAddToScript.UseVisualStyleBackColor = true;
             // 
+            // tableLayoutPanel18
+            // 
+            this.tableLayoutPanel18.ColumnCount = 2;
+            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel18.Controls.Add(this.tvChain, 0, 0);
+            this.tableLayoutPanel18.Controls.Add(this.tableLayoutPanel19, 1, 0);
+            this.tableLayoutPanel18.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel18.Location = new System.Drawing.Point(0, 70);
+            this.tableLayoutPanel18.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel18.Name = "tableLayoutPanel18";
+            this.tableLayoutPanel18.RowCount = 1;
+            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel18.Size = new System.Drawing.Size(605, 597);
+            this.tableLayoutPanel18.TabIndex = 7;
+            // 
             // tvChain
             // 
             this.tvChain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tvChain.Location = new System.Drawing.Point(3, 73);
+            this.tvChain.HideSelection = false;
+            this.tvChain.Location = new System.Drawing.Point(3, 3);
             this.tvChain.Name = "tvChain";
-            this.tvChain.Size = new System.Drawing.Size(599, 591);
+            this.tvChain.Size = new System.Drawing.Size(478, 591);
             this.tvChain.TabIndex = 7;
+            // 
+            // tableLayoutPanel19
+            // 
+            this.tableLayoutPanel19.ColumnCount = 1;
+            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel19.Controls.Add(this.lblElementOptions, 0, 0);
+            this.tableLayoutPanel19.Controls.Add(this.flowLayoutPanel4, 0, 1);
+            this.tableLayoutPanel19.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel19.Location = new System.Drawing.Point(484, 0);
+            this.tableLayoutPanel19.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel19.Name = "tableLayoutPanel19";
+            this.tableLayoutPanel19.RowCount = 2;
+            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
+            this.tableLayoutPanel19.Size = new System.Drawing.Size(121, 597);
+            this.tableLayoutPanel19.TabIndex = 8;
+            // 
+            // lblElementOptions
+            // 
+            this.lblElementOptions.AutoSize = true;
+            this.lblElementOptions.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblElementOptions.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblElementOptions.Location = new System.Drawing.Point(3, 0);
+            this.lblElementOptions.MaximumSize = new System.Drawing.Size(0, 59);
+            this.lblElementOptions.Name = "lblElementOptions";
+            this.lblElementOptions.Size = new System.Drawing.Size(115, 59);
+            this.lblElementOptions.TabIndex = 5;
+            this.lblElementOptions.Text = "Element Options";
+            this.lblElementOptions.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // flowLayoutPanel4
+            // 
+            this.flowLayoutPanel4.AutoScroll = true;
+            this.flowLayoutPanel4.Controls.Add(this.tableLayoutPanel20);
+            this.flowLayoutPanel4.Controls.Add(this.btnElementDuplicate);
+            this.flowLayoutPanel4.Controls.Add(this.btnElementEditSettings);
+            this.flowLayoutPanel4.Controls.Add(this.btnElementApplySettings);
+            this.flowLayoutPanel4.Controls.Add(this.btnElementDelete);
+            this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel4.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(0, 59);
+            this.flowLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(121, 538);
+            this.flowLayoutPanel4.TabIndex = 6;
+            this.flowLayoutPanel4.WrapContents = false;
+            // 
+            // tableLayoutPanel20
+            // 
+            this.tableLayoutPanel20.ColumnCount = 2;
+            this.tableLayoutPanel20.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel20.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel20.Controls.Add(this.btnElementMoveDown, 1, 0);
+            this.tableLayoutPanel20.Controls.Add(this.btnElementMoveUp, 0, 0);
+            this.tableLayoutPanel20.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel20.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel20.Name = "tableLayoutPanel20";
+            this.tableLayoutPanel20.RowCount = 1;
+            this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel20.Size = new System.Drawing.Size(121, 40);
+            this.tableLayoutPanel20.TabIndex = 2;
+            // 
+            // btnElementMoveDown
+            // 
+            this.btnElementMoveDown.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnElementMoveDown.Enabled = false;
+            this.btnElementMoveDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnElementMoveDown.Location = new System.Drawing.Point(63, 3);
+            this.btnElementMoveDown.Name = "btnElementMoveDown";
+            this.btnElementMoveDown.Size = new System.Drawing.Size(55, 34);
+            this.btnElementMoveDown.TabIndex = 1;
+            this.btnElementMoveDown.Text = "↓";
+            this.btnElementMoveDown.UseVisualStyleBackColor = true;
+            // 
+            // btnElementMoveUp
+            // 
+            this.btnElementMoveUp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnElementMoveUp.Enabled = false;
+            this.btnElementMoveUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnElementMoveUp.Location = new System.Drawing.Point(3, 3);
+            this.btnElementMoveUp.Name = "btnElementMoveUp";
+            this.btnElementMoveUp.Size = new System.Drawing.Size(54, 34);
+            this.btnElementMoveUp.TabIndex = 0;
+            this.btnElementMoveUp.Text = "↑";
+            this.btnElementMoveUp.UseVisualStyleBackColor = true;
+            // 
+            // btnElementDuplicate
+            // 
+            this.btnElementDuplicate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnElementDuplicate.Enabled = false;
+            this.btnElementDuplicate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnElementDuplicate.Location = new System.Drawing.Point(3, 43);
+            this.btnElementDuplicate.MinimumSize = new System.Drawing.Size(115, 0);
+            this.btnElementDuplicate.Name = "btnElementDuplicate";
+            this.btnElementDuplicate.Size = new System.Drawing.Size(115, 23);
+            this.btnElementDuplicate.TabIndex = 3;
+            this.btnElementDuplicate.Text = "Duplicate";
+            this.btnElementDuplicate.UseVisualStyleBackColor = true;
+            // 
+            // btnElementEditSettings
+            // 
+            this.btnElementEditSettings.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnElementEditSettings.Enabled = false;
+            this.btnElementEditSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnElementEditSettings.Location = new System.Drawing.Point(3, 72);
+            this.btnElementEditSettings.MinimumSize = new System.Drawing.Size(115, 0);
+            this.btnElementEditSettings.Name = "btnElementEditSettings";
+            this.btnElementEditSettings.Size = new System.Drawing.Size(115, 23);
+            this.btnElementEditSettings.TabIndex = 5;
+            this.btnElementEditSettings.Text = "Edit Settings";
+            this.btnElementEditSettings.UseVisualStyleBackColor = true;
+            this.btnElementEditSettings.Click += new System.EventHandler(this.btnElementEditSettings_Click);
+            // 
+            // btnElementApplySettings
+            // 
+            this.btnElementApplySettings.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnElementApplySettings.Enabled = false;
+            this.btnElementApplySettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnElementApplySettings.Location = new System.Drawing.Point(3, 101);
+            this.btnElementApplySettings.MinimumSize = new System.Drawing.Size(115, 0);
+            this.btnElementApplySettings.Name = "btnElementApplySettings";
+            this.btnElementApplySettings.Size = new System.Drawing.Size(115, 23);
+            this.btnElementApplySettings.TabIndex = 6;
+            this.btnElementApplySettings.Text = "Apply Settings";
+            this.btnElementApplySettings.UseVisualStyleBackColor = true;
+            // 
+            // btnElementDelete
+            // 
+            this.btnElementDelete.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnElementDelete.Enabled = false;
+            this.btnElementDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnElementDelete.Location = new System.Drawing.Point(3, 130);
+            this.btnElementDelete.MinimumSize = new System.Drawing.Size(115, 0);
+            this.btnElementDelete.Name = "btnElementDelete";
+            this.btnElementDelete.Size = new System.Drawing.Size(115, 23);
+            this.btnElementDelete.TabIndex = 4;
+            this.btnElementDelete.Text = "Delete";
+            this.btnElementDelete.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel16
             // 
             this.tableLayoutPanel16.ColumnCount = 1;
             this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel16.Controls.Add(this.btnAddMoveToChain, 0, 3);
+            this.tableLayoutPanel16.Controls.Add(this.flowLayoutPanel3, 0, 3);
             this.tableLayoutPanel16.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel16.Controls.Add(this.flpContent, 0, 2);
             this.tableLayoutPanel16.Controls.Add(this.flowLayoutPanel2, 0, 1);
@@ -455,17 +630,48 @@ namespace MovementScriptGenerator
             this.tableLayoutPanel16.Size = new System.Drawing.Size(297, 703);
             this.tableLayoutPanel16.TabIndex = 5;
             // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.Controls.Add(this.btnAddMoveToChain);
+            this.flowLayoutPanel3.Controls.Add(this.btnResetMoveSettings);
+            this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 667);
+            this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel3.MinimumSize = new System.Drawing.Size(0, 30);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(297, 36);
+            this.flowLayoutPanel3.TabIndex = 7;
+            // 
             // btnAddMoveToChain
             // 
             this.btnAddMoveToChain.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAddMoveToChain.Location = new System.Drawing.Point(3, 670);
+            this.btnAddMoveToChain.AutoSize = true;
+            this.btnAddMoveToChain.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnAddMoveToChain.Location = new System.Drawing.Point(0, 3);
+            this.btnAddMoveToChain.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
+            this.btnAddMoveToChain.MinimumSize = new System.Drawing.Size(0, 26);
             this.btnAddMoveToChain.Name = "btnAddMoveToChain";
-            this.btnAddMoveToChain.Size = new System.Drawing.Size(82, 30);
+            this.btnAddMoveToChain.Size = new System.Drawing.Size(82, 26);
             this.btnAddMoveToChain.TabIndex = 2;
             this.btnAddMoveToChain.Text = "Add To Chain";
             this.btnAddMoveToChain.UseVisualStyleBackColor = true;
             this.btnAddMoveToChain.Click += new System.EventHandler(this.btnAddMoveToChain_Click);
+            // 
+            // btnResetMoveSettings
+            // 
+            this.btnResetMoveSettings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnResetMoveSettings.Location = new System.Drawing.Point(88, 3);
+            this.btnResetMoveSettings.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
+            this.btnResetMoveSettings.MinimumSize = new System.Drawing.Size(0, 26);
+            this.btnResetMoveSettings.Name = "btnResetMoveSettings";
+            this.btnResetMoveSettings.Size = new System.Drawing.Size(103, 26);
+            this.btnResetMoveSettings.TabIndex = 3;
+            this.btnResetMoveSettings.Text = "Reset To Defaults";
+            this.ToolTip.SetToolTip(this.btnResetMoveSettings, "Resets the currently selected move settings to their default values.");
+            this.btnResetMoveSettings.UseVisualStyleBackColor = true;
+            this.btnResetMoveSettings.Click += new System.EventHandler(this.btnResetMoveControl_Click);
             // 
             // label1
             // 
@@ -763,8 +969,15 @@ namespace MovementScriptGenerator
             this.tableLayoutPanel9.PerformLayout();
             this.tableLayoutPanel12.ResumeLayout(false);
             this.tableLayoutPanel12.PerformLayout();
+            this.tableLayoutPanel18.ResumeLayout(false);
+            this.tableLayoutPanel19.ResumeLayout(false);
+            this.tableLayoutPanel19.PerformLayout();
+            this.flowLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel20.ResumeLayout(false);
             this.tableLayoutPanel16.ResumeLayout(false);
             this.tableLayoutPanel16.PerformLayout();
+            this.flowLayoutPanel3.ResumeLayout(false);
+            this.flowLayoutPanel3.PerformLayout();
             this.flpContent.ResumeLayout(false);
             this.flpContent.PerformLayout();
             this.tableLayoutPanel5.ResumeLayout(false);
@@ -831,6 +1044,19 @@ namespace MovementScriptGenerator
         private System.Windows.Forms.TextBox txtMoveName;
         private System.Windows.Forms.Label lblMoveName;
         private System.Windows.Forms.TreeView tvChain;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private System.Windows.Forms.Button btnResetMoveSettings;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel18;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel19;
+        private System.Windows.Forms.Label lblElementOptions;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
+        private System.Windows.Forms.Button btnElementMoveUp;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel20;
+        private System.Windows.Forms.Button btnElementMoveDown;
+        private System.Windows.Forms.Button btnElementDuplicate;
+        private System.Windows.Forms.Button btnElementEditSettings;
+        private System.Windows.Forms.Button btnElementApplySettings;
+        private System.Windows.Forms.Button btnElementDelete;
     }
 }
 

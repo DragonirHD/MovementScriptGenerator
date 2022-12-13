@@ -10,6 +10,7 @@ namespace MovementScriptGenerator
 {
     public partial class Main : Form
     {
+        //Move Controls
         CircleControl circleControl = new CircleControl();
         SpiralControl spiralControl = new SpiralControl();
 
@@ -39,7 +40,7 @@ namespace MovementScriptGenerator
             InitializeComponent();
             InitializeComboBoxes();
             UpdateDescription();
-            UpdateContent();
+            OnMoveTypeChanged();
             UpdateChainWindow();
         }
 
@@ -54,7 +55,7 @@ namespace MovementScriptGenerator
             lblMoveDescription.Text = moveDescriptions[cbType.SelectedIndex];
         }
 
-        private void UpdateContent()
+        private void OnMoveTypeChanged()
         {
             tlContent.Controls.Clear();
             switch (cbType.SelectedIndex)
@@ -68,12 +69,26 @@ namespace MovementScriptGenerator
             }
         }
 
+        private void ResetContent()
+        {
+            txtMoveName.Text = string.Empty;
+            switch (tlContent.Controls[0])
+            {
+                case CircleControl _:
+                    circleControl = new CircleControl();
+                    break;
+                case SpiralControl _:
+                    spiralControl = new SpiralControl();
+                    break;
+            }
+        }
+
         private void UpdateChainWindow()
         {
             foreach(ChainElement el in chain.Elements)
             {
-                tvChain.BeginUpdate();
                 tvChain.Nodes.Clear();
+                tvChain.BeginUpdate();
                 tvChain.Nodes.Add(el.Name);
                 tvChain.EndUpdate();
             }
@@ -145,16 +160,17 @@ namespace MovementScriptGenerator
         private void cbType_SelectedIndexChanged(object sender, EventArgs e)
         {
             UpdateDescription();
-            UpdateContent();
+            OnMoveTypeChanged();
         }
 
         private void btnAddMoveToChain_Click(object sender, EventArgs e)
         {
             string moveName = txtMoveName.Text;
-            if (moveName.Replace(" ", String.Empty) == "")
+            if (!MoveNameValid(moveName))
             {
                 moveName = null;
             }
+
             switch (cbType.SelectedIndex)
             {
                 case 0:
@@ -165,6 +181,9 @@ namespace MovementScriptGenerator
                     Spiral spiral = spiralControl.CreateMove(moveName);
                     chain.Elements.Add(spiral);
                     break;
+                default:
+                    MessageBox.Show("can't add move to chain.");
+                    return;
             }
 
             tvChain.Nodes.Add(chain.Elements.Last().Name);
@@ -237,6 +256,111 @@ namespace MovementScriptGenerator
                 {
                     MessageBox.Show("Movement Script generated");
                 };
+            }
+        }
+
+        private void btnResetMoveControl_Click(object sender, EventArgs e)
+        {
+            ResetContent();
+            OnMoveTypeChanged();
+        }
+
+        private void btnApplySettingsToSelected_Click(object sender, EventArgs e)
+        {
+            string newMoveName = txtMoveName.Text;
+            if (!MoveNameValid(newMoveName))
+            {
+                newMoveName = null;
+            }
+            try
+            {
+                TreeNode selectedNode = tvChain.SelectedNode;
+                if(selectedNode == null)
+                {
+                    MessageBox.Show("Couldn't apply settings. Make sure that you have selected an element of the chain.");
+                    return;
+                }
+                ChainElement selectedElement = chain.Elements[selectedNode.Index];
+
+                switch (cbType.SelectedIndex)
+                {
+                    case 0:
+                        if(selectedElement is Circle)
+                        {
+                            Circle circle = circleControl.CreateMove(newMoveName);
+                            chain.Elements[selectedNode.Index] = circle;
+                            selectedElement = circle;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Can't apply these settings to the currently selected chain element because the element is not a circle move.");
+                            return;
+                        }
+                        break;
+                    case 1:
+                        if(selectedElement is Spiral)
+                        {
+                            Spiral spiral = spiralControl.CreateMove(newMoveName);
+                            selectedElement = spiral;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Can't apply these settings to the currently selected chain element because the element is not a spiral move.");
+                            return;
+                        }
+                        break;
+
+                    default:
+                        MessageBox.Show("Can't apply these settings to the currently selected chain element.");
+                        return;
+                }
+
+                UpdateChainWindow();
+            }
+            catch
+            {
+                MessageBox.Show("Couldn't apply settings. Make sure that you have selected an element of the chain that is the same type of element as your settings.");
+            }
+        }
+
+        private bool MoveNameValid(string moveName)
+        {
+            if (moveName.Replace(" ", String.Empty) == "")
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        private void btnElementEditSettings_Click(object sender, EventArgs e)
+        {
+            if(tvChain.SelectedNode == null)
+            {
+                MessageBox.Show("No element selected to edit.\nPlease select an element from the chain.");
+                return;
+            }
+            ChainElement selectedElementInChain = chain.Elements[tvChain.SelectedNode.Index];
+            bool populatingOfFieldsSuccessful = true;
+            switch (selectedElementInChain)
+            {
+                case Circle circleElement:
+                    populatingOfFieldsSuccessful = circleControl.Populate(circleElement);
+                    break;
+                case Spiral spiralElement:
+                    populatingOfFieldsSuccessful = spiralControl.Populate(spiralElement);
+                    break;
+                default:
+                    MessageBox.Show("Can't get the settings of the selected element.");
+                    return;
+            }
+            if (!populatingOfFieldsSuccessful)
+            {
+                MessageBox.Show("Couldn't edit the selected element.");
+            }
+            else
+            {
+                txtMoveName.Text = selectedElementInChain.Name;
             }
         }
     }
