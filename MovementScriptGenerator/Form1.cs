@@ -85,9 +85,9 @@ namespace MovementScriptGenerator
 
         private void UpdateChainWindow()
         {
-            foreach(ChainElement el in chain.Elements)
+            tvChain.Nodes.Clear();
+            foreach (ChainElement el in chain.Elements)
             {
-                tvChain.Nodes.Clear();
                 tvChain.BeginUpdate();
                 tvChain.Nodes.Add(el.Name);
                 tvChain.EndUpdate();
@@ -265,7 +265,7 @@ namespace MovementScriptGenerator
             OnMoveTypeChanged();
         }
 
-        private void btnApplySettingsToSelected_Click(object sender, EventArgs e)
+        private void btnElementApplySettings_Click(object sender, EventArgs e)
         {
             string newMoveName = txtMoveName.Text;
             if (!MoveNameValid(newMoveName))
@@ -361,6 +361,75 @@ namespace MovementScriptGenerator
             else
             {
                 txtMoveName.Text = selectedElementInChain.Name;
+            }
+        }
+
+        private void tvChain_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            ChainElement selectedElementInChain = chain.Elements[tvChain.SelectedNode.Index];
+
+            if (typeof(Move).IsInstanceOfType(selectedElementInChain))
+            {
+                EnableElementOptionsMoveType();
+                return;
+            }
+
+            DisableElementOptionsAll();
+        }
+
+        private void EnableElementOptionsMoveType()
+        {
+            btnElementMoveUp.Enabled = true;
+            btnElementMoveDown.Enabled = true;
+            btnElementEditSettings.Enabled = true;
+            btnElementApplySettings.Enabled = true;
+            btnElementDuplicate.Enabled = true;
+            btnElementDelete.Enabled = true;
+        }
+
+        private void DisableElementOptionsAll()
+        {
+            btnElementMoveUp.Enabled = false;
+            btnElementMoveDown.Enabled = false;
+            btnElementEditSettings.Enabled = false;
+            btnElementApplySettings.Enabled = false;
+            btnElementDuplicate.Enabled = false;
+            btnElementDelete.Enabled = false;
+        }
+
+        private void btnElementMoveUp_Click(object sender, EventArgs e)
+        {
+            if(tvChain.SelectedNode.Index != 0)
+            {
+                TreeNode selectedTreeElement = tvChain.SelectedNode;
+                ChainElement selectedChainElement = chain.Elements[selectedTreeElement.Index];
+
+                chain.Elements.Remove(selectedChainElement);
+                chain.Elements.Insert(selectedTreeElement.Index - 1, selectedChainElement);
+
+                tvChain.BeginUpdate();
+                tvChain.Nodes.Remove(selectedTreeElement);
+                tvChain.Nodes.Insert(selectedTreeElement.Index - 1, selectedTreeElement);
+                tvChain.SelectedNode = selectedTreeElement;
+                tvChain.EndUpdate();
+            }
+        }
+
+        private void btnElementMoveDown_Click(object sender, EventArgs e)
+        {
+            if (tvChain.SelectedNode.Index != tvChain.Nodes.Count -1)
+            {
+                TreeNode selectedTreeElement = tvChain.SelectedNode;
+                ChainElement selectedChainElement = chain.Elements[selectedTreeElement.Index];
+
+                chain.Elements.Remove(selectedChainElement);
+                chain.Elements.Insert(selectedTreeElement.Index + 1, selectedChainElement);
+
+                tvChain.BeginUpdate();
+                tvChain.Nodes.Remove(selectedTreeElement);
+                tvChain.Nodes.Insert(selectedTreeElement.Index + 1, selectedTreeElement);
+                tvChain.SelectedNode = selectedTreeElement;
+                tvChain.EndUpdate();
             }
         }
     }

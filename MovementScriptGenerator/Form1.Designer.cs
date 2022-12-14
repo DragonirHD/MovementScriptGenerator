@@ -469,6 +469,7 @@ namespace MovementScriptGenerator
             this.tvChain.Name = "tvChain";
             this.tvChain.Size = new System.Drawing.Size(478, 591);
             this.tvChain.TabIndex = 7;
+            this.tvChain.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvChain_AfterSelect);
             // 
             // tableLayoutPanel19
             // 
@@ -530,7 +531,7 @@ namespace MovementScriptGenerator
             this.tableLayoutPanel20.RowCount = 1;
             this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel20.Size = new System.Drawing.Size(121, 40);
+            this.tableLayoutPanel20.Size = new System.Drawing.Size(121, 32);
             this.tableLayoutPanel20.TabIndex = 2;
             // 
             // btnElementMoveDown
@@ -540,10 +541,11 @@ namespace MovementScriptGenerator
             this.btnElementMoveDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnElementMoveDown.Location = new System.Drawing.Point(63, 3);
             this.btnElementMoveDown.Name = "btnElementMoveDown";
-            this.btnElementMoveDown.Size = new System.Drawing.Size(55, 34);
+            this.btnElementMoveDown.Size = new System.Drawing.Size(55, 26);
             this.btnElementMoveDown.TabIndex = 1;
             this.btnElementMoveDown.Text = "↓";
             this.btnElementMoveDown.UseVisualStyleBackColor = true;
+            this.btnElementMoveDown.Click += new System.EventHandler(this.btnElementMoveDown_Click);
             // 
             // btnElementMoveUp
             // 
@@ -552,17 +554,18 @@ namespace MovementScriptGenerator
             this.btnElementMoveUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnElementMoveUp.Location = new System.Drawing.Point(3, 3);
             this.btnElementMoveUp.Name = "btnElementMoveUp";
-            this.btnElementMoveUp.Size = new System.Drawing.Size(54, 34);
+            this.btnElementMoveUp.Size = new System.Drawing.Size(54, 26);
             this.btnElementMoveUp.TabIndex = 0;
             this.btnElementMoveUp.Text = "↑";
             this.btnElementMoveUp.UseVisualStyleBackColor = true;
+            this.btnElementMoveUp.Click += new System.EventHandler(this.btnElementMoveUp_Click);
             // 
             // btnElementDuplicate
             // 
             this.btnElementDuplicate.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnElementDuplicate.Enabled = false;
             this.btnElementDuplicate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnElementDuplicate.Location = new System.Drawing.Point(3, 43);
+            this.btnElementDuplicate.Location = new System.Drawing.Point(3, 35);
             this.btnElementDuplicate.MinimumSize = new System.Drawing.Size(115, 0);
             this.btnElementDuplicate.Name = "btnElementDuplicate";
             this.btnElementDuplicate.Size = new System.Drawing.Size(115, 23);
@@ -575,7 +578,7 @@ namespace MovementScriptGenerator
             this.btnElementEditSettings.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnElementEditSettings.Enabled = false;
             this.btnElementEditSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnElementEditSettings.Location = new System.Drawing.Point(3, 72);
+            this.btnElementEditSettings.Location = new System.Drawing.Point(3, 64);
             this.btnElementEditSettings.MinimumSize = new System.Drawing.Size(115, 0);
             this.btnElementEditSettings.Name = "btnElementEditSettings";
             this.btnElementEditSettings.Size = new System.Drawing.Size(115, 23);
@@ -589,20 +592,21 @@ namespace MovementScriptGenerator
             this.btnElementApplySettings.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnElementApplySettings.Enabled = false;
             this.btnElementApplySettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnElementApplySettings.Location = new System.Drawing.Point(3, 101);
+            this.btnElementApplySettings.Location = new System.Drawing.Point(3, 93);
             this.btnElementApplySettings.MinimumSize = new System.Drawing.Size(115, 0);
             this.btnElementApplySettings.Name = "btnElementApplySettings";
             this.btnElementApplySettings.Size = new System.Drawing.Size(115, 23);
             this.btnElementApplySettings.TabIndex = 6;
             this.btnElementApplySettings.Text = "Apply Settings";
             this.btnElementApplySettings.UseVisualStyleBackColor = true;
+            this.btnElementApplySettings.Click += new System.EventHandler(this.btnElementApplySettings_Click);
             // 
             // btnElementDelete
             // 
             this.btnElementDelete.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnElementDelete.Enabled = false;
             this.btnElementDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnElementDelete.Location = new System.Drawing.Point(3, 130);
+            this.btnElementDelete.Location = new System.Drawing.Point(3, 122);
             this.btnElementDelete.MinimumSize = new System.Drawing.Size(115, 0);
             this.btnElementDelete.Name = "btnElementDelete";
             this.btnElementDelete.Size = new System.Drawing.Size(115, 23);
