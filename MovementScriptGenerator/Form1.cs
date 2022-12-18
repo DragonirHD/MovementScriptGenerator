@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows.Forms;
 using MovementScriptGenerator.Modules;
 using Newtonsoft.Json;
+using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace MovementScriptGenerator
 {
@@ -543,11 +544,12 @@ namespace MovementScriptGenerator
 
         private void btnEditPath_Click(object sender, EventArgs e)
         {
-            FolderBrowserDialog dialog = new FolderBrowserDialog();
-            DialogResult result = dialog.ShowDialog();
-            if(result == DialogResult.OK)
+            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+            dialog.IsFolderPicker = true;
+            dialog.InitialDirectory = "C:\\Users";
+            if(dialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
-                txtPath.Text = dialog.SelectedPath;
+                txtPath.Text = dialog.FileName;
             }
         }
     }
