@@ -90,6 +90,7 @@ namespace MovementScriptGenerator
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.tableLayoutPanel21 = new System.Windows.Forms.TableLayoutPanel();
             this.btnEditPath = new System.Windows.Forms.Button();
+            this.btnInsert = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel13.SuspendLayout();
             this.tableLayoutPanel14.SuspendLayout();
@@ -605,6 +606,7 @@ namespace MovementScriptGenerator
             // flowLayoutPanel3
             // 
             this.flowLayoutPanel3.Controls.Add(this.btnAddMoveToChain);
+            this.flowLayoutPanel3.Controls.Add(this.btnInsert);
             this.flowLayoutPanel3.Controls.Add(this.btnResetMoveSettings);
             this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 667);
@@ -632,9 +634,8 @@ namespace MovementScriptGenerator
             // 
             // btnResetMoveSettings
             // 
-            this.btnResetMoveSettings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnResetMoveSettings.Location = new System.Drawing.Point(88, 3);
+            this.btnResetMoveSettings.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnResetMoveSettings.Location = new System.Drawing.Point(134, 3);
             this.btnResetMoveSettings.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
             this.btnResetMoveSettings.MinimumSize = new System.Drawing.Size(0, 26);
             this.btnResetMoveSettings.Name = "btnResetMoveSettings";
@@ -944,6 +945,23 @@ namespace MovementScriptGenerator
             this.btnEditPath.UseVisualStyleBackColor = true;
             this.btnEditPath.Click += new System.EventHandler(this.btnEditPath_Click);
             // 
+            // btnInsert
+            // 
+            this.btnInsert.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnInsert.AutoSize = true;
+            this.btnInsert.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnInsert.Enabled = false;
+            this.btnInsert.Location = new System.Drawing.Point(85, 3);
+            this.btnInsert.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
+            this.btnInsert.MinimumSize = new System.Drawing.Size(0, 26);
+            this.btnInsert.Name = "btnInsert";
+            this.btnInsert.Size = new System.Drawing.Size(43, 26);
+            this.btnInsert.TabIndex = 4;
+            this.btnInsert.Text = "Insert";
+            this.btnInsert.UseVisualStyleBackColor = true;
+            this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1059,6 +1077,7 @@ namespace MovementScriptGenerator
         private System.Windows.Forms.Button btnElementDelete;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel21;
         private System.Windows.Forms.Button btnEditPath;
+        private System.Windows.Forms.Button btnInsert;
     }
 }
 

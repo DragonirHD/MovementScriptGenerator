@@ -438,6 +438,7 @@ namespace MovementScriptGenerator
             btnElementApplySettings.Enabled = true;
             btnElementDuplicate.Enabled = true;
             btnElementDelete.Enabled = true;
+            btnInsert.Enabled = true;
         }
 
         private void DisableElementOptionsAll()
@@ -448,6 +449,7 @@ namespace MovementScriptGenerator
             btnElementApplySettings.Enabled = false;
             btnElementDuplicate.Enabled = false;
             btnElementDelete.Enabled = false;
+            btnInsert.Enabled = false;
         }
 
         private void btnElementMoveUp_Click(object sender, EventArgs e)
@@ -551,6 +553,40 @@ namespace MovementScriptGenerator
             {
                 txtPath.Text = dialog.FileName;
             }
+        }
+
+        private void btnInsert_Click(object sender, EventArgs e)
+        {
+            TreeNode selectedNode = tvChain.SelectedNode;
+            int insertIndex = selectedNode.Index + 1;
+            if (selectedNode == null)
+            {
+                MessageBox.Show("No element selected.\nPlease select an element from the chain.");
+                return;
+            }
+
+            string moveName = txtMoveName.Text;
+            if (!MoveNameValid(moveName))
+            {
+                moveName = null;
+            }
+
+            switch (cbType.SelectedIndex)
+            {
+                case (int)ChainElementsEnum.Circle:
+                    Circle circle = circleControl.CreateMove(moveName);
+                    chain.Elements.Insert(insertIndex, circle);
+                    break;
+                case (int)ChainElementsEnum.Spiral:
+                    Spiral spiral = spiralControl.CreateMove(moveName);
+                    chain.Elements.Insert(insertIndex, spiral);
+                    break;
+                default:
+                    MessageBox.Show("can't add move to chain.");
+                    return;
+            }
+
+            UpdateChainWindow(insertIndex);
         }
     }
 }
