@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChainElementsEnum.cs" />
     <Compile Include="Modules\Moves\Circle.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

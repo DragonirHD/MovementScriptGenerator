@@ -17,6 +17,5 @@ namespace MovementScriptGenerator.Modules
         public float Height { get; set; }
 
         public abstract List<Frame> GenerateFrames();
-
     }
 }

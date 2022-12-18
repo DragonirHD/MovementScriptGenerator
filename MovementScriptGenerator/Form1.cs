@@ -16,29 +16,27 @@ namespace MovementScriptGenerator
 
         private static readonly char[] illegalCharsForExplorer = "/<>:/\\\"|?*".ToCharArray();
 
+        private static readonly DirectoryInfo iconsDirectory = new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.GetDirectories().Where(directory => directory.Name == "Icons").FirstOrDefault();
+        private static readonly string iconsDataType = ".png";
+
         Chain chain = new Chain()
         {
             Elements = new List<ChainElement>()
         };
 
-        List<string> moveTypes = new List<string>()
-            {
-                "circle",
-                "spiral",
-                "J-Turn"
-            };
-
         List<string> moveDescriptions = new List<string>()
             {
                 "The camera will move in a circle around the player.",
                 "The camera will move from the starting distance to the end distance while spinning around its axis, creating a spiralling shot.",
-                "The camera will move from the given direction towards the player. Then at a surtain point, it will do a 180 degree turn, making the move into something that resembles a J.\nCurrently not implemented!"
+                "The camera will move from the given direction towards the player. Then at a surtain point, it will do a 180 degree turn, making the move into something that resembles a J.\nCurrently not implemented!",
+                "Groups multiple moves together.\nCurrently not implemented!"
             };
 
         public Main()
         {
             InitializeComponent();
             InitializeComboBoxes();
+            InitializeChainWindow();
             UpdateDescription();
             OnMoveTypeChanged();
             UpdateChainWindow();
@@ -46,8 +44,20 @@ namespace MovementScriptGenerator
 
         private void InitializeComboBoxes()
         {
-            cbType.DataSource = moveTypes;
+            cbType.DataSource = Enum.GetNames(typeof(ChainElementsEnum));
             cbType.SelectedIndex = 0;
+        }
+
+        private void InitializeChainWindow()
+        {
+            ImageList chainElementIcons = new ImageList();
+            chainElementIcons.ImageSize = new System.Drawing.Size(32, 32);
+            FileInfo[] archives = iconsDirectory.GetFiles($"*{iconsDataType}");
+            foreach(FileInfo iconInfo in archives)
+            {
+                chainElementIcons.Images.Add(System.Drawing.Image.FromFile(iconInfo.FullName));
+            }
+            tvChain.ImageList = chainElementIcons;
         }
 
         private void UpdateDescription()
@@ -72,6 +82,10 @@ namespace MovementScriptGenerator
         private void ResetContent()
         {
             txtMoveName.Text = string.Empty;
+            if(tlContent.Controls.Count == 0)
+            {
+                return;
+            }
             switch (tlContent.Controls[0])
             {
                 case CircleControl _:
@@ -80,18 +94,55 @@ namespace MovementScriptGenerator
                 case SpiralControl _:
                     spiralControl = new SpiralControl();
                     break;
+                default:
+                    break;
             }
         }
 
         private void UpdateChainWindow()
         {
+            tvChain.BeginUpdate();
             tvChain.Nodes.Clear();
             foreach (ChainElement el in chain.Elements)
             {
-                tvChain.BeginUpdate();
-                tvChain.Nodes.Add(el.Name);
-                tvChain.EndUpdate();
+                tvChain.Nodes.Add(string.Empty, el.Name, el.IconIndex, el.IconIndex);
             }
+            if (tvChain.Nodes.Count > 0)
+            {
+                tvChain.SelectedNode = tvChain.Nodes[tvChain.Nodes.Count - 1];
+            }
+            if (tvChain.SelectedNode == null)
+            {
+                DisableElementOptionsAll();
+            }
+            tvChain.EndUpdate();
+        }
+
+        private void UpdateChainWindow(int indexOfNodeToBeSelected)
+        {
+            //TODO Dont scroll to top on update
+            tvChain.BeginUpdate();
+            tvChain.Nodes.Clear();
+            foreach (ChainElement el in chain.Elements)
+            {
+                tvChain.Nodes.Add(string.Empty, el.Name, el.IconIndex, el.IconIndex);
+            }
+            if(indexOfNodeToBeSelected < tvChain.Nodes.Count)
+            {
+                tvChain.SelectedNode = tvChain.Nodes[indexOfNodeToBeSelected];
+            }
+            else
+            {
+                if(tvChain.Nodes.Count > 0)
+                {
+                    tvChain.SelectedNode = tvChain.Nodes[tvChain.Nodes.Count - 1];
+                }
+            }
+            if(tvChain.SelectedNode == null)
+            {
+                DisableElementOptionsAll();
+            }
+            tvChain.EndUpdate();
         }
 
         private bool GenerateMovementScriptFile(MovementScript script, string filePath)
@@ -123,40 +174,6 @@ namespace MovementScriptGenerator
 
         }
 
-        private bool AddToMovementScriptFile(MovementScript script, string filePath)
-        {
-            JsonSerializer serializer = new JsonSerializer();
-
-            if (!File.Exists(filePath))
-            {
-                MessageBox.Show("File doesn't exist!");
-                return false;
-            }
-
-            string previousFileContent = File.ReadAllText(filePath);
-
-            try
-            {
-                MovementScript previousMovementScript = JsonConvert.DeserializeObject<MovementScript>(previousFileContent);
-
-                script.Frames.InsertRange(0, previousMovementScript.Frames);
-
-                using (StreamWriter file = File.CreateText(filePath))
-                {
-                    serializer.Formatting = Formatting.Indented;
-
-                    serializer.Serialize(file, script);
-                }
-
-                return true;
-            }
-            catch
-            {
-                MessageBox.Show("Move could not be added.\nMake sure that the file is a correct MovementScript file.");
-                return false;
-            };
-        }
-
         private void cbType_SelectedIndexChanged(object sender, EventArgs e)
         {
             UpdateDescription();
@@ -173,11 +190,11 @@ namespace MovementScriptGenerator
 
             switch (cbType.SelectedIndex)
             {
-                case 0:
+                case (int)ChainElementsEnum.Circle:
                     Circle circle = circleControl.CreateMove(moveName);
                     chain.Elements.Add(circle);
                     break;
-                case 1:
+                case (int)ChainElementsEnum.Spiral:
                     Spiral spiral = spiralControl.CreateMove(moveName);
                     chain.Elements.Add(spiral);
                     break;
@@ -186,14 +203,14 @@ namespace MovementScriptGenerator
                     return;
             }
 
-            tvChain.Nodes.Add(chain.Elements.Last().Name);
+            UpdateChainWindow();
         }
 
         private void btnGenerateScript_Click(object sender, EventArgs e)
         {
-            string filePath = $@"{txtPath.Text}{txtFileName.Text}.Json";
+            string filePath = $@"{txtPath.Text}\{txtFileName.Text}.Json";
 
-            if (txtFileName.Text.Replace(" ", String.Empty) == "")
+            if (txtFileName.Text.Replace(" ", string.Empty) == "")
             {
                 MessageBox.Show("Filename is missing!");
                 txtFileName.Focus();
@@ -259,6 +276,40 @@ namespace MovementScriptGenerator
             }
         }
 
+        private bool AddToMovementScriptFile(MovementScript script, string filePath)
+        {
+            JsonSerializer serializer = new JsonSerializer();
+
+            if (!File.Exists(filePath))
+            {
+                MessageBox.Show("File doesn't exist!");
+                return false;
+            }
+
+            string previousFileContent = File.ReadAllText(filePath);
+
+            try
+            {
+                MovementScript previousMovementScript = JsonConvert.DeserializeObject<MovementScript>(previousFileContent);
+
+                script.Frames.InsertRange(0, previousMovementScript.Frames);
+
+                using (StreamWriter file = File.CreateText(filePath))
+                {
+                    serializer.Formatting = Formatting.Indented;
+
+                    serializer.Serialize(file, script);
+                }
+
+                return true;
+            }
+            catch
+            {
+                MessageBox.Show("Move could not be added.\nMake sure that the file is a correct MovementScript file.");
+                return false;
+            };
+        }
+
         private void btnResetMoveControl_Click(object sender, EventArgs e)
         {
             ResetContent();
@@ -284,12 +335,11 @@ namespace MovementScriptGenerator
 
                 switch (cbType.SelectedIndex)
                 {
-                    case 0:
+                    case (int)ChainElementsEnum.Circle:
                         if(selectedElement is Circle)
                         {
                             Circle circle = circleControl.CreateMove(newMoveName);
                             chain.Elements[selectedNode.Index] = circle;
-                            selectedElement = circle;
                         }
                         else
                         {
@@ -297,11 +347,11 @@ namespace MovementScriptGenerator
                             return;
                         }
                         break;
-                    case 1:
+                    case (int)ChainElementsEnum.Spiral:
                         if(selectedElement is Spiral)
                         {
                             Spiral spiral = spiralControl.CreateMove(newMoveName);
-                            selectedElement = spiral;
+                            chain.Elements[selectedNode.Index] = spiral;
                         }
                         else
                         {
@@ -315,7 +365,7 @@ namespace MovementScriptGenerator
                         return;
                 }
 
-                UpdateChainWindow();
+                UpdateChainWindow(selectedNode.Index);
             }
             catch
             {
@@ -325,7 +375,7 @@ namespace MovementScriptGenerator
 
         private bool MoveNameValid(string moveName)
         {
-            if (moveName.Replace(" ", String.Empty) == "")
+            if (moveName.Replace(" ", string.Empty) == "")
             {
                 return false;
             }
@@ -341,14 +391,16 @@ namespace MovementScriptGenerator
                 return;
             }
             ChainElement selectedElementInChain = chain.Elements[tvChain.SelectedNode.Index];
-            bool populatingOfFieldsSuccessful = true;
+            bool populatingOfFieldsSuccessful;
             switch (selectedElementInChain)
             {
                 case Circle circleElement:
                     populatingOfFieldsSuccessful = circleControl.Populate(circleElement);
+                    cbType.SelectedIndex = (int)ChainElementsEnum.Circle;
                     break;
                 case Spiral spiralElement:
                     populatingOfFieldsSuccessful = spiralControl.Populate(spiralElement);
+                    cbType.SelectedIndex = (int)ChainElementsEnum.Spiral;
                     break;
                 default:
                     MessageBox.Show("Can't get the settings of the selected element.");
@@ -381,7 +433,7 @@ namespace MovementScriptGenerator
         {
             btnElementMoveUp.Enabled = true;
             btnElementMoveDown.Enabled = true;
-            btnElementEditSettings.Enabled = true;
+            btnElementGetSettings.Enabled = true;
             btnElementApplySettings.Enabled = true;
             btnElementDuplicate.Enabled = true;
             btnElementDelete.Enabled = true;
@@ -391,7 +443,7 @@ namespace MovementScriptGenerator
         {
             btnElementMoveUp.Enabled = false;
             btnElementMoveDown.Enabled = false;
-            btnElementEditSettings.Enabled = false;
+            btnElementGetSettings.Enabled = false;
             btnElementApplySettings.Enabled = false;
             btnElementDuplicate.Enabled = false;
             btnElementDelete.Enabled = false;
@@ -399,37 +451,103 @@ namespace MovementScriptGenerator
 
         private void btnElementMoveUp_Click(object sender, EventArgs e)
         {
-            if(tvChain.SelectedNode.Index != 0)
+            TreeNode selectedNode = tvChain.SelectedNode;
+            if (selectedNode == null)
             {
-                TreeNode selectedTreeElement = tvChain.SelectedNode;
-                ChainElement selectedChainElement = chain.Elements[selectedTreeElement.Index];
+                MessageBox.Show("No element selected.\nPlease select an element from the chain.");
+                return;
+            }
+            if (selectedNode.Index != 0)
+            {
+                ChainElement selectedChainElement = chain.Elements[selectedNode.Index];
 
                 chain.Elements.Remove(selectedChainElement);
-                chain.Elements.Insert(selectedTreeElement.Index - 1, selectedChainElement);
+                chain.Elements.Insert(selectedNode.Index - 1, selectedChainElement);
 
-                tvChain.BeginUpdate();
-                tvChain.Nodes.Remove(selectedTreeElement);
-                tvChain.Nodes.Insert(selectedTreeElement.Index - 1, selectedTreeElement);
-                tvChain.SelectedNode = selectedTreeElement;
-                tvChain.EndUpdate();
+                UpdateChainWindow(selectedNode.Index - 1);
             }
         }
 
         private void btnElementMoveDown_Click(object sender, EventArgs e)
         {
-            if (tvChain.SelectedNode.Index != tvChain.Nodes.Count -1)
+            TreeNode selectedNode = tvChain.SelectedNode;
+            if (selectedNode == null)
             {
-                TreeNode selectedTreeElement = tvChain.SelectedNode;
-                ChainElement selectedChainElement = chain.Elements[selectedTreeElement.Index];
+                MessageBox.Show("No element selected.\nPlease select an element from the chain.");
+                return;
+            }
+            if (selectedNode.Index != tvChain.Nodes.Count -1)
+            {
+                ChainElement selectedChainElement = chain.Elements[selectedNode.Index];
 
                 chain.Elements.Remove(selectedChainElement);
-                chain.Elements.Insert(selectedTreeElement.Index + 1, selectedChainElement);
+                chain.Elements.Insert(selectedNode.Index + 1, selectedChainElement);
 
-                tvChain.BeginUpdate();
-                tvChain.Nodes.Remove(selectedTreeElement);
-                tvChain.Nodes.Insert(selectedTreeElement.Index + 1, selectedTreeElement);
-                tvChain.SelectedNode = selectedTreeElement;
-                tvChain.EndUpdate();
+                UpdateChainWindow(selectedNode.Index + 1);
+            }
+        }
+
+        private void btnElementDuplicate_Click(object sender, EventArgs e)
+        {
+            TreeNode selectedNode = tvChain.SelectedNode;
+            if (selectedNode == null)
+            {
+                MessageBox.Show("No element selected.\nPlease select an element from the chain.");
+                return;
+            }
+            ChainElement selectedChainElement = chain.Elements[selectedNode.Index];
+            switch (selectedChainElement)
+            {
+                case Circle circleElement:
+                    selectedChainElement = circleElement.Clone<Circle>();
+                    break;
+                case Spiral spiralElement:
+                    selectedChainElement = spiralElement.Clone<Spiral>();
+                    break;
+                default:
+                    MessageBox.Show("Can't duplicate the selected element.");
+                    return;
+            }
+
+            if (selectedNode.Index == tvChain.Nodes.Count - 1)
+            {
+                chain.Elements.Add(selectedChainElement);
+            }
+            else
+            {
+                chain.Elements.Insert(selectedNode.Index + 1, selectedChainElement);
+            }
+
+            UpdateChainWindow(selectedNode.Index);
+        }
+
+        private void btnElementDelete_Click(object sender, EventArgs e)
+        {
+            TreeNode selectedNode = tvChain.SelectedNode;
+            if (selectedNode == null)
+            {
+                MessageBox.Show("No element selected.\nPlease select an element from the chain.");
+                return;
+            }
+            chain.Elements.RemoveAt(selectedNode.Index);
+
+            if(selectedNode.Index == 0)
+            {
+                UpdateChainWindow();
+            }
+            else
+            {
+                UpdateChainWindow(selectedNode.Index -1);
+            }
+        }
+
+        private void btnEditPath_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog dialog = new FolderBrowserDialog();
+            DialogResult result = dialog.ShowDialog();
+            if(result == DialogResult.OK)
+            {
+                txtPath.Text = dialog.SelectedPath;
             }
         }
     }

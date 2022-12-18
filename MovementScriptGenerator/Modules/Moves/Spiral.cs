@@ -10,7 +10,7 @@ namespace MovementScriptGenerator
         public float EndDistance { get; }
         public float HorizontalRot { get; }
         public float VerticalRot { get; }
-        public float SpiralAmmount { get; }
+        public int SpiralAmmount { get; }
         public bool SpiralClockwise { get; }
         public float StartHold { get; }
         public float EndHold { get; }
