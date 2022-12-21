@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace MovementScriptGenerator.Modules
 {
     public class MovementScript
     {
-        public bool syncToSong { get; set; }
-        public List<Frame> frames { get; set; }
+        public bool SyncToSong { get; set; }
+
+        public bool Loop { get; set; }
+        public List<Frame> Frames { get; set; }
     }
 }

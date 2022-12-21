@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace MovementScriptGenerator.Modules
 {
     public class Frame
     {
-        public Position position { get; set; }
-        public Rotation rotation { get; set; }
-        public float duration { get; set; }
-        public float holdTime { get; set; }
-        public string transition { get; set; }
-        public float fov { get; set; }
+        public Position Position { get; set; }
+        public Rotation Rotation { get; set; }
+        public float Duration { get; set; }
+        public float HoldTime { get; set; }
+        public string Transition { get; set; }
+        public float Fov { get; set; }
     }
 }
