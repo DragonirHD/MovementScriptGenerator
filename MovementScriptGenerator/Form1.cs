@@ -122,10 +122,6 @@ namespace MovementScriptGenerator
                 ChainElement currentElement = chain.Elements[i];
                 tvChain.Nodes.Add(string.Empty, $"{i + 1}. {currentElement.Name}", currentElement.IconIndex, currentElement.IconIndex);
             }
-            /*foreach (ChainElement el in chain.Elements)
-            {
-                tvChain.Nodes.Add(string.Empty, $"{el.}{el.Name}", el.IconIndex, el.IconIndex);
-            }*/
             if (tvChain.Nodes.Count > 0)
             {
                 tvChain.SelectedNode = tvChain.Nodes[tvChain.Nodes.Count - 1];
@@ -147,10 +143,6 @@ namespace MovementScriptGenerator
                 ChainElement currentElement = chain.Elements[i];
                 tvChain.Nodes.Add(string.Empty, $"{i + 1}. {currentElement.Name}", currentElement.IconIndex, currentElement.IconIndex);
             }
-            /*foreach (ChainElement el in chain.Elements)
-            {
-                tvChain.Nodes.Add(string.Empty, $"{el.}{el.Name}", el.IconIndex, el.IconIndex);
-            }*/
             if(indexOfNodeToBeSelected < tvChain.Nodes.Count)
             {
                 tvChain.SelectedNode = tvChain.Nodes[indexOfNodeToBeSelected];
