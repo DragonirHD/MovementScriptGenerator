@@ -255,24 +255,28 @@ namespace MovementScriptGenerator
             if (txtFileName.Text.IndexOfAny(illegalCharsForExplorer) != -1)
             {
                 MessageBox.Show($"Couldn't generate the file because there are not allowed special characters in the filename.\nPlease make sure to not use any of these characters:\n{new string(illegalCharsForExplorer)}");
+                txtFileName.Focus();
                 return;
             }
 
             if (filePath.IndexOfAny(Path.GetInvalidPathChars()) != -1)
             {
                 MessageBox.Show($"Couldn't generate the file because the file path is invalid.\nPlease check that the file path is correct and pointing to the right folder.");
+                btnEditPath.Focus();
                 return;
             }
 
             if (!Directory.Exists(txtPath.Text))
             {
                 MessageBox.Show("Couldn't find a directory at the given path.\nPlease make sure that the path points to an existsing directory on your device.");
+                btnEditPath.Focus();
                 return;
             }
 
             if(chain.Elements.Count <= 0)
             {
                 MessageBox.Show("Can't create a movement script without any moves.\nPlease add moves to the chain before trying to generate a movement script.");
+                cbType.Focus();
                 return;
             }
 
