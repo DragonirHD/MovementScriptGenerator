@@ -285,7 +285,7 @@ namespace MovementScriptGenerator
 
             if(movementScript.Frames == null)
             {
-                MessageBox.Show("Can't create movement script. Make sure that repeat elements don't create an endless loop.");
+                MessageBox.Show("Can't create movement script.\nPossible reasons:\n- a repeat element creates an endless loop\n- a repeat element points to elements that don't exist");
                 return;
             }
 
@@ -325,6 +325,10 @@ namespace MovementScriptGenerator
                     case Repeat repeatEl:
                         Chain repeatedPart = new Chain() {Elements = new List<ChainElement>()};
                         int ammountOfElementsToRepeat = repeatEl.EndElement + 1 - repeatEl.StartElement;
+                        if(repeatEl.StartElement > chain.Elements.Count || repeatEl.EndElement > chain.Elements.Count)
+                        {
+                            return null;
+                        }
                         List<ChainElement> toRepeat = chain.Elements.GetRange(repeatEl.StartElement - 1, ammountOfElementsToRepeat);
                         repeatedPart.Elements.AddRange(toRepeat);
                         List<Frame> framesOfRepeatedPart = AddFramesToScript(repeatedPart, 1);
