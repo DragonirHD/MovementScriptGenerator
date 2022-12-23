@@ -6,6 +6,6 @@ namespace MovementScriptGenerator
         Circle,
         Spiral,
         JTurn,
-        Group
+        Repeat
     }
 }

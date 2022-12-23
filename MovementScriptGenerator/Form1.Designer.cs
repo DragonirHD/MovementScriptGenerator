@@ -36,9 +36,6 @@ namespace MovementScriptGenerator
             this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtPath = new System.Windows.Forms.TextBox();
-            this.lblPath = new System.Windows.Forms.Label();
-            this.btnGenerateScript = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.txtFileName = new System.Windows.Forms.TextBox();
@@ -64,9 +61,15 @@ namespace MovementScriptGenerator
             this.btnElementGetSettings = new System.Windows.Forms.Button();
             this.btnElementApplySettings = new System.Windows.Forms.Button();
             this.btnElementDelete = new System.Windows.Forms.Button();
+            this.tableLayoutPanel21 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnEditPath = new System.Windows.Forms.Button();
+            this.txtPath = new System.Windows.Forms.TextBox();
+            this.btnGenerateScript = new System.Windows.Forms.Button();
+            this.lblPath = new System.Windows.Forms.Label();
             this.tableLayoutPanel16 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnAddMoveToChain = new System.Windows.Forms.Button();
+            this.btnInsert = new System.Windows.Forms.Button();
             this.btnResetMoveSettings = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.flpContent = new System.Windows.Forms.FlowLayoutPanel();
@@ -88,9 +91,6 @@ namespace MovementScriptGenerator
             this.txtMoveName = new System.Windows.Forms.TextBox();
             this.lblMoveName = new System.Windows.Forms.Label();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.tableLayoutPanel21 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnEditPath = new System.Windows.Forms.Button();
-            this.btnInsert = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel13.SuspendLayout();
             this.tableLayoutPanel14.SuspendLayout();
@@ -103,6 +103,7 @@ namespace MovementScriptGenerator
             this.tableLayoutPanel19.SuspendLayout();
             this.flowLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel20.SuspendLayout();
+            this.tableLayoutPanel21.SuspendLayout();
             this.tableLayoutPanel16.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
             this.flpContent.SuspendLayout();
@@ -113,7 +114,6 @@ namespace MovementScriptGenerator
             this.flowLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel17.SuspendLayout();
-            this.tableLayoutPanel21.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -192,38 +192,6 @@ namespace MovementScriptGenerator
             this.label2.TabIndex = 5;
             this.label2.Text = "Move Chain";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtPath
-            // 
-            this.txtPath.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtPath.Location = new System.Drawing.Point(164, 3);
-            this.txtPath.Name = "txtPath";
-            this.txtPath.Size = new System.Drawing.Size(257, 20);
-            this.txtPath.TabIndex = 1;
-            this.txtPath.Text = "D:\\SteamLibrary\\steamapps\\common\\Beat Saber\\UserData\\Camera2\\MovementScripts";
-            // 
-            // lblPath
-            // 
-            this.lblPath.AutoSize = true;
-            this.lblPath.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblPath.Location = new System.Drawing.Point(3, 0);
-            this.lblPath.Name = "lblPath";
-            this.lblPath.Size = new System.Drawing.Size(34, 36);
-            this.lblPath.TabIndex = 0;
-            this.lblPath.Text = "Path:";
-            this.lblPath.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.ToolTip.SetToolTip(this.lblPath, resources.GetString("lblPath.ToolTip"));
-            // 
-            // btnGenerateScript
-            // 
-            this.btnGenerateScript.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnGenerateScript.Location = new System.Drawing.Point(427, 3);
-            this.btnGenerateScript.Name = "btnGenerateScript";
-            this.btnGenerateScript.Size = new System.Drawing.Size(115, 30);
-            this.btnGenerateScript.TabIndex = 1;
-            this.btnGenerateScript.Text = "Generate Script";
-            this.btnGenerateScript.UseVisualStyleBackColor = true;
-            this.btnGenerateScript.Click += new System.EventHandler(this.btnGenerateScript_Click);
             // 
             // flowLayoutPanel1
             // 
@@ -583,6 +551,70 @@ namespace MovementScriptGenerator
             this.btnElementDelete.UseVisualStyleBackColor = true;
             this.btnElementDelete.Click += new System.EventHandler(this.btnElementDelete_Click);
             // 
+            // tableLayoutPanel21
+            // 
+            this.tableLayoutPanel21.ColumnCount = 4;
+            this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 121F));
+            this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 121F));
+            this.tableLayoutPanel21.Controls.Add(this.btnEditPath, 1, 0);
+            this.tableLayoutPanel21.Controls.Add(this.txtPath, 2, 0);
+            this.tableLayoutPanel21.Controls.Add(this.btnGenerateScript, 3, 0);
+            this.tableLayoutPanel21.Controls.Add(this.lblPath, 0, 0);
+            this.tableLayoutPanel21.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel21.Location = new System.Drawing.Point(0, 667);
+            this.tableLayoutPanel21.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel21.Name = "tableLayoutPanel21";
+            this.tableLayoutPanel21.RowCount = 1;
+            this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel21.Size = new System.Drawing.Size(545, 36);
+            this.tableLayoutPanel21.TabIndex = 8;
+            // 
+            // btnEditPath
+            // 
+            this.btnEditPath.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnEditPath.Location = new System.Drawing.Point(43, 3);
+            this.btnEditPath.Name = "btnEditPath";
+            this.btnEditPath.Size = new System.Drawing.Size(115, 30);
+            this.btnEditPath.TabIndex = 2;
+            this.btnEditPath.Text = "Edit Path";
+            this.btnEditPath.UseVisualStyleBackColor = true;
+            this.btnEditPath.Click += new System.EventHandler(this.btnEditPath_Click);
+            // 
+            // txtPath
+            // 
+            this.txtPath.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtPath.Location = new System.Drawing.Point(164, 3);
+            this.txtPath.Name = "txtPath";
+            this.txtPath.Size = new System.Drawing.Size(257, 20);
+            this.txtPath.TabIndex = 1;
+            this.txtPath.Text = "C:\\Program Files\\Steam\\steamapps\\common\\Beat Saber\\UserData\\Camera2\\MovementScrip" +
+    "ts";
+            // 
+            // btnGenerateScript
+            // 
+            this.btnGenerateScript.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnGenerateScript.Location = new System.Drawing.Point(427, 3);
+            this.btnGenerateScript.Name = "btnGenerateScript";
+            this.btnGenerateScript.Size = new System.Drawing.Size(115, 30);
+            this.btnGenerateScript.TabIndex = 1;
+            this.btnGenerateScript.Text = "Generate Script";
+            this.btnGenerateScript.UseVisualStyleBackColor = true;
+            this.btnGenerateScript.Click += new System.EventHandler(this.btnGenerateScript_Click);
+            // 
+            // lblPath
+            // 
+            this.lblPath.AutoSize = true;
+            this.lblPath.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblPath.Location = new System.Drawing.Point(3, 0);
+            this.lblPath.Name = "lblPath";
+            this.lblPath.Size = new System.Drawing.Size(34, 36);
+            this.lblPath.TabIndex = 0;
+            this.lblPath.Text = "Path:";
+            this.lblPath.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.ToolTip.SetToolTip(this.lblPath, resources.GetString("lblPath.ToolTip"));
+            // 
             // tableLayoutPanel16
             // 
             this.tableLayoutPanel16.ColumnCount = 1;
@@ -631,6 +663,23 @@ namespace MovementScriptGenerator
             this.btnAddMoveToChain.Text = "Add To Chain";
             this.btnAddMoveToChain.UseVisualStyleBackColor = true;
             this.btnAddMoveToChain.Click += new System.EventHandler(this.btnAddMoveToChain_Click);
+            // 
+            // btnInsert
+            // 
+            this.btnInsert.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnInsert.AutoSize = true;
+            this.btnInsert.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnInsert.Enabled = false;
+            this.btnInsert.Location = new System.Drawing.Point(85, 3);
+            this.btnInsert.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
+            this.btnInsert.MinimumSize = new System.Drawing.Size(0, 26);
+            this.btnInsert.Name = "btnInsert";
+            this.btnInsert.Size = new System.Drawing.Size(43, 26);
+            this.btnInsert.TabIndex = 4;
+            this.btnInsert.Text = "Insert";
+            this.btnInsert.UseVisualStyleBackColor = true;
+            this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
             // 
             // btnResetMoveSettings
             // 
@@ -914,54 +963,6 @@ namespace MovementScriptGenerator
             this.ToolTip.IsBalloon = true;
             this.ToolTip.ReshowDelay = 100;
             // 
-            // tableLayoutPanel21
-            // 
-            this.tableLayoutPanel21.ColumnCount = 4;
-            this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 121F));
-            this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 121F));
-            this.tableLayoutPanel21.Controls.Add(this.btnEditPath, 1, 0);
-            this.tableLayoutPanel21.Controls.Add(this.txtPath, 2, 0);
-            this.tableLayoutPanel21.Controls.Add(this.btnGenerateScript, 3, 0);
-            this.tableLayoutPanel21.Controls.Add(this.lblPath, 0, 0);
-            this.tableLayoutPanel21.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel21.Location = new System.Drawing.Point(0, 667);
-            this.tableLayoutPanel21.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel21.Name = "tableLayoutPanel21";
-            this.tableLayoutPanel21.RowCount = 1;
-            this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel21.Size = new System.Drawing.Size(545, 36);
-            this.tableLayoutPanel21.TabIndex = 8;
-            // 
-            // btnEditPath
-            // 
-            this.btnEditPath.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnEditPath.Location = new System.Drawing.Point(43, 3);
-            this.btnEditPath.Name = "btnEditPath";
-            this.btnEditPath.Size = new System.Drawing.Size(115, 30);
-            this.btnEditPath.TabIndex = 2;
-            this.btnEditPath.Text = "Edit Path";
-            this.btnEditPath.UseVisualStyleBackColor = true;
-            this.btnEditPath.Click += new System.EventHandler(this.btnEditPath_Click);
-            // 
-            // btnInsert
-            // 
-            this.btnInsert.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnInsert.AutoSize = true;
-            this.btnInsert.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnInsert.Enabled = false;
-            this.btnInsert.Location = new System.Drawing.Point(85, 3);
-            this.btnInsert.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
-            this.btnInsert.MinimumSize = new System.Drawing.Size(0, 26);
-            this.btnInsert.Name = "btnInsert";
-            this.btnInsert.Size = new System.Drawing.Size(43, 26);
-            this.btnInsert.TabIndex = 4;
-            this.btnInsert.Text = "Insert";
-            this.btnInsert.UseVisualStyleBackColor = true;
-            this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -992,6 +993,8 @@ namespace MovementScriptGenerator
             this.tableLayoutPanel19.PerformLayout();
             this.flowLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel20.ResumeLayout(false);
+            this.tableLayoutPanel21.ResumeLayout(false);
+            this.tableLayoutPanel21.PerformLayout();
             this.tableLayoutPanel16.ResumeLayout(false);
             this.tableLayoutPanel16.PerformLayout();
             this.flowLayoutPanel3.ResumeLayout(false);
@@ -1010,8 +1013,6 @@ namespace MovementScriptGenerator
             this.tableLayoutPanel4.PerformLayout();
             this.tableLayoutPanel17.ResumeLayout(false);
             this.tableLayoutPanel17.PerformLayout();
-            this.tableLayoutPanel21.ResumeLayout(false);
-            this.tableLayoutPanel21.PerformLayout();
             this.ResumeLayout(false);
 
         }

@@ -109,6 +109,7 @@ namespace MovementScriptGenerator
             this.lfSpiralControl.Controls.Add(this.tableLayoutPanel5);
             this.lfSpiralControl.Controls.Add(this.tableLayoutPanel7);
             this.lfSpiralControl.Controls.Add(this.tableLayoutPanel12);
+            this.lfSpiralControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lfSpiralControl.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.lfSpiralControl.Location = new System.Drawing.Point(0, 0);
             this.lfSpiralControl.Margin = new System.Windows.Forms.Padding(0);

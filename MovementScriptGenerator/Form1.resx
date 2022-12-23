@@ -144,6 +144,13 @@ Will overwrite the "Sync To Song" and "Loop" options of the existing file!
 Off -&gt; A new movement script file will be created for the move.
 If a file with the same name exists, that file will be overwritten!</value>
   </data>
+  <data name="lblPath.ToolTip" xml:space="preserve">
+    <value>The path of the directory in which the Movement Script File will be saved.
+Make sure to save the Files to the correct directory, else the camera2 mod will not be able
+to get them.
+The path should be something like this:
+D:\SteamLibrary\steamapps\common\Beat Saber\UserData\Camera2\MovementScripts</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

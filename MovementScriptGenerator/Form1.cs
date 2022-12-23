@@ -4,8 +4,10 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using MovementScriptGenerator.Modules;
+using MovementScriptGenerator.Modules.OtherChainElements;
 using Newtonsoft.Json;
 using Microsoft.WindowsAPICodePack.Dialogs;
+
 
 namespace MovementScriptGenerator
 {
@@ -15,10 +17,15 @@ namespace MovementScriptGenerator
         CircleControl circleControl = new CircleControl();
         SpiralControl spiralControl = new SpiralControl();
 
+        //Other Chain Elements Controls
+        RepeatControl repeatControl = new RepeatControl();
+
         private static readonly char[] illegalCharsForExplorer = "/<>:/\\\"|?*".ToCharArray();
 
         private static readonly DirectoryInfo iconsDirectory = new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.GetDirectories().Where(directory => directory.Name == "Icons").FirstOrDefault();
         private static readonly string iconsDataType = ".png";
+
+        private static readonly int maxStackDepth = 64;
 
         Chain chain = new Chain()
         {
@@ -30,7 +37,7 @@ namespace MovementScriptGenerator
                 "The camera will move in a circle around the player.",
                 "The camera will move from the starting distance to the end distance while spinning around its axis, creating a spiralling shot.",
                 "The camera will move from the given direction towards the player. Then at a surtain point, it will do a 180 degree turn, making the move into something that resembles a J.\nCurrently not implemented!",
-                "Groups multiple moves together.\nCurrently not implemented!"
+                "Repeats the Moves that are in the given range. The moves at the start position and end position are included."
             };
 
         public Main()
@@ -77,6 +84,9 @@ namespace MovementScriptGenerator
                 case 1:
                     tlContent.Controls.Add(spiralControl);
                     break;
+                case 3:
+                    tlContent.Controls.Add(repeatControl);
+                    break;
             }
         }
 
@@ -95,6 +105,9 @@ namespace MovementScriptGenerator
                 case SpiralControl _:
                     spiralControl = new SpiralControl();
                     break;
+                case RepeatControl _:
+                    repeatControl = new RepeatControl();
+                    break;
                 default:
                     break;
             }
@@ -104,10 +117,15 @@ namespace MovementScriptGenerator
         {
             tvChain.BeginUpdate();
             tvChain.Nodes.Clear();
-            foreach (ChainElement el in chain.Elements)
+            for (int i = 0; i < chain.Elements.Count; i++)
             {
-                tvChain.Nodes.Add(string.Empty, el.Name, el.IconIndex, el.IconIndex);
+                ChainElement currentElement = chain.Elements[i];
+                tvChain.Nodes.Add(string.Empty, $"{i + 1}. {currentElement.Name}", currentElement.IconIndex, currentElement.IconIndex);
             }
+            /*foreach (ChainElement el in chain.Elements)
+            {
+                tvChain.Nodes.Add(string.Empty, $"{el.}{el.Name}", el.IconIndex, el.IconIndex);
+            }*/
             if (tvChain.Nodes.Count > 0)
             {
                 tvChain.SelectedNode = tvChain.Nodes[tvChain.Nodes.Count - 1];
@@ -124,10 +142,15 @@ namespace MovementScriptGenerator
             //TODO Dont scroll to top on update
             tvChain.BeginUpdate();
             tvChain.Nodes.Clear();
-            foreach (ChainElement el in chain.Elements)
+            for(int i = 0; i < chain.Elements.Count; i++)
             {
-                tvChain.Nodes.Add(string.Empty, el.Name, el.IconIndex, el.IconIndex);
+                ChainElement currentElement = chain.Elements[i];
+                tvChain.Nodes.Add(string.Empty, $"{i + 1}. {currentElement.Name}", currentElement.IconIndex, currentElement.IconIndex);
             }
+            /*foreach (ChainElement el in chain.Elements)
+            {
+                tvChain.Nodes.Add(string.Empty, $"{el.}{el.Name}", el.IconIndex, el.IconIndex);
+            }*/
             if(indexOfNodeToBeSelected < tvChain.Nodes.Count)
             {
                 tvChain.SelectedNode = tvChain.Nodes[indexOfNodeToBeSelected];
@@ -199,6 +222,17 @@ namespace MovementScriptGenerator
                     Spiral spiral = spiralControl.CreateMove(moveName);
                     chain.Elements.Add(spiral);
                     break;
+                case (int)ChainElementsEnum.Repeat:
+                    if (repeatControl.ValidateInputs())
+                    {
+                        Repeat repeat = repeatControl.CreateElement(moveName);
+                        chain.Elements.Add(repeat);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Start element can't be further in the chain than end element.");
+                    }
+                    break;
                 default:
                     MessageBox.Show("can't add move to chain.");
                     return;
@@ -242,23 +276,18 @@ namespace MovementScriptGenerator
                 return;
             }
 
-            List<Frame> scriptFrames = new List<Frame>();
-
-            foreach (ChainElement chainEl in chain.Elements)
-            {
-                if (chainEl is Move moveEl)
-                {
-                    List<Frame> moveFrames = moveEl.GenerateFrames();
-                    scriptFrames.AddRange(moveFrames);
-                }
-            }
-
             MovementScript movementScript = new MovementScript()
             {
-                Frames = scriptFrames,
+                Frames = AddFramesToScript(chain),
                 SyncToSong = checkSyncToSong.Checked,
                 Loop = checkLoop.Checked
             };
+
+            if(movementScript.Frames == null)
+            {
+                MessageBox.Show("Can't create movement script. Make sure that repeat elements don't create an endless loop.");
+                return;
+            }
 
 
             if (checkAddToScript.Checked)
@@ -275,6 +304,95 @@ namespace MovementScriptGenerator
                     MessageBox.Show("Movement Script generated");
                 };
             }
+        }
+
+        /// <summary>
+        /// Tries to create frames from the given chain elements.
+        /// </summary>
+        /// <param name="chainOfElements"></param>
+        /// <returns>A List of Frames. If the script fails, it will return null</returns>
+        public List<Frame> AddFramesToScript(Chain chainOfElements)
+        {
+            List<Frame> frames = new List<Frame>();
+            foreach(ChainElement chainEl in chainOfElements.Elements)
+            {
+                switch (chainEl)
+                {
+                    case Move moveEl:
+                        List<Frame> moveFrames = moveEl.GenerateFrames();
+                        frames.AddRange(moveFrames);
+                        break;
+                    case Repeat repeatEl:
+                        Chain repeatedPart = new Chain() {Elements = new List<ChainElement>()};
+                        int ammountOfElementsToRepeat = repeatEl.EndElement + 1 - repeatEl.StartElement;
+                        List<ChainElement> toRepeat = chain.Elements.GetRange(repeatEl.StartElement - 1, ammountOfElementsToRepeat);
+                        repeatedPart.Elements.AddRange(toRepeat);
+                        List<Frame> framesOfRepeatedPart = AddFramesToScript(repeatedPart, 1);
+                        if (framesOfRepeatedPart != null)
+                        {
+                            frames.AddRange(framesOfRepeatedPart);
+                        }
+                        else
+                        {
+                            return null;
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            return frames;
+        }
+
+        /// <summary>
+        /// Only meant to be used in recursive part of the original function.
+        /// The <paramref name="stackDepth"/> is used to check how far down in the recursion the program is,
+        /// so that endless loops can be handled without throwing a stack overflow.
+        /// </summary>
+        /// <param name="chainOfElements"></param>
+        /// <param name="stackDepth"></param>
+        /// <returns>A List of Frames. If the script fails, it will return null</returns>
+        public List<Frame> AddFramesToScript(Chain chainOfElements, int stackDepth)
+        {
+            List<Frame> frames = new List<Frame>();
+            foreach (ChainElement chainEl in chainOfElements.Elements)
+            {
+                switch (chainEl)
+                {
+                    case Move moveEl:
+                        List<Frame> moveFrames = moveEl.GenerateFrames();
+                        frames.AddRange(moveFrames);
+                        break;
+                    case Repeat repeatEl:
+                        Chain repeatedPart = new Chain() { Elements = new List<ChainElement>() };
+                        int ammountOfElementsToRepeat = repeatEl.EndElement + 1 - repeatEl.StartElement;
+                        List<ChainElement> toRepeat = chain.Elements.GetRange(repeatEl.StartElement - 1, ammountOfElementsToRepeat);
+                        repeatedPart.Elements.AddRange(toRepeat);
+
+                        if(stackDepth <= maxStackDepth)
+                        {
+                            List<Frame> framesOfRepeatedPart = AddFramesToScript(repeatedPart, stackDepth + 1);
+                            if(framesOfRepeatedPart != null)
+                            {
+                                frames.AddRange(framesOfRepeatedPart);
+                            }
+                            else
+                            {
+                                return null;
+                            }
+                        }
+                        else
+                        {
+                            return null;
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            return frames;
         }
 
         private bool AddToMovementScriptFile(MovementScript script, string filePath)
@@ -360,6 +478,25 @@ namespace MovementScriptGenerator
                             return;
                         }
                         break;
+                    case (int)ChainElementsEnum.Repeat:
+                        if(selectedElement is Repeat)
+                        {
+                            if (repeatControl.ValidateInputs())
+                            {
+                                Repeat repeat = repeatControl.CreateElement(newMoveName);
+                                chain.Elements[selectedNode.Index] = repeat;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Start element can't be further in the chain than end element.");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Can't apply these settings to the currently selected chain element because the element is not a repeat element.");
+                            return;
+                        }
+                        break;
 
                     default:
                         MessageBox.Show("Can't apply these settings to the currently selected chain element.");
@@ -403,6 +540,10 @@ namespace MovementScriptGenerator
                     populatingOfFieldsSuccessful = spiralControl.Populate(spiralElement);
                     cbType.SelectedIndex = (int)ChainElementsEnum.Spiral;
                     break;
+                case Repeat repeatElement:
+                    populatingOfFieldsSuccessful = repeatControl.Populate(repeatElement);
+                    cbType.SelectedIndex = (int)ChainElementsEnum.Repeat;
+                    break;
                 default:
                     MessageBox.Show("Can't get the settings of the selected element.");
                     return;
@@ -426,11 +567,24 @@ namespace MovementScriptGenerator
                 EnableElementOptionsMoveType();
                 return;
             }
-
-            DisableElementOptionsAll();
+            else
+            {
+                EnableElementOptionsOtherType();
+            }
         }
 
         private void EnableElementOptionsMoveType()
+        {
+            btnElementMoveUp.Enabled = true;
+            btnElementMoveDown.Enabled = true;
+            btnElementGetSettings.Enabled = true;
+            btnElementApplySettings.Enabled = true;
+            btnElementDuplicate.Enabled = true;
+            btnElementDelete.Enabled = true;
+            btnInsert.Enabled = true;
+        }
+
+        private void EnableElementOptionsOtherType()
         {
             btnElementMoveUp.Enabled = true;
             btnElementMoveDown.Enabled = true;
@@ -507,6 +661,9 @@ namespace MovementScriptGenerator
                 case Spiral spiralElement:
                     selectedChainElement = spiralElement.Clone<Spiral>();
                     break;
+                case Repeat repeatElement:
+                    selectedChainElement = repeatElement.Clone<Repeat>();
+                    break;
                 default:
                     MessageBox.Show("Can't duplicate the selected element.");
                     return;
@@ -544,17 +701,6 @@ namespace MovementScriptGenerator
             }
         }
 
-        private void btnEditPath_Click(object sender, EventArgs e)
-        {
-            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
-            dialog.IsFolderPicker = true;
-            dialog.InitialDirectory = "C:\\Users";
-            if(dialog.ShowDialog() == CommonFileDialogResult.Ok)
-            {
-                txtPath.Text = dialog.FileName;
-            }
-        }
-
         private void btnInsert_Click(object sender, EventArgs e)
         {
             TreeNode selectedNode = tvChain.SelectedNode;
@@ -581,12 +727,27 @@ namespace MovementScriptGenerator
                     Spiral spiral = spiralControl.CreateMove(moveName);
                     chain.Elements.Insert(insertIndex, spiral);
                     break;
+                case (int)ChainElementsEnum.Repeat:
+                    Repeat repeat = repeatControl.CreateElement(moveName);
+                    chain.Elements.Insert(insertIndex, repeat);
+                    break;
                 default:
                     MessageBox.Show("can't add move to chain.");
                     return;
             }
 
             UpdateChainWindow(insertIndex);
+        }
+        
+        private void btnEditPath_Click(object sender, EventArgs e)
+        {
+            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+            dialog.IsFolderPicker = true;
+            dialog.InitialDirectory = "C:\\Users";
+            if(dialog.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                txtPath.Text = dialog.FileName;
+            }
         }
     }
 }

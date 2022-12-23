@@ -36,7 +36,7 @@ namespace MovementScriptGenerator
                 numEndDistance.Value = (decimal)original.EndDistance;
                 numHorizontalRot.Value = (decimal)original.HorizontalRot;
                 numVerticalRot.Value = (decimal)original.VerticalRot;
-                numSpiralAmmount.Value = (decimal)original.SpiralAmmount;
+                numSpiralAmmount.Value = original.SpiralAmmount;
                 cbSpiralRotation.SelectedIndex = original.SpiralClockwise ? 0 : 1;
                 numStartHoldTime.Value = (decimal)original.StartHold;
                 numEndHoldTime.Value = (decimal)original.EndHold;

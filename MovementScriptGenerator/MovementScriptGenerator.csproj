@@ -75,6 +75,7 @@
     <Compile Include="Modules\Frame.cs" />
     <Compile Include="Modules\Move.cs" />
     <Compile Include="Modules\MovementScript.cs" />
+    <Compile Include="Modules\OtherChainElements\Repeat.cs" />
     <Compile Include="Modules\Position.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -86,6 +87,12 @@
       <DependentUpon>CircleControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Modules\Moves\Spiral.cs" />
+    <Compile Include="RepeatControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RepeatControl.Designer.cs">
+      <DependentUpon>RepeatControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="SpiralControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -107,6 +114,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="RepeatControl.resx">
+      <DependentUpon>RepeatControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SpiralControl.resx">
       <DependentUpon>SpiralControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -127,8 +137,6 @@
   <ItemGroup>
     <Content Include="Icon.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Modules\OtherChainElements\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
