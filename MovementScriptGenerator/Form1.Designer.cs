@@ -405,6 +405,7 @@ namespace MovementScriptGenerator
             this.tvChain.Size = new System.Drawing.Size(418, 591);
             this.tvChain.TabIndex = 7;
             this.tvChain.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvChain_AfterSelect);
+            this.tvChain.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvChain_NodeMouseDoubleClick);
             // 
             // tableLayoutPanel19
             // 
@@ -442,7 +443,6 @@ namespace MovementScriptGenerator
             this.flowLayoutPanel4.Controls.Add(this.tableLayoutPanel20);
             this.flowLayoutPanel4.Controls.Add(this.btnElementDuplicate);
             this.flowLayoutPanel4.Controls.Add(this.btnElementGetSettings);
-            this.flowLayoutPanel4.Controls.Add(this.btnElementApplySettings);
             this.flowLayoutPanel4.Controls.Add(this.btnElementDelete);
             this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel4.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
@@ -521,19 +521,22 @@ namespace MovementScriptGenerator
             this.btnElementGetSettings.TabIndex = 5;
             this.btnElementGetSettings.Text = "Get Settings";
             this.btnElementGetSettings.UseVisualStyleBackColor = true;
-            this.btnElementGetSettings.Click += new System.EventHandler(this.btnElementEditSettings_Click);
+            this.btnElementGetSettings.Click += new System.EventHandler(this.btnElementGetSettings_Click);
             // 
             // btnElementApplySettings
             // 
+            this.btnElementApplySettings.AutoSize = true;
+            this.btnElementApplySettings.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnElementApplySettings.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnElementApplySettings.Enabled = false;
             this.btnElementApplySettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnElementApplySettings.Location = new System.Drawing.Point(3, 93);
-            this.btnElementApplySettings.MinimumSize = new System.Drawing.Size(115, 0);
+            this.btnElementApplySettings.Location = new System.Drawing.Point(45, 3);
+            this.btnElementApplySettings.MinimumSize = new System.Drawing.Size(0, 26);
             this.btnElementApplySettings.Name = "btnElementApplySettings";
-            this.btnElementApplySettings.Size = new System.Drawing.Size(115, 23);
+            this.btnElementApplySettings.Size = new System.Drawing.Size(43, 26);
             this.btnElementApplySettings.TabIndex = 6;
-            this.btnElementApplySettings.Text = "Apply Settings";
+            this.btnElementApplySettings.Text = "Apply";
+            this.ToolTip.SetToolTip(this.btnElementApplySettings, "Applies the current settings to the selected element.");
             this.btnElementApplySettings.UseVisualStyleBackColor = true;
             this.btnElementApplySettings.Click += new System.EventHandler(this.btnElementApplySettings_Click);
             // 
@@ -542,7 +545,7 @@ namespace MovementScriptGenerator
             this.btnElementDelete.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnElementDelete.Enabled = false;
             this.btnElementDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnElementDelete.Location = new System.Drawing.Point(3, 122);
+            this.btnElementDelete.Location = new System.Drawing.Point(3, 93);
             this.btnElementDelete.MinimumSize = new System.Drawing.Size(115, 0);
             this.btnElementDelete.Name = "btnElementDelete";
             this.btnElementDelete.Size = new System.Drawing.Size(115, 23);
@@ -555,13 +558,13 @@ namespace MovementScriptGenerator
             // 
             this.tableLayoutPanel21.ColumnCount = 4;
             this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 121F));
             this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 64F));
             this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 121F));
-            this.tableLayoutPanel21.Controls.Add(this.btnEditPath, 1, 0);
-            this.tableLayoutPanel21.Controls.Add(this.txtPath, 2, 0);
             this.tableLayoutPanel21.Controls.Add(this.btnGenerateScript, 3, 0);
+            this.tableLayoutPanel21.Controls.Add(this.txtPath, 1, 0);
             this.tableLayoutPanel21.Controls.Add(this.lblPath, 0, 0);
+            this.tableLayoutPanel21.Controls.Add(this.btnEditPath, 2, 0);
             this.tableLayoutPanel21.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel21.Location = new System.Drawing.Point(0, 667);
             this.tableLayoutPanel21.Margin = new System.Windows.Forms.Padding(0);
@@ -573,10 +576,12 @@ namespace MovementScriptGenerator
             // 
             // btnEditPath
             // 
+            this.btnEditPath.AutoSize = true;
+            this.btnEditPath.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnEditPath.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnEditPath.Location = new System.Drawing.Point(43, 3);
+            this.btnEditPath.Location = new System.Drawing.Point(363, 3);
             this.btnEditPath.Name = "btnEditPath";
-            this.btnEditPath.Size = new System.Drawing.Size(115, 30);
+            this.btnEditPath.Size = new System.Drawing.Size(58, 30);
             this.btnEditPath.TabIndex = 2;
             this.btnEditPath.Text = "Edit Path";
             this.btnEditPath.UseVisualStyleBackColor = true;
@@ -585,12 +590,17 @@ namespace MovementScriptGenerator
             // txtPath
             // 
             this.txtPath.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtPath.Location = new System.Drawing.Point(164, 3);
+            this.txtPath.Location = new System.Drawing.Point(40, 0);
+            this.txtPath.Margin = new System.Windows.Forms.Padding(0);
+            this.txtPath.Multiline = true;
             this.txtPath.Name = "txtPath";
-            this.txtPath.Size = new System.Drawing.Size(257, 20);
+            this.txtPath.ReadOnly = true;
+            this.txtPath.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.txtPath.Size = new System.Drawing.Size(320, 36);
             this.txtPath.TabIndex = 1;
             this.txtPath.Text = "C:\\Program Files\\Steam\\steamapps\\common\\Beat Saber\\UserData\\Camera2\\MovementScrip" +
     "ts";
+            this.txtPath.WordWrap = false;
             // 
             // btnGenerateScript
             // 
@@ -612,7 +622,7 @@ namespace MovementScriptGenerator
             this.lblPath.Size = new System.Drawing.Size(34, 36);
             this.lblPath.TabIndex = 0;
             this.lblPath.Text = "Path:";
-            this.lblPath.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblPath.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ToolTip.SetToolTip(this.lblPath, resources.GetString("lblPath.ToolTip"));
             // 
             // tableLayoutPanel16
@@ -638,6 +648,7 @@ namespace MovementScriptGenerator
             // flowLayoutPanel3
             // 
             this.flowLayoutPanel3.Controls.Add(this.btnAddMoveToChain);
+            this.flowLayoutPanel3.Controls.Add(this.btnElementApplySettings);
             this.flowLayoutPanel3.Controls.Add(this.btnInsert);
             this.flowLayoutPanel3.Controls.Add(this.btnResetMoveSettings);
             this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -654,13 +665,13 @@ namespace MovementScriptGenerator
             | System.Windows.Forms.AnchorStyles.Left)));
             this.btnAddMoveToChain.AutoSize = true;
             this.btnAddMoveToChain.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnAddMoveToChain.Location = new System.Drawing.Point(0, 3);
-            this.btnAddMoveToChain.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
+            this.btnAddMoveToChain.Location = new System.Drawing.Point(3, 3);
             this.btnAddMoveToChain.MinimumSize = new System.Drawing.Size(0, 26);
             this.btnAddMoveToChain.Name = "btnAddMoveToChain";
-            this.btnAddMoveToChain.Size = new System.Drawing.Size(82, 26);
+            this.btnAddMoveToChain.Size = new System.Drawing.Size(36, 26);
             this.btnAddMoveToChain.TabIndex = 2;
-            this.btnAddMoveToChain.Text = "Add To Chain";
+            this.btnAddMoveToChain.Text = "Add";
+            this.ToolTip.SetToolTip(this.btnAddMoveToChain, "Adds a new element to the chain with the current settings.");
             this.btnAddMoveToChain.UseVisualStyleBackColor = true;
             this.btnAddMoveToChain.Click += new System.EventHandler(this.btnAddMoveToChain_Click);
             // 
@@ -671,26 +682,27 @@ namespace MovementScriptGenerator
             this.btnInsert.AutoSize = true;
             this.btnInsert.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnInsert.Enabled = false;
-            this.btnInsert.Location = new System.Drawing.Point(85, 3);
-            this.btnInsert.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
+            this.btnInsert.Location = new System.Drawing.Point(94, 3);
             this.btnInsert.MinimumSize = new System.Drawing.Size(0, 26);
             this.btnInsert.Name = "btnInsert";
             this.btnInsert.Size = new System.Drawing.Size(43, 26);
             this.btnInsert.TabIndex = 4;
             this.btnInsert.Text = "Insert";
+            this.ToolTip.SetToolTip(this.btnInsert, "Inserts a new element into the chain after the selected element");
             this.btnInsert.UseVisualStyleBackColor = true;
             this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
             // 
             // btnResetMoveSettings
             // 
+            this.btnResetMoveSettings.AutoSize = true;
+            this.btnResetMoveSettings.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnResetMoveSettings.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnResetMoveSettings.Location = new System.Drawing.Point(134, 3);
-            this.btnResetMoveSettings.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
+            this.btnResetMoveSettings.Location = new System.Drawing.Point(143, 3);
             this.btnResetMoveSettings.MinimumSize = new System.Drawing.Size(0, 26);
             this.btnResetMoveSettings.Name = "btnResetMoveSettings";
-            this.btnResetMoveSettings.Size = new System.Drawing.Size(103, 26);
+            this.btnResetMoveSettings.Size = new System.Drawing.Size(45, 26);
             this.btnResetMoveSettings.TabIndex = 3;
-            this.btnResetMoveSettings.Text = "Reset To Defaults";
+            this.btnResetMoveSettings.Text = "Reset";
             this.ToolTip.SetToolTip(this.btnResetMoveSettings, "Resets the currently selected move settings to their default values.");
             this.btnResetMoveSettings.UseVisualStyleBackColor = true;
             this.btnResetMoveSettings.Click += new System.EventHandler(this.btnResetMoveControl_Click);

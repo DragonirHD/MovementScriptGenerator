@@ -525,7 +525,7 @@ namespace MovementScriptGenerator
             return true;
         }
 
-        private void btnElementEditSettings_Click(object sender, EventArgs e)
+        private void btnElementGetSettings_Click(object sender, EventArgs e)
         {
             if(tvChain.SelectedNode == null)
             {
@@ -752,6 +752,11 @@ namespace MovementScriptGenerator
             {
                 txtPath.Text = dialog.FileName;
             }
+        }
+
+        private void tvChain_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            btnElementGetSettings_Click(sender, e);
         }
     }
 }
