@@ -31,7 +31,7 @@ namespace MovementScriptGenerator
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CircleControl));
-            this.lfCircleControl = new System.Windows.Forms.FlowLayoutPanel();
+            this.flpCircleControl = new System.Windows.Forms.FlowLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.numDistance = new System.Windows.Forms.NumericUpDown();
             this.lblDistance = new System.Windows.Forms.Label();
@@ -63,7 +63,7 @@ namespace MovementScriptGenerator
             this.numDuration = new System.Windows.Forms.NumericUpDown();
             this.lblDuration = new System.Windows.Forms.Label();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.lfCircleControl.SuspendLayout();
+            this.flpCircleControl.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numDistance)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
@@ -85,27 +85,27 @@ namespace MovementScriptGenerator
             ((System.ComponentModel.ISupportInitialize)(this.numDuration)).BeginInit();
             this.SuspendLayout();
             // 
-            // lfCircleControl
+            // flpCircleControl
             // 
-            this.lfCircleControl.AutoSize = true;
-            this.lfCircleControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.lfCircleControl.Controls.Add(this.tableLayoutPanel1);
-            this.lfCircleControl.Controls.Add(this.tableLayoutPanel2);
-            this.lfCircleControl.Controls.Add(this.tableLayoutPanel3);
-            this.lfCircleControl.Controls.Add(this.tableLayoutPanel4);
-            this.lfCircleControl.Controls.Add(this.tableLayoutPanel5);
-            this.lfCircleControl.Controls.Add(this.tableLayoutPanel6);
-            this.lfCircleControl.Controls.Add(this.tableLayoutPanel7);
-            this.lfCircleControl.Controls.Add(this.tableLayoutPanel10);
-            this.lfCircleControl.Controls.Add(this.tableLayoutPanel8);
-            this.lfCircleControl.Controls.Add(this.tableLayoutPanel9);
-            this.lfCircleControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lfCircleControl.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.lfCircleControl.Location = new System.Drawing.Point(0, 0);
-            this.lfCircleControl.Margin = new System.Windows.Forms.Padding(0);
-            this.lfCircleControl.Name = "lfCircleControl";
-            this.lfCircleControl.Size = new System.Drawing.Size(260, 327);
-            this.lfCircleControl.TabIndex = 0;
+            this.flpCircleControl.AutoSize = true;
+            this.flpCircleControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flpCircleControl.Controls.Add(this.tableLayoutPanel1);
+            this.flpCircleControl.Controls.Add(this.tableLayoutPanel2);
+            this.flpCircleControl.Controls.Add(this.tableLayoutPanel3);
+            this.flpCircleControl.Controls.Add(this.tableLayoutPanel4);
+            this.flpCircleControl.Controls.Add(this.tableLayoutPanel5);
+            this.flpCircleControl.Controls.Add(this.tableLayoutPanel6);
+            this.flpCircleControl.Controls.Add(this.tableLayoutPanel7);
+            this.flpCircleControl.Controls.Add(this.tableLayoutPanel10);
+            this.flpCircleControl.Controls.Add(this.tableLayoutPanel8);
+            this.flpCircleControl.Controls.Add(this.tableLayoutPanel9);
+            this.flpCircleControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpCircleControl.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flpCircleControl.Location = new System.Drawing.Point(0, 0);
+            this.flpCircleControl.Margin = new System.Windows.Forms.Padding(0);
+            this.flpCircleControl.Name = "flpCircleControl";
+            this.flpCircleControl.Size = new System.Drawing.Size(260, 327);
+            this.flpCircleControl.TabIndex = 0;
             // 
             // tableLayoutPanel1
             // 
@@ -596,11 +596,12 @@ namespace MovementScriptGenerator
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Controls.Add(this.lfCircleControl);
+            this.Controls.Add(this.flpCircleControl);
             this.Name = "CircleControl";
             this.Size = new System.Drawing.Size(260, 327);
-            this.lfCircleControl.ResumeLayout(false);
-            this.lfCircleControl.PerformLayout();
+            this.Load += new System.EventHandler(this.CircleControl_Load);
+            this.flpCircleControl.ResumeLayout(false);
+            this.flpCircleControl.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numDistance)).EndInit();
@@ -637,7 +638,7 @@ namespace MovementScriptGenerator
 
         #endregion
 
-        private System.Windows.Forms.FlowLayoutPanel lfCircleControl;
+        private System.Windows.Forms.FlowLayoutPanel flpCircleControl;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.ToolTip ToolTip;

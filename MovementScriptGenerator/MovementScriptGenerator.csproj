@@ -94,6 +94,7 @@
     <Compile Include="RepeatControl.Designer.cs">
       <DependentUpon>RepeatControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="ScrollEventDisable.cs" />
     <Compile Include="SpiralControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
