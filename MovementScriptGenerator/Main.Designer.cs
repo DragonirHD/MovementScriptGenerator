@@ -75,12 +75,12 @@ namespace MovementScriptGenerator
             this.tlpContent = new System.Windows.Forms.TableLayoutPanel();
             this.flpElementGeneralSettings = new System.Windows.Forms.FlowLayoutPanel();
             this.tlpElementSettingType = new System.Windows.Forms.TableLayoutPanel();
-            this.cbElementType = new System.Windows.Forms.ComboBox();
             this.lblType = new System.Windows.Forms.Label();
+            this.cbElementType = new System.Windows.Forms.ComboBox();
             this.tlpElementSettingName = new System.Windows.Forms.TableLayoutPanel();
             this.txtElementName = new System.Windows.Forms.TextBox();
             this.lblMoveName = new System.Windows.Forms.Label();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.menuStripSettings = new System.Windows.Forms.MenuStrip();
             this.toolStripFileOptions = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -103,7 +103,7 @@ namespace MovementScriptGenerator
             this.flpElementGeneralSettings.SuspendLayout();
             this.tlpElementSettingType.SuspendLayout();
             this.tlpElementSettingName.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
+            this.menuStripSettings.SuspendLayout();
             this.tlpMenuAndContent.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -715,8 +715,8 @@ namespace MovementScriptGenerator
             this.tlpElementSettingType.ColumnCount = 2;
             this.tlpElementSettingType.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tlpElementSettingType.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpElementSettingType.Controls.Add(this.cbElementType, 1, 0);
             this.tlpElementSettingType.Controls.Add(this.lblType, 0, 0);
+            this.tlpElementSettingType.Controls.Add(this.cbElementType, 1, 0);
             this.tlpElementSettingType.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpElementSettingType.Location = new System.Drawing.Point(3, 3);
             this.tlpElementSettingType.MinimumSize = new System.Drawing.Size(0, 30);
@@ -725,6 +725,18 @@ namespace MovementScriptGenerator
             this.tlpElementSettingType.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpElementSettingType.Size = new System.Drawing.Size(135, 30);
             this.tlpElementSettingType.TabIndex = 1;
+            // 
+            // lblType
+            // 
+            this.lblType.AutoSize = true;
+            this.lblType.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblType.Location = new System.Drawing.Point(3, 0);
+            this.lblType.Name = "lblType";
+            this.lblType.Size = new System.Drawing.Size(34, 30);
+            this.lblType.TabIndex = 1;
+            this.lblType.Text = "Type:";
+            this.lblType.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ToolTip.SetToolTip(this.lblType, resources.GetString("lblType.ToolTip"));
             // 
             // cbElementType
             // 
@@ -738,18 +750,6 @@ namespace MovementScriptGenerator
             this.cbElementType.Size = new System.Drawing.Size(90, 21);
             this.cbElementType.TabIndex = 2;
             this.cbElementType.SelectedIndexChanged += new System.EventHandler(this.cbElementType_SelectedIndexChanged);
-            // 
-            // lblType
-            // 
-            this.lblType.AutoSize = true;
-            this.lblType.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblType.Location = new System.Drawing.Point(3, 0);
-            this.lblType.Name = "lblType";
-            this.lblType.Size = new System.Drawing.Size(34, 30);
-            this.lblType.TabIndex = 1;
-            this.lblType.Text = "Type:";
-            this.lblType.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ToolTip.SetToolTip(this.lblType, resources.GetString("lblType.ToolTip"));
             // 
             // tlpElementSettingName
             // 
@@ -786,16 +786,16 @@ namespace MovementScriptGenerator
             this.lblMoveName.Text = "Name:";
             this.lblMoveName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // menuStrip1
+            // menuStripSettings
             // 
-            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuStripSettings.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStripSettings.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripFileOptions});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(45, 20);
-            this.menuStrip1.TabIndex = 8;
-            this.menuStrip1.Text = "menuStrip1";
+            this.menuStripSettings.Location = new System.Drawing.Point(0, 0);
+            this.menuStripSettings.Name = "menuStripSettings";
+            this.menuStripSettings.Size = new System.Drawing.Size(45, 20);
+            this.menuStripSettings.TabIndex = 8;
+            this.menuStripSettings.Text = "menuStrip1";
             // 
             // toolStripFileOptions
             // 
@@ -847,7 +847,7 @@ namespace MovementScriptGenerator
             // 
             this.tlpMenuAndContent.ColumnCount = 1;
             this.tlpMenuAndContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpMenuAndContent.Controls.Add(this.menuStrip1, 0, 0);
+            this.tlpMenuAndContent.Controls.Add(this.menuStripSettings, 0, 0);
             this.tlpMenuAndContent.Controls.Add(this.tlpContentAndMargin, 0, 1);
             this.tlpMenuAndContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpMenuAndContent.Location = new System.Drawing.Point(0, 0);
@@ -866,7 +866,7 @@ namespace MovementScriptGenerator
             this.ClientSize = new System.Drawing.Size(1105, 715);
             this.Controls.Add(this.tlpMenuAndContent);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip1;
+            this.MainMenuStrip = this.menuStripSettings;
             this.MinimumSize = new System.Drawing.Size(1121, 100);
             this.Name = "Main";
             this.Text = "MovementScriptGenerator";
@@ -895,8 +895,8 @@ namespace MovementScriptGenerator
             this.tlpElementSettingType.PerformLayout();
             this.tlpElementSettingName.ResumeLayout(false);
             this.tlpElementSettingName.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.menuStripSettings.ResumeLayout(false);
+            this.menuStripSettings.PerformLayout();
             this.tlpMenuAndContent.ResumeLayout(false);
             this.tlpMenuAndContent.PerformLayout();
             this.ResumeLayout(false);
@@ -948,7 +948,7 @@ namespace MovementScriptGenerator
         private System.Windows.Forms.Button btnElementDelete;
         private System.Windows.Forms.Button btnEditScriptPath;
         private System.Windows.Forms.Button btnInsert;
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip menuStripSettings;
         private System.Windows.Forms.ToolStripMenuItem toolStripFileOptions;
         private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
