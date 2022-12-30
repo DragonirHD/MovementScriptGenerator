@@ -463,7 +463,7 @@ namespace MovementScriptGenerator
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tableLayoutPanel10.Size = new System.Drawing.Size(254, 26);
-            this.tableLayoutPanel10.TabIndex = 9;
+            this.tableLayoutPanel10.TabIndex = 7;
             // 
             // numSector
             // 
@@ -512,7 +512,7 @@ namespace MovementScriptGenerator
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.tableLayoutPanel8.Size = new System.Drawing.Size(254, 27);
-            this.tableLayoutPanel8.TabIndex = 7;
+            this.tableLayoutPanel8.TabIndex = 8;
             // 
             // cbRotation
             // 
@@ -555,7 +555,7 @@ namespace MovementScriptGenerator
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tableLayoutPanel9.Size = new System.Drawing.Size(254, 26);
-            this.tableLayoutPanel9.TabIndex = 8;
+            this.tableLayoutPanel9.TabIndex = 9;
             // 
             // numDuration
             // 
