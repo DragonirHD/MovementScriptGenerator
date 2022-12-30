@@ -63,6 +63,7 @@ namespace MovementScriptGenerator
 
         private void InitializeComponentView()
         {
+            WindowState = (FormWindowState)Settings.Default.WindowState;
             if(Settings.Default.WindowLocation != new System.Drawing.Point())
             {
                 StartPosition = FormStartPosition.Manual;
@@ -103,7 +104,6 @@ namespace MovementScriptGenerator
         /// </summary>
         private Chain TryLoadChainFromFile(string fullName)
         {
-            //TODO creates a chain out of non chain files. Return null in that case
             Chain loadedChain = null;
             if (File.Exists(fullName))
             {
@@ -120,7 +120,8 @@ namespace MovementScriptGenerator
                     {
                         return null;
                     }
-                    if(loadedChain.DirectoryPath == null || loadedChain.FullName == null)
+                    //Loaded file can't be a chain without fullName property
+                    if(loadedChain.FullName == null)
                     {
                         return null;
                     }
@@ -859,7 +860,11 @@ namespace MovementScriptGenerator
             }
 
             //Saving general settings
-            Settings.Default.WindowLocation = Location;
+            if(WindowState != FormWindowState.Minimized)
+            {
+                Settings.Default.WindowState = (int)WindowState;
+                Settings.Default.WindowLocation = Location;
+            }
             if (WindowState == FormWindowState.Normal)
             {
                 Settings.Default.WindowSize = Size;
@@ -872,7 +877,7 @@ namespace MovementScriptGenerator
 
             //Saving settings of current chain
             Settings.Default.ChainFullName = chain.FullName;
-            Settings.Default.ChainDirectoryPath = chain.DirectoryPath;
+            Settings.Default.ChainDirectoryPath = Path.GetDirectoryName(chain.FullName);
 
             Settings.Default.Save();
         }
@@ -932,11 +937,10 @@ namespace MovementScriptGenerator
                 txtChainName.Text = "NewChain";
             }
             dialog.DefaultFileName = txtChainName.Text;
-            dialog.InitialDirectory = GetnitialDirectoryForChainFiles();
+            dialog.InitialDirectory = GetInitialDirectoryForChainFiles();
             if(dialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
                 chain.FullName = dialog.FileName;
-                chain.DirectoryPath = Path.GetDirectoryName(dialog.FileName);
                 SaveChain(chain.FullName);
             }
         }
@@ -986,7 +990,7 @@ namespace MovementScriptGenerator
             }
 
             CommonOpenFileDialog dialog = new CommonOpenFileDialog();
-            dialog.InitialDirectory = GetnitialDirectoryForChainFiles();
+            dialog.InitialDirectory = GetInitialDirectoryForChainFiles();
             if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
                 Chain chainFromOpenedFile = TryLoadChainFromFile(dialog.FileName);
@@ -1005,7 +1009,6 @@ namespace MovementScriptGenerator
         {
             chain = newChain;
             chain.FullName = dialogOfNewChain.FileName;
-            chain.DirectoryPath = Path.GetDirectoryName(dialogOfNewChain.FileName);
             txtChainName.Text = chain.Name;
             UpdateChainWindow();
         }
@@ -1033,11 +1036,11 @@ namespace MovementScriptGenerator
             UpdateChainWindow();
         }
 
-        private string GetnitialDirectoryForChainFiles()
+        private string GetInitialDirectoryForChainFiles()
         {
-            if (Directory.Exists(chain.DirectoryPath))
+            if (Directory.Exists(Path.GetDirectoryName(chain.FullName)))
             {
-                return chain.DirectoryPath;
+                return Path.GetDirectoryName(chain.FullName);
             }
 
             if (Directory.Exists(savedChainDirectoryPath))

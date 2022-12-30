@@ -6,7 +6,6 @@ namespace MovementScriptGenerator.Modules
     {
         public string Name { get; set; }
         public string FullName { get; set; }
-        public string DirectoryPath { get; set; }
         public List<ChainElement> Elements { get; set; }
     }
 }
