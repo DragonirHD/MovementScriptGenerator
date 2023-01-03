@@ -29,6 +29,7 @@ namespace MovementScriptGenerator
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.flpSpiralControl = new System.Windows.Forms.FlowLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.numStartElement = new System.Windows.Forms.NumericUpDown();
@@ -36,6 +37,7 @@ namespace MovementScriptGenerator
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.numEndElement = new System.Windows.Forms.NumericUpDown();
             this.lblEndDistance = new System.Windows.Forms.Label();
+            this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.flpSpiralControl.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numStartElement)).BeginInit();
@@ -106,6 +108,7 @@ namespace MovementScriptGenerator
             this.lblStartElement.TabIndex = 2;
             this.lblStartElement.Text = "Start Element";
             this.lblStartElement.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ToolTip.SetToolTip(this.lblStartElement, "The index/number of the first element that will be repeated.");
             // 
             // tableLayoutPanel2
             // 
@@ -153,6 +156,15 @@ namespace MovementScriptGenerator
             this.lblEndDistance.TabIndex = 2;
             this.lblEndDistance.Text = "End Element";
             this.lblEndDistance.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ToolTip.SetToolTip(this.lblEndDistance, "The index/number of the last element that will be repeated.\r\nAll elements between" +
+        " the first and last element will also be repeated.");
+            // 
+            // ToolTip
+            // 
+            this.ToolTip.AutoPopDelay = 32767;
+            this.ToolTip.InitialDelay = 500;
+            this.ToolTip.IsBalloon = true;
+            this.ToolTip.ReshowDelay = 100;
             // 
             // RepeatControl
             // 
@@ -186,5 +198,6 @@ namespace MovementScriptGenerator
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.NumericUpDown numEndElement;
         private System.Windows.Forms.Label lblEndDistance;
+        private System.Windows.Forms.ToolTip ToolTip;
     }
 }

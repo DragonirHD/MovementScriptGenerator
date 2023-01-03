@@ -50,7 +50,7 @@ namespace MovementScriptGenerator
                 "The camera will move in a circle around the player.",
                 "The camera will move from the starting distance to the end distance while spinning around its axis, creating a spiralling shot.",
                 "The camera will move from the given direction towards the player. Then at a surtain point, it will do a 180 degree turn, making the move into something that resembles a J.\nCurrently not implemented!",
-                "Repeats the elements that are in the given range. The elements at the start position and end position will also be repeated."
+                "Repeats the elements that are in the given range. The start element and the end element will also be repeated."
             };
 
         public Main()

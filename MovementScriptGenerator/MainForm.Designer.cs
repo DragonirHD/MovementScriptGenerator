@@ -190,6 +190,8 @@ namespace MovementScriptGenerator
             this.btnGenerateScript.Size = new System.Drawing.Size(115, 23);
             this.btnGenerateScript.TabIndex = 10;
             this.btnGenerateScript.Text = "Generate Script";
+            this.ToolTip.SetToolTip(this.btnGenerateScript, "Generates a movement script file of the current chain\'s moves in the given direct" +
+        "ory with the given script/file name.");
             this.btnGenerateScript.UseVisualStyleBackColor = true;
             this.btnGenerateScript.Click += new System.EventHandler(this.btnGenerateScript_Click);
             // 
@@ -224,7 +226,7 @@ namespace MovementScriptGenerator
             this.lblScriptName.TabIndex = 7;
             this.lblScriptName.Text = "Script Name";
             this.lblScriptName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ToolTip.SetToolTip(this.lblScriptName, "defines the name of the movement script file that will be generated / added to.\r\n" +
+            this.ToolTip.SetToolTip(this.lblScriptName, "Defines the name of the movement script file that will be generated / added to.\r\n" +
         "Add this name to the script list in your camera\'s Json file to make the camera u" +
         "se this script.\r\n");
             // 
@@ -336,17 +338,17 @@ namespace MovementScriptGenerator
             this.lblChainName.AutoSize = true;
             this.lblChainName.Location = new System.Drawing.Point(3, 0);
             this.lblChainName.Name = "lblChainName";
-            this.lblChainName.Size = new System.Drawing.Size(35, 26);
+            this.lblChainName.Size = new System.Drawing.Size(38, 26);
             this.lblChainName.TabIndex = 1;
-            this.lblChainName.Text = "Name";
+            this.lblChainName.Text = "Name:";
             this.lblChainName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ToolTip.SetToolTip(this.lblChainName, "defines the name of movement script file that will be generated / added to.\r\nAdd " +
+            this.ToolTip.SetToolTip(this.lblChainName, "Defines the name of movement script file that will be generated / added to.\r\nAdd " +
         "this name to the script list in your camera script to make the camera use this s" +
         "cript.\r\n");
             // 
             // txtChainName
             // 
-            this.txtChainName.Location = new System.Drawing.Point(44, 3);
+            this.txtChainName.Location = new System.Drawing.Point(47, 3);
             this.txtChainName.Name = "txtChainName";
             this.txtChainName.Size = new System.Drawing.Size(149, 20);
             this.txtChainName.TabIndex = 2;
@@ -451,6 +453,7 @@ namespace MovementScriptGenerator
             this.btnElementMoveDown.Size = new System.Drawing.Size(55, 26);
             this.btnElementMoveDown.TabIndex = 2;
             this.btnElementMoveDown.Text = "↓";
+            this.ToolTip.SetToolTip(this.btnElementMoveDown, "Moves the selected element one place down in the chain.");
             this.btnElementMoveDown.UseVisualStyleBackColor = true;
             this.btnElementMoveDown.Click += new System.EventHandler(this.btnElementMoveDown_Click);
             // 
@@ -464,6 +467,7 @@ namespace MovementScriptGenerator
             this.btnElementMoveUp.Size = new System.Drawing.Size(54, 26);
             this.btnElementMoveUp.TabIndex = 1;
             this.btnElementMoveUp.Text = "↑";
+            this.ToolTip.SetToolTip(this.btnElementMoveUp, "Moves the selected element one place up in the chain.");
             this.btnElementMoveUp.UseVisualStyleBackColor = true;
             this.btnElementMoveUp.Click += new System.EventHandler(this.btnElementMoveUp_Click);
             // 
@@ -478,6 +482,8 @@ namespace MovementScriptGenerator
             this.btnElementDuplicate.Size = new System.Drawing.Size(115, 23);
             this.btnElementDuplicate.TabIndex = 2;
             this.btnElementDuplicate.Text = "Duplicate";
+            this.ToolTip.SetToolTip(this.btnElementDuplicate, "creates a copy of the selected element and adds it to the chain below the selecte" +
+        "d element.");
             this.btnElementDuplicate.UseVisualStyleBackColor = true;
             this.btnElementDuplicate.Click += new System.EventHandler(this.btnElementDuplicate_Click);
             // 
@@ -492,6 +498,9 @@ namespace MovementScriptGenerator
             this.btnElementGetSettings.Size = new System.Drawing.Size(115, 23);
             this.btnElementGetSettings.TabIndex = 3;
             this.btnElementGetSettings.Text = "Get Settings";
+            this.ToolTip.SetToolTip(this.btnElementGetSettings, "displays the settings of the selected element in the element settings tab.\r\nUsefu" +
+        "l for tweaking specific settings and then applying them again to the selected el" +
+        "ement.");
             this.btnElementGetSettings.UseVisualStyleBackColor = true;
             this.btnElementGetSettings.Click += new System.EventHandler(this.btnElementGetSettings_Click);
             // 
@@ -506,6 +515,7 @@ namespace MovementScriptGenerator
             this.btnElementDelete.Size = new System.Drawing.Size(115, 23);
             this.btnElementDelete.TabIndex = 4;
             this.btnElementDelete.Text = "Delete";
+            this.ToolTip.SetToolTip(this.btnElementDelete, "removes the selected element from the chain.");
             this.btnElementDelete.UseVisualStyleBackColor = true;
             this.btnElementDelete.Click += new System.EventHandler(this.btnElementDelete_Click);
             // 
@@ -785,6 +795,7 @@ namespace MovementScriptGenerator
             this.lblMoveName.TabIndex = 1;
             this.lblMoveName.Text = "Name:";
             this.lblMoveName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ToolTip.SetToolTip(this.lblMoveName, "The displayed name of the element.");
             // 
             // menuStripOptions
             // 
