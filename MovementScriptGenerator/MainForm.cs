@@ -844,8 +844,6 @@ namespace MovementScriptGenerator
 
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //TODO Save Window Format (Fullscreen or not?)
-
             if (CheckUnsavedChanges())
             {
                 DialogResult saveChanges = MessageBox.Show("Would you like to save your changes?", "Save changes", MessageBoxButtons.YesNoCancel);
