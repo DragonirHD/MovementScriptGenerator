@@ -29,7 +29,12 @@ namespace MovementScriptGenerator
         private static readonly string defaultInitialDirectory = "C:\\Users";
 
         //Info for Icons
+        //Icon-Folder-Location changes in release version. That's why we check if we are currently in debug or release mode and change the path accordingly
+#if DEBUG
         private static readonly DirectoryInfo iconsDirectory = new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.GetDirectories().Where(directory => directory.Name == "Icons").FirstOrDefault();
+#else
+        private static readonly DirectoryInfo iconsDirectory = new DirectoryInfo(Directory.GetCurrentDirectory()).GetDirectories().Where(directory => directory.Name == "Icons").FirstOrDefault();
+#endif
         private static readonly string iconsDataType = ".png";
 
         //Other Info
