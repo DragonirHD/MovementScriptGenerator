@@ -120,32 +120,37 @@
   <metadata name="ToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="lblPath.ToolTip" xml:space="preserve">
-    <value>The path of the directory in which the Movement Script File will be saved.
-Make sure to save the Files to the correct directory, else the camera2 mod will not be able
-to get them.
-The path should be something like this:
-D:\SteamLibrary\steamapps\common\Beat Saber\UserData\Camera2\MovementScripts</value>
+  <data name="btnEditScriptPath.ToolTip" xml:space="preserve">
+    <value>Select the directory in which the movement script file will be generated in.
+Make sure that this is the correct directory, else camera2 will not be able to use the script!
+If you are using steam, the directory path should look somewhat like this:
+C:\SteamLibrary\steamapps\common\Beat Saber\UserData\Camera2\MovementScripts</value>
   </data>
-  <metadata name="ToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <data name="lblSyncToSong.ToolTip" xml:space="preserve">
     <value>On -&gt; the script will pause, while the song is paused and start playing when the song starts.
 
 Off -&gt; the script will start playing at the start of the song and not stop in pause menu
-(this has no effect on if the script will play in the normal menu / outside of songs)</value>
+
+This setting has no effect on if the script will play in the normal menu / outside of songs</value>
   </data>
   <data name="lblAddToScript.ToolTip" xml:space="preserve">
-    <value>On -&gt; if a movement script file with the given name exists, the moves will be added to that files moves.
+    <value>On -&gt; if a movement script file with the given name exists, the moves will be added to that file's moves.
 Will overwrite the "Sync To Song" and "Loop" options of the existing file!
 (Make sure that the file is a MovementScript File!)
 
-Off -&gt; A new movement script file will be created for the move.
+Off -&gt; A new movement script file will be created for the moves.
 If a file with the same name exists, that file will be overwritten!</value>
   </data>
-  <metadata name="ToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+  <data name="lblType.ToolTip" xml:space="preserve">
+    <value>Element types are divided into two subtypes:
+move
+- elements that directly influence the position/rotation etc. of the camera
+other elements
+- elements that influence/augment moves.
+   These elements can't function on their own and always need corresponding move elements.</value>
+  </data>
+  <metadata name="menuStripOptions.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>109, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

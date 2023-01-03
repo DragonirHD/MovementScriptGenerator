@@ -63,12 +63,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChainElementsEnum.cs" />
+    <Compile Include="CompareObject.cs" />
     <Compile Include="Modules\Moves\Circle.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Modules\Chain.cs" />
     <Compile Include="Modules\ChainElement.cs" />
@@ -93,6 +94,7 @@
     <Compile Include="RepeatControl.Designer.cs">
       <DependentUpon>RepeatControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="ScrollEventDisable.cs" />
     <Compile Include="SpiralControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -102,8 +104,8 @@
     <EmbeddedResource Include="CircleControl.resx">
       <DependentUpon>CircleControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -18,6 +18,12 @@ namespace MovementScriptGenerator
             InitializeComponent();
         }
 
+        private void RepeatControl_Load(object sender, EventArgs e)
+        {
+            ScrollEventDisable scrollEventDisable = new ScrollEventDisable();
+            scrollEventDisable.DisableScrollForChainElementControls(sender, e, Controls[0]);
+        }
+
         public bool Populate(Repeat original)
         {
             try

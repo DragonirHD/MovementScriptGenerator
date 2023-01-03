@@ -29,34 +29,34 @@ namespace MovementScriptGenerator
         /// </summary>
         private void InitializeComponent()
         {
-            this.lfSpiralControl = new System.Windows.Forms.FlowLayoutPanel();
+            this.flpSpiralControl = new System.Windows.Forms.FlowLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.numStartElement = new System.Windows.Forms.NumericUpDown();
             this.lblStartElement = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.numEndElement = new System.Windows.Forms.NumericUpDown();
             this.lblEndDistance = new System.Windows.Forms.Label();
-            this.lfSpiralControl.SuspendLayout();
+            this.flpSpiralControl.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numStartElement)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numEndElement)).BeginInit();
             this.SuspendLayout();
             // 
-            // lfSpiralControl
+            // flpSpiralControl
             // 
-            this.lfSpiralControl.AutoSize = true;
-            this.lfSpiralControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.lfSpiralControl.Controls.Add(this.tableLayoutPanel1);
-            this.lfSpiralControl.Controls.Add(this.tableLayoutPanel2);
-            this.lfSpiralControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lfSpiralControl.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.lfSpiralControl.Location = new System.Drawing.Point(0, 0);
-            this.lfSpiralControl.Margin = new System.Windows.Forms.Padding(0);
-            this.lfSpiralControl.MaximumSize = new System.Drawing.Size(290, 0);
-            this.lfSpiralControl.Name = "lfSpiralControl";
-            this.lfSpiralControl.Size = new System.Drawing.Size(258, 70);
-            this.lfSpiralControl.TabIndex = 2;
+            this.flpSpiralControl.AutoSize = true;
+            this.flpSpiralControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flpSpiralControl.Controls.Add(this.tableLayoutPanel1);
+            this.flpSpiralControl.Controls.Add(this.tableLayoutPanel2);
+            this.flpSpiralControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpSpiralControl.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flpSpiralControl.Location = new System.Drawing.Point(0, 0);
+            this.flpSpiralControl.Margin = new System.Windows.Forms.Padding(0);
+            this.flpSpiralControl.MaximumSize = new System.Drawing.Size(290, 0);
+            this.flpSpiralControl.Name = "flpSpiralControl";
+            this.flpSpiralControl.Size = new System.Drawing.Size(258, 70);
+            this.flpSpiralControl.TabIndex = 2;
             // 
             // tableLayoutPanel1
             // 
@@ -160,11 +160,12 @@ namespace MovementScriptGenerator
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Controls.Add(this.lfSpiralControl);
+            this.Controls.Add(this.flpSpiralControl);
             this.Name = "RepeatControl";
             this.Size = new System.Drawing.Size(258, 70);
-            this.lfSpiralControl.ResumeLayout(false);
-            this.lfSpiralControl.PerformLayout();
+            this.Load += new System.EventHandler(this.RepeatControl_Load);
+            this.flpSpiralControl.ResumeLayout(false);
+            this.flpSpiralControl.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numStartElement)).EndInit();
@@ -178,7 +179,7 @@ namespace MovementScriptGenerator
 
         #endregion
 
-        private System.Windows.Forms.FlowLayoutPanel lfSpiralControl;
+        private System.Windows.Forms.FlowLayoutPanel flpSpiralControl;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.NumericUpDown numStartElement;
         private System.Windows.Forms.Label lblStartElement;

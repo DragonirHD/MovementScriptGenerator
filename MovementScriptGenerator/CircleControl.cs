@@ -18,6 +18,12 @@ namespace MovementScriptGenerator
             initializeComboBoxes();
         }
 
+        private void CircleControl_Load(object sender, System.EventArgs e)
+        {
+            ScrollEventDisable scrollEventDisable = new ScrollEventDisable();
+            scrollEventDisable.DisableScrollForChainElementControls(sender, e, Controls[0]);
+        }
+
         private void initializeComboBoxes()
         {
             cbRotation.DataSource = rotationTypes;
