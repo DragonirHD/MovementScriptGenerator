@@ -12,8 +12,8 @@ See the promotional video [here](https://youtu.be/YGpfWJvm4Hs) to find out what 
 
 ## Coming Features
 All of these features have no definitive release date and are currently only ideas for what might be made next.
-- A new field where it will be possible to chain moves together and edit the chain afterwards. (This will simplify the process of creating movements for entire songs) IMPLEMENTED
-- saving and loading of moves IMPLEMENTED
+- A new field where it will be possible to chain moves together and edit the chain afterwards. (This will simplify the process of creating movements for entire songs) __IMPLEMENTED__
+- saving and loading of moves __IMPLEMENTED__
 - New Move Element: J-Turn
 - New Other Element: Randomize 
 - dark mode
