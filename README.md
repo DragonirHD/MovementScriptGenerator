@@ -10,14 +10,14 @@ Downloads to the mod can be found on the [releases](https://github.com/DragonirH
 
 See the promotional video [here](https://youtu.be/YGpfWJvm4Hs) to find out what the tool is currently capable of.
 
-## Move Presets
-There are currently two supported move presets.
-Presets are here to make camera movements, which would otherwise be very difficult to make by hand, fast and easy to create.
-Each preset comes with a bunch of settings which can be tweaked to create tons of variations of the base moves.
-Explanations to the settings of each preset can be found in the tool itself, by hovering over the label/the name of the setting.
+## Move Elements
+There are currently two supported move elements.
+Move elements are here to make camera movements, which would otherwise be very difficult to make by hand, fast and easy to create.
+Each move element comes with a bunch of settings which can be tweaked to create tons of variations.
+Explanations to each setting can be found in the tool itself, by hovering over the label/the name of the setting.
 
 ### Circle
-Creates a move, where the camera will circle around the player/avatar.
+Creates a camera move, where the camera will circle around the player/avatar.
 Can be edited to make moves where the camera will only complete a certain percentage/Sector of the circle.
 
 #### Showcase
@@ -31,11 +31,18 @@ This move can be placed everywhere around the player/avatar in the shape of a do
 #### Showcase
 ![](Showcase/spiral.gif)
 
+## Other Elements
+This category is for elements, that don't create camera movement themselves, but are used in tandem with move elements to augment them or do other things.
+
+### Repeat
+The repeat element allows you to repeat elements of a given range. Very useful if you have a set of camera moves that you want to use on multiple occasions.
+
 ## Coming Features
 All of these features have no definitive release date and are currently only ideas for what might be made next.
-- A new field where it will be possible to chain moves together and edit the chain afterwards. (This will simplify the process of creating movements for entire songs)
-- saving and loading of moves
-- New Move: J-Turn
+- A new field where it will be possible to chain moves together and edit the chain afterwards. (This will simplify the process of creating movements for entire songs) IMPLEMENTED
+- saving and loading of moves IMPLEMENTED
+- New Move Element: J-Turn
+- New Other Element: Randomize 
 - dark mode
 
 ## Why?
