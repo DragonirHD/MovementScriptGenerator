@@ -62,21 +62,21 @@ namespace MovementScriptGenerator
                 frame.Position = new Position();
                 frame.Rotation = new Rotation();
 
-                frame.Position.X = (float)Math.Sin(radiant) * Distance;
-                frame.Position.Y = Height;
-                frame.Position.Z = (float)Math.Cos(radiant) * Distance;
+                frame.Position.x = (float)Math.Sin(radiant) * Distance;
+                frame.Position.y = Height;
+                frame.Position.z = (float)Math.Cos(radiant) * Distance;
 
-                frame.Rotation.Z = RotZ;
-                frame.Rotation.X = RotX;
-                frame.Rotation.Y = usedDegree -180;
+                frame.Rotation.z = RotZ;
+                frame.Rotation.x = RotX;
+                frame.Rotation.y = usedDegree -180;
 
                 if (usedDegree == 0 || usedDegree == 180 || usedDegree == 360)
                 {
-                    frame.Position.X = 0;
+                    frame.Position.x = 0;
                 }
                 if (usedDegree == 90 || usedDegree == 270)
                 {
-                    frame.Position.Z = 0;
+                    frame.Position.z = 0;
                 }
 
 

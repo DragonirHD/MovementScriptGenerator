@@ -97,16 +97,16 @@ namespace MovementScriptGenerator
             {
                 Position = new Position()
                 {
-                    X = xHorizontal * zVertical * StartDistance,
-                    Y = yVertical * StartDistance + Height,
-                    Z = zHorizontal * zVertical * StartDistance
+                    x = xHorizontal * zVertical * StartDistance,
+                    y = yVertical * StartDistance + Height,
+                    z = zHorizontal * zVertical * StartDistance
                 },
 
                 Rotation = new Rotation()
                 {
-                    X = VerticalRot,
-                    Y = HorizontalRot - 180,
-                    Z = 0
+                    x = VerticalRot,
+                    y = HorizontalRot - 180,
+                    z = 0
                 },
                 
                 HoldTime = StartHold,
@@ -131,16 +131,16 @@ namespace MovementScriptGenerator
                     {
                         Position = new Position()
                         {
-                            X = xHorizontal * zVertical * spiralFrameDistance,
-                            Y = yVertical * spiralFrameDistance + Height,
-                            Z = zHorizontal * zVertical * spiralFrameDistance
+                            x = xHorizontal * zVertical * spiralFrameDistance,
+                            y = yVertical * spiralFrameDistance + Height,
+                            z = zHorizontal * zVertical * spiralFrameDistance
                         },
 
                         Rotation = new Rotation()
                         {
-                            X = VerticalRot,
-                            Y = HorizontalRot - 180,
-                            Z = SpiralClockwise ? -rotation : rotation
+                            x = VerticalRot,
+                            y = HorizontalRot - 180,
+                            z = SpiralClockwise ? -rotation : rotation
                         },
 
                         Duration = Duration / SpiralAmmount / 360,
@@ -158,16 +158,16 @@ namespace MovementScriptGenerator
             {
                 Position = new Position()
                 {
-                    X = xHorizontal * zVertical * EndDistance,
-                    Y = yVertical * EndDistance + Height,
-                    Z = zHorizontal * zVertical * EndDistance
+                    x = xHorizontal * zVertical * EndDistance,
+                    y = yVertical * EndDistance + Height,
+                    z = zHorizontal * zVertical * EndDistance
                 },
 
                 Rotation = new Rotation()
                 {
-                    X = VerticalRot,
-                    Y = HorizontalRot - 180,
-                    Z = SpiralAmmount > 0 ? (SpiralClockwise ? -360 : 360) : 0
+                    x = VerticalRot,
+                    y = HorizontalRot - 180,
+                    z = SpiralAmmount > 0 ? (SpiralClockwise ? -360 : 360) : 0
                 },
 
                 HoldTime = EndHold,
