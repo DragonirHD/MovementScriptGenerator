@@ -393,8 +393,7 @@ namespace MovementScriptGenerator
             this.lblFOV.TabIndex = 1;
             this.lblFOV.Text = "FOV";
             this.lblFOV.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ToolTip.SetToolTip(this.lblFOV, "overwrites the FOV of the camera.\r\nAt 0 the original FOV of the camera will be us" +
-        "ed.");
+            this.ToolTip.SetToolTip(this.lblFOV, resources.GetString("lblFOV.ToolTip"));
             // 
             // tableLayoutPanel7
             // 

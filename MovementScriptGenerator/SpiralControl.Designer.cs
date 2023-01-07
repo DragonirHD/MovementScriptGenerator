@@ -30,6 +30,7 @@ namespace MovementScriptGenerator
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SpiralControl));
             this.flpSpiralControl = new System.Windows.Forms.FlowLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.numStartDistance = new System.Windows.Forms.NumericUpDown();
@@ -398,8 +399,7 @@ namespace MovementScriptGenerator
             this.lblFOV.TabIndex = 1;
             this.lblFOV.Text = "FOV";
             this.lblFOV.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ToolTip.SetToolTip(this.lblFOV, "overwrites the FOV of the camera.\r\nAt 0 the original FOV of the camera will be us" +
-        "ed.");
+            this.ToolTip.SetToolTip(this.lblFOV, resources.GetString("lblFOV.ToolTip"));
             // 
             // tableLayoutPanel8
             // 
