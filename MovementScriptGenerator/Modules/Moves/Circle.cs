@@ -6,10 +6,7 @@ namespace MovementScriptGenerator
 {
     public class Circle : Move
     {
-        public float RotX { get; }
-        public float RotZ { get; }
         public float Distance { get; }
-        public float StartingPointDegree { get; }
         public float SectorDegrees { get; }
         public int Iterations { get; }
         public bool RotateClockwise { get; }
@@ -19,9 +16,11 @@ namespace MovementScriptGenerator
             float duration,
             float height,
             float rotX,
+            float rotY,
             float rotZ,
+            float rotHorizontal,
+            float rotVertical,
             float distance,
-            float startingPointDegree,
             float sectorDegrees,
             int iterations,
             bool rotateClockwise) : base(name, fov, duration, height)
@@ -31,9 +30,11 @@ namespace MovementScriptGenerator
             Duration = duration;
             Height = height;
             RotX = rotX;
+            RotY = rotY;
             RotZ = rotZ;
+            RotHorizontal = rotHorizontal;
+            RotVertical = rotVertical;
             Distance = distance;
-            StartingPointDegree = startingPointDegree;
             SectorDegrees = sectorDegrees;
             Iterations = iterations;
             RotateClockwise = rotateClockwise;
@@ -43,42 +44,40 @@ namespace MovementScriptGenerator
         {
             List<Frame> frames = new List<Frame>();
 
+            double verticalRadiant = RotVertical * Math.PI / 180;
+
+            float yVertical = (float)Math.Sin(verticalRadiant);
+            float zVertical = (float)Math.Cos(verticalRadiant);
+
             float initialDegree = 0;
             float maxDegrees = SectorDegrees - 1;
-            float initialDegreeAddend = 1;
+            float initialDegreeAdded = 1;
 
             if (!RotateClockwise) {
                 initialDegree *= -1;
                 maxDegrees *= -1;
-                initialDegreeAddend *= -1;
+                initialDegreeAdded *= -1;
             }
 
-            for (float i = initialDegree; (RotateClockwise && i <= maxDegrees) || (!RotateClockwise && i >= maxDegrees); i += (float)initialDegreeAddend / Iterations)
+            for (float i = initialDegree; (RotateClockwise && i <= maxDegrees) || (!RotateClockwise && i >= maxDegrees); i += (float)initialDegreeAdded / Iterations)
             {
-                float usedDegree = i + StartingPointDegree;
-                double radiant = usedDegree * Math.PI / 180;
+                float currentHorizontalDegree = i + RotHorizontal;
+                double currentHorizontalRadiant = currentHorizontalDegree * Math.PI / 180;
+
+                float xHorizontal = (float)Math.Sin(currentHorizontalRadiant);
+                float zHorizontal = (float)Math.Cos(currentHorizontalRadiant);
 
                 Frame frame = new Frame();
                 frame.Position = new Position();
                 frame.Rotation = new Rotation();
 
-                frame.Position.X = (float)Math.Sin(radiant) * Distance;
-                frame.Position.Y = Height;
-                frame.Position.Z = (float)Math.Cos(radiant) * Distance;
+                frame.Position.x = xHorizontal * zVertical * Distance;
+                frame.Position.y = yVertical * Distance + Height;
+                frame.Position.z = zHorizontal * zVertical * Distance;
 
-                frame.Rotation.Z = RotZ;
-                frame.Rotation.X = RotX;
-                frame.Rotation.Y = usedDegree -180;
-
-                if (usedDegree == 0 || usedDegree == 180 || usedDegree == 360)
-                {
-                    frame.Position.X = 0;
-                }
-                if (usedDegree == 90 || usedDegree == 270)
-                {
-                    frame.Position.Z = 0;
-                }
-
+                frame.Rotation.x = RotVertical + RotX;
+                frame.Rotation.y = currentHorizontalDegree + RotY -180;
+                frame.Rotation.z = RotZ;
 
                 frame.Duration = Duration / Math.Abs(maxDegrees) / Iterations;
 

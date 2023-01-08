@@ -8,8 +8,6 @@ namespace MovementScriptGenerator
     {
         public float StartDistance { get; }
         public float EndDistance { get; }
-        public float HorizontalRot { get; }
-        public float VerticalRot { get; }
         public int SpiralAmmount { get; }
         public bool SpiralClockwise { get; }
         public float StartHold { get; }
@@ -20,10 +18,13 @@ namespace MovementScriptGenerator
             int fov,
             float duration,
             float height,
-            float startDistance,
-            float endDistance,
+            float rotX,
+            float rotY,
+            float rotZ,
             float horizontalRot,
             float verticalRot,
+            float startDistance,
+            float endDistance,
             int spiralAmmount,
             bool spiralClockwise,
             float startHold,
@@ -34,10 +35,13 @@ namespace MovementScriptGenerator
             Fov = fov;
             Duration = duration;
             Height = height;
+            RotX = rotX;
+            RotY = rotY;
+            RotZ = rotZ;
+            RotHorizontal = horizontalRot;
+            RotVertical = verticalRot;
             StartDistance = startDistance;
             EndDistance = endDistance;
-            HorizontalRot = horizontalRot;
-            VerticalRot = verticalRot;
             SpiralAmmount = spiralAmmount;
             SpiralClockwise = spiralClockwise;
             StartHold = startHold;
@@ -48,12 +52,12 @@ namespace MovementScriptGenerator
         {
             List<Frame> frames = new List<Frame>();
 
-            double horizontalRadiant = HorizontalRot * Math.PI / 180;
+            double horizontalRadiant = RotHorizontal * Math.PI / 180;
 
             float xHorizontal = (float)Math.Sin(horizontalRadiant);
             float zHorizontal = (float)Math.Cos(horizontalRadiant);
 
-            double verticalRadiant = VerticalRot * Math.PI / 180;
+            double verticalRadiant = RotVertical * Math.PI / 180;
 
             float yVertical = (float)Math.Sin(verticalRadiant);
             float zVertical = (float)Math.Cos(verticalRadiant);
@@ -61,52 +65,20 @@ namespace MovementScriptGenerator
             float pathLength = StartDistance - EndDistance;
             float spiralLength = pathLength / SpiralAmmount;
 
-            switch (HorizontalRot)
-            {
-                case 0:
-                    zHorizontal = 1;
-                    break;
-                case 90:
-                case -90:
-                case 270:
-                case -270:
-                    zHorizontal = 0;
-                    break;
-                case 180:
-                case -180:
-                case 360:
-                case -360:
-                    xHorizontal = 0;
-                    break;
-            }
-
-            switch (VerticalRot)
-            {
-                case 0:
-                    yVertical = 0;
-                    break;
-                case 90:
-                case -90:
-                case 270:
-                case -270:
-                    zVertical = 0;
-                    break;
-            }
-
             Frame startFrame = new Frame()
             {
                 Position = new Position()
                 {
-                    X = xHorizontal * zVertical * StartDistance,
-                    Y = yVertical * StartDistance + Height,
-                    Z = zHorizontal * zVertical * StartDistance
+                    x = xHorizontal * zVertical * StartDistance,
+                    y = yVertical * StartDistance + Height,
+                    z = zHorizontal * zVertical * StartDistance
                 },
 
                 Rotation = new Rotation()
                 {
-                    X = VerticalRot,
-                    Y = HorizontalRot - 180,
-                    Z = 0
+                    x = RotVertical + RotX,
+                    y = RotHorizontal + RotY - 180,
+                    z = 0 + RotZ
                 },
                 
                 HoldTime = StartHold,
@@ -119,28 +91,26 @@ namespace MovementScriptGenerator
             {
                 List<Frame> spiralFrames = new List<Frame>();
 
-                float SpiralStartDistance = StartDistance - (i*spiralLength);
-                float spiralHalfwayDistance = SpiralStartDistance - (spiralLength / 2);
-                float spiralEndDistance = spiralHalfwayDistance - (spiralLength / 2);
+                float currentSpiralStartDistance = StartDistance - (i*spiralLength);
 
                 for(int rotation = 1; rotation < 360; rotation++)
                 {
-                    float spiralFrameDistance = SpiralStartDistance - (spiralLength / 360 * rotation);
+                    float spiralFrameDistance = currentSpiralStartDistance - (spiralLength / 360 * rotation);
 
                     Frame spiralFrame = new Frame()
                     {
                         Position = new Position()
                         {
-                            X = xHorizontal * zVertical * spiralFrameDistance,
-                            Y = yVertical * spiralFrameDistance + Height,
-                            Z = zHorizontal * zVertical * spiralFrameDistance
+                            x = xHorizontal * zVertical * spiralFrameDistance,
+                            y = yVertical * spiralFrameDistance + Height,
+                            z = zHorizontal * zVertical * spiralFrameDistance
                         },
 
                         Rotation = new Rotation()
                         {
-                            X = VerticalRot,
-                            Y = HorizontalRot - 180,
-                            Z = SpiralClockwise ? -rotation : rotation
+                            x = RotVertical + RotX,
+                            y = RotHorizontal + RotY - 180,
+                            z = SpiralClockwise ? -rotation + RotZ : rotation + RotZ
                         },
 
                         Duration = Duration / SpiralAmmount / 360,
@@ -158,16 +128,16 @@ namespace MovementScriptGenerator
             {
                 Position = new Position()
                 {
-                    X = xHorizontal * zVertical * EndDistance,
-                    Y = yVertical * EndDistance + Height,
-                    Z = zHorizontal * zVertical * EndDistance
+                    x = xHorizontal * zVertical * EndDistance,
+                    y = yVertical * EndDistance + Height,
+                    z = zHorizontal * zVertical * EndDistance
                 },
 
                 Rotation = new Rotation()
                 {
-                    X = VerticalRot,
-                    Y = HorizontalRot - 180,
-                    Z = SpiralAmmount > 0 ? (SpiralClockwise ? -360 : 360) : 0
+                    x = RotVertical + RotX,
+                    y = RotHorizontal + RotY - 180,
+                    z = SpiralAmmount > 0 ? (SpiralClockwise ? -360 + RotZ : 360 + RotZ) : 0 + RotZ
                 },
 
                 HoldTime = EndHold,

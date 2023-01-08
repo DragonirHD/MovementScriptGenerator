@@ -38,10 +38,13 @@ namespace MovementScriptGenerator
                 numFOV.Value = original.Fov;
                 numDuration.Value = (decimal)original.Duration;
                 numHeight.Value = (decimal)original.Height;
+                numRotX.Value = (decimal)original.RotX;
+                numRotY.Value = (decimal)original.RotY;
+                numRotZ.Value = (decimal)original.RotZ;
+                numRotHorizontal.Value = (decimal)original.RotHorizontal;
+                numRotVertical.Value = (decimal)original.RotVertical;
                 numStartDistance.Value = (decimal)original.StartDistance;
                 numEndDistance.Value = (decimal)original.EndDistance;
-                numHorizontalRot.Value = (decimal)original.HorizontalRot;
-                numVerticalRot.Value = (decimal)original.VerticalRot;
                 numSpiralAmmount.Value = original.SpiralAmmount;
                 cbSpiralRotation.SelectedIndex = original.SpiralClockwise ? 0 : 1;
                 numStartHoldTime.Value = (decimal)original.StartHold;
@@ -78,10 +81,13 @@ namespace MovementScriptGenerator
                 (int) numFOV.Value,
                 (float) numDuration.Value,
                 (float) numHeight.Value,
+                (float) numRotX.Value,
+                (float) numRotY.Value,
+                (float) numRotZ.Value,
+                (float) numRotHorizontal.Value,
+                (float) numRotVertical.Value,
                 (float) numStartDistance.Value,
                 (float) numEndDistance.Value,
-                (float) numHorizontalRot.Value,
-                (float) numVerticalRot.Value,
                 (int) numSpiralAmmount.Value,
                 cbSpiralRotation.SelectedIndex == 0 ? true : false,
                 (float) numStartHoldTime.Value,

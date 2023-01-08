@@ -120,6 +120,12 @@
   <metadata name="ToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="lblFOV.ToolTip" xml:space="preserve">
+    <value>overwrites the FOV (Field Of View) of the camera.
+If this is left at 0, the FOV of the last move that overwrites the FOV will be used.
+If no previous move has overwritten the cameras FOV, the original FOV will be used.
+</value>
+  </data>
   <data name="lblIterations.ToolTip" xml:space="preserve">
     <value>Defines how many points the circle should consist of.
 The more points the more detailed the circle.
