@@ -120,6 +120,9 @@
   <metadata name="ToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <metadata name="ToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <data name="btnEditScriptPath.ToolTip" xml:space="preserve">
     <value>Select the directory in which the movement script file will be generated in.
 Make sure that this is the correct directory, else camera2 will not be able to use the script!
@@ -141,6 +144,14 @@ Will overwrite the "Sync To Song" and "Loop" options of the existing file!
 Off -&gt; A new movement script file will be created for the moves.
 If a file with the same name exists, that file will be overwritten!</value>
   </data>
+  <data name="btnElementGetSettings.ToolTip" xml:space="preserve">
+    <value>displays the settings of the selected element in the element settings tab.
+Useful for tweaking specific settings and then applying them again to the selected element.
+Can also be done by doubleclicking the element.</value>
+  </data>
+  <metadata name="ToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <data name="lblType.ToolTip" xml:space="preserve">
     <value>Element types are divided into two subtypes:
 move

@@ -42,10 +42,10 @@ namespace MovementScriptGenerator
             this.numHeight = new System.Windows.Forms.NumericUpDown();
             this.lblHeight = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.numHorizontalRot = new System.Windows.Forms.NumericUpDown();
+            this.numRotHorizontal = new System.Windows.Forms.NumericUpDown();
             this.lblHorizontalRot = new System.Windows.Forms.Label();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
-            this.numVerticalRot = new System.Windows.Forms.NumericUpDown();
+            this.numRotVertical = new System.Windows.Forms.NumericUpDown();
             this.lblVerticalRot = new System.Windows.Forms.Label();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.numFOV = new System.Windows.Forms.NumericUpDown();
@@ -69,6 +69,15 @@ namespace MovementScriptGenerator
             this.checkEase = new System.Windows.Forms.CheckBox();
             this.lblEase = new System.Windows.Forms.Label();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
+            this.numRotX = new System.Windows.Forms.NumericUpDown();
+            this.lblRotX = new System.Windows.Forms.Label();
+            this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
+            this.numRotY = new System.Windows.Forms.NumericUpDown();
+            this.lblRotY = new System.Windows.Forms.Label();
+            this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
+            this.numRotZ = new System.Windows.Forms.NumericUpDown();
+            this.lblRotZ = new System.Windows.Forms.Label();
             this.flpSpiralControl.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numStartDistance)).BeginInit();
@@ -77,9 +86,9 @@ namespace MovementScriptGenerator
             this.tableLayoutPanel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numHeight)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numHorizontalRot)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numRotHorizontal)).BeginInit();
             this.tableLayoutPanel10.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numVerticalRot)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numRotVertical)).BeginInit();
             this.tableLayoutPanel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numFOV)).BeginInit();
             this.tableLayoutPanel8.SuspendLayout();
@@ -92,20 +101,29 @@ namespace MovementScriptGenerator
             this.tableLayoutPanel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numEndHoldTime)).BeginInit();
             this.tableLayoutPanel12.SuspendLayout();
+            this.tableLayoutPanel13.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numRotX)).BeginInit();
+            this.tableLayoutPanel14.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numRotY)).BeginInit();
+            this.tableLayoutPanel15.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numRotZ)).BeginInit();
             this.SuspendLayout();
             // 
             // flpSpiralControl
             // 
             this.flpSpiralControl.AutoSize = true;
             this.flpSpiralControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flpSpiralControl.Controls.Add(this.tableLayoutPanel1);
-            this.flpSpiralControl.Controls.Add(this.tableLayoutPanel2);
+            this.flpSpiralControl.Controls.Add(this.tableLayoutPanel6);
+            this.flpSpiralControl.Controls.Add(this.tableLayoutPanel9);
             this.flpSpiralControl.Controls.Add(this.tableLayoutPanel11);
+            this.flpSpiralControl.Controls.Add(this.tableLayoutPanel13);
+            this.flpSpiralControl.Controls.Add(this.tableLayoutPanel14);
+            this.flpSpiralControl.Controls.Add(this.tableLayoutPanel15);
             this.flpSpiralControl.Controls.Add(this.tableLayoutPanel3);
             this.flpSpiralControl.Controls.Add(this.tableLayoutPanel10);
-            this.flpSpiralControl.Controls.Add(this.tableLayoutPanel6);
+            this.flpSpiralControl.Controls.Add(this.tableLayoutPanel1);
+            this.flpSpiralControl.Controls.Add(this.tableLayoutPanel2);
             this.flpSpiralControl.Controls.Add(this.tableLayoutPanel8);
-            this.flpSpiralControl.Controls.Add(this.tableLayoutPanel9);
             this.flpSpiralControl.Controls.Add(this.tableLayoutPanel4);
             this.flpSpiralControl.Controls.Add(this.tableLayoutPanel5);
             this.flpSpiralControl.Controls.Add(this.tableLayoutPanel7);
@@ -116,7 +134,7 @@ namespace MovementScriptGenerator
             this.flpSpiralControl.Margin = new System.Windows.Forms.Padding(0);
             this.flpSpiralControl.MaximumSize = new System.Drawing.Size(290, 0);
             this.flpSpiralControl.Name = "flpSpiralControl";
-            this.flpSpiralControl.Size = new System.Drawing.Size(260, 385);
+            this.flpSpiralControl.Size = new System.Drawing.Size(260, 481);
             this.flpSpiralControl.TabIndex = 1;
             // 
             // tableLayoutPanel1
@@ -129,14 +147,14 @@ namespace MovementScriptGenerator
             this.tableLayoutPanel1.Controls.Add(this.numStartDistance, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblStartDistance, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 259);
             this.tableLayoutPanel1.MinimumSize = new System.Drawing.Size(0, 32);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(254, 32);
-            this.tableLayoutPanel1.TabIndex = 0;
+            this.tableLayoutPanel1.TabIndex = 8;
             // 
             // numStartDistance
             // 
@@ -176,13 +194,13 @@ namespace MovementScriptGenerator
             this.tableLayoutPanel2.Controls.Add(this.numEndDistance, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.lblEndDistance, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 41);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 297);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(254, 26);
-            this.tableLayoutPanel2.TabIndex = 1;
+            this.tableLayoutPanel2.TabIndex = 9;
             // 
             // numEndDistance
             // 
@@ -221,13 +239,13 @@ namespace MovementScriptGenerator
             this.tableLayoutPanel11.Controls.Add(this.numHeight, 0, 0);
             this.tableLayoutPanel11.Controls.Add(this.lblHeight, 0, 0);
             this.tableLayoutPanel11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel11.Location = new System.Drawing.Point(3, 73);
+            this.tableLayoutPanel11.Location = new System.Drawing.Point(3, 67);
             this.tableLayoutPanel11.Name = "tableLayoutPanel11";
             this.tableLayoutPanel11.RowCount = 1;
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tableLayoutPanel11.Size = new System.Drawing.Size(254, 26);
-            this.tableLayoutPanel11.TabIndex = 3;
+            this.tableLayoutPanel11.TabIndex = 2;
             // 
             // numHeight
             // 
@@ -263,34 +281,34 @@ namespace MovementScriptGenerator
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Controls.Add(this.numHorizontalRot, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.numRotHorizontal, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.lblHorizontalRot, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 105);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 195);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(254, 26);
-            this.tableLayoutPanel3.TabIndex = 4;
+            this.tableLayoutPanel3.TabIndex = 6;
             // 
-            // numHorizontalRot
+            // numRotHorizontal
             // 
-            this.numHorizontalRot.DecimalPlaces = 5;
-            this.numHorizontalRot.Location = new System.Drawing.Point(130, 3);
-            this.numHorizontalRot.Maximum = new decimal(new int[] {
+            this.numRotHorizontal.DecimalPlaces = 5;
+            this.numRotHorizontal.Location = new System.Drawing.Point(130, 3);
+            this.numRotHorizontal.Maximum = new decimal(new int[] {
             360,
             0,
             0,
             0});
-            this.numHorizontalRot.Minimum = new decimal(new int[] {
+            this.numRotHorizontal.Minimum = new decimal(new int[] {
             360,
             0,
             0,
             -2147483648});
-            this.numHorizontalRot.Name = "numHorizontalRot";
-            this.numHorizontalRot.Size = new System.Drawing.Size(120, 20);
-            this.numHorizontalRot.TabIndex = 1;
+            this.numRotHorizontal.Name = "numRotHorizontal";
+            this.numRotHorizontal.Size = new System.Drawing.Size(120, 20);
+            this.numRotHorizontal.TabIndex = 1;
             // 
             // lblHorizontalRot
             // 
@@ -314,34 +332,34 @@ namespace MovementScriptGenerator
             this.tableLayoutPanel10.ColumnCount = 2;
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel10.Controls.Add(this.numVerticalRot, 0, 0);
+            this.tableLayoutPanel10.Controls.Add(this.numRotVertical, 0, 0);
             this.tableLayoutPanel10.Controls.Add(this.lblVerticalRot, 0, 0);
             this.tableLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel10.Location = new System.Drawing.Point(3, 137);
+            this.tableLayoutPanel10.Location = new System.Drawing.Point(3, 227);
             this.tableLayoutPanel10.Name = "tableLayoutPanel10";
             this.tableLayoutPanel10.RowCount = 1;
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tableLayoutPanel10.Size = new System.Drawing.Size(254, 26);
-            this.tableLayoutPanel10.TabIndex = 5;
+            this.tableLayoutPanel10.TabIndex = 7;
             // 
-            // numVerticalRot
+            // numRotVertical
             // 
-            this.numVerticalRot.DecimalPlaces = 5;
-            this.numVerticalRot.Location = new System.Drawing.Point(130, 3);
-            this.numVerticalRot.Maximum = new decimal(new int[] {
+            this.numRotVertical.DecimalPlaces = 5;
+            this.numRotVertical.Location = new System.Drawing.Point(130, 3);
+            this.numRotVertical.Maximum = new decimal(new int[] {
             360,
             0,
             0,
             0});
-            this.numVerticalRot.Minimum = new decimal(new int[] {
+            this.numRotVertical.Minimum = new decimal(new int[] {
             360,
             0,
             0,
             -2147483648});
-            this.numVerticalRot.Name = "numVerticalRot";
-            this.numVerticalRot.Size = new System.Drawing.Size(120, 20);
-            this.numVerticalRot.TabIndex = 1;
+            this.numRotVertical.Name = "numRotVertical";
+            this.numRotVertical.Size = new System.Drawing.Size(120, 20);
+            this.numRotVertical.TabIndex = 1;
             // 
             // lblVerticalRot
             // 
@@ -368,13 +386,13 @@ namespace MovementScriptGenerator
             this.tableLayoutPanel6.Controls.Add(this.numFOV, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.lblFOV, 0, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 169);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tableLayoutPanel6.Size = new System.Drawing.Size(254, 26);
-            this.tableLayoutPanel6.TabIndex = 5;
+            this.tableLayoutPanel6.TabIndex = 0;
             // 
             // numFOV
             // 
@@ -411,13 +429,13 @@ namespace MovementScriptGenerator
             this.tableLayoutPanel8.Controls.Add(this.cbSpiralRotation, 0, 0);
             this.tableLayoutPanel8.Controls.Add(this.lblSpiralRotation, 0, 0);
             this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(3, 201);
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(3, 329);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 1;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.tableLayoutPanel8.Size = new System.Drawing.Size(254, 27);
-            this.tableLayoutPanel8.TabIndex = 6;
+            this.tableLayoutPanel8.TabIndex = 10;
             // 
             // cbSpiralRotation
             // 
@@ -455,13 +473,13 @@ namespace MovementScriptGenerator
             this.tableLayoutPanel9.Controls.Add(this.numDuration, 0, 0);
             this.tableLayoutPanel9.Controls.Add(this.lblDuration, 0, 0);
             this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel9.Location = new System.Drawing.Point(3, 234);
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(3, 35);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             this.tableLayoutPanel9.RowCount = 1;
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tableLayoutPanel9.Size = new System.Drawing.Size(254, 26);
-            this.tableLayoutPanel9.TabIndex = 7;
+            this.tableLayoutPanel9.TabIndex = 1;
             // 
             // numDuration
             // 
@@ -500,13 +518,13 @@ namespace MovementScriptGenerator
             this.tableLayoutPanel4.Controls.Add(this.numSpiralAmmount, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.lblSpiralAmmount, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 266);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 362);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(254, 26);
-            this.tableLayoutPanel4.TabIndex = 7;
+            this.tableLayoutPanel4.TabIndex = 11;
             // 
             // numSpiralAmmount
             // 
@@ -551,13 +569,13 @@ namespace MovementScriptGenerator
             this.tableLayoutPanel5.Controls.Add(this.numStartHoldTime, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.lblStartHoldTime, 0, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 298);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 394);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(254, 26);
-            this.tableLayoutPanel5.TabIndex = 8;
+            this.tableLayoutPanel5.TabIndex = 12;
             // 
             // numStartHoldTime
             // 
@@ -596,13 +614,13 @@ namespace MovementScriptGenerator
             this.tableLayoutPanel7.Controls.Add(this.numEndHoldTime, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.lblEndHoldTime, 0, 0);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 330);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 426);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tableLayoutPanel7.Size = new System.Drawing.Size(254, 26);
-            this.tableLayoutPanel7.TabIndex = 9;
+            this.tableLayoutPanel7.TabIndex = 13;
             // 
             // numEndHoldTime
             // 
@@ -641,14 +659,14 @@ namespace MovementScriptGenerator
             this.tableLayoutPanel12.Controls.Add(this.checkEase, 0, 0);
             this.tableLayoutPanel12.Controls.Add(this.lblEase, 0, 0);
             this.tableLayoutPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel12.Location = new System.Drawing.Point(3, 362);
+            this.tableLayoutPanel12.Location = new System.Drawing.Point(3, 458);
             this.tableLayoutPanel12.MaximumSize = new System.Drawing.Size(295, 0);
             this.tableLayoutPanel12.Name = "tableLayoutPanel12";
             this.tableLayoutPanel12.RowCount = 1;
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel12.Size = new System.Drawing.Size(254, 20);
-            this.tableLayoutPanel12.TabIndex = 10;
+            this.tableLayoutPanel12.TabIndex = 14;
             // 
             // checkEase
             // 
@@ -683,6 +701,156 @@ namespace MovementScriptGenerator
             this.ToolTip.IsBalloon = true;
             this.ToolTip.ReshowDelay = 100;
             // 
+            // tableLayoutPanel13
+            // 
+            this.tableLayoutPanel13.AutoSize = true;
+            this.tableLayoutPanel13.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tableLayoutPanel13.ColumnCount = 2;
+            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel13.Controls.Add(this.numRotX, 0, 0);
+            this.tableLayoutPanel13.Controls.Add(this.lblRotX, 0, 0);
+            this.tableLayoutPanel13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel13.Location = new System.Drawing.Point(3, 99);
+            this.tableLayoutPanel13.Name = "tableLayoutPanel13";
+            this.tableLayoutPanel13.RowCount = 1;
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.tableLayoutPanel13.Size = new System.Drawing.Size(254, 26);
+            this.tableLayoutPanel13.TabIndex = 3;
+            // 
+            // numRotX
+            // 
+            this.numRotX.DecimalPlaces = 5;
+            this.numRotX.Location = new System.Drawing.Point(130, 3);
+            this.numRotX.Maximum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            this.numRotX.Minimum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            -2147483648});
+            this.numRotX.Name = "numRotX";
+            this.numRotX.Size = new System.Drawing.Size(120, 20);
+            this.numRotX.TabIndex = 1;
+            // 
+            // lblRotX
+            // 
+            this.lblRotX.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblRotX.AutoSize = true;
+            this.lblRotX.Location = new System.Drawing.Point(3, 0);
+            this.lblRotX.Name = "lblRotX";
+            this.lblRotX.Size = new System.Drawing.Size(57, 26);
+            this.lblRotX.TabIndex = 1;
+            this.lblRotX.Text = "X-Rotation";
+            this.lblRotX.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ToolTip.SetToolTip(this.lblRotX, "The rotation of the camera on the x-axis (pitch).\r\n>0 -> tilt downwards\r\n<0 -> ti" +
+        "lt upwards");
+            // 
+            // tableLayoutPanel14
+            // 
+            this.tableLayoutPanel14.AutoSize = true;
+            this.tableLayoutPanel14.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tableLayoutPanel14.ColumnCount = 2;
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel14.Controls.Add(this.numRotY, 0, 0);
+            this.tableLayoutPanel14.Controls.Add(this.lblRotY, 0, 0);
+            this.tableLayoutPanel14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel14.Location = new System.Drawing.Point(3, 131);
+            this.tableLayoutPanel14.Name = "tableLayoutPanel14";
+            this.tableLayoutPanel14.RowCount = 1;
+            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.tableLayoutPanel14.Size = new System.Drawing.Size(254, 26);
+            this.tableLayoutPanel14.TabIndex = 4;
+            // 
+            // numRotY
+            // 
+            this.numRotY.DecimalPlaces = 5;
+            this.numRotY.Location = new System.Drawing.Point(130, 3);
+            this.numRotY.Maximum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            this.numRotY.Minimum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            -2147483648});
+            this.numRotY.Name = "numRotY";
+            this.numRotY.Size = new System.Drawing.Size(120, 20);
+            this.numRotY.TabIndex = 1;
+            // 
+            // lblRotY
+            // 
+            this.lblRotY.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblRotY.AutoSize = true;
+            this.lblRotY.Location = new System.Drawing.Point(3, 0);
+            this.lblRotY.Name = "lblRotY";
+            this.lblRotY.Size = new System.Drawing.Size(57, 26);
+            this.lblRotY.TabIndex = 1;
+            this.lblRotY.Text = "Y-Rotation";
+            this.lblRotY.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ToolTip.SetToolTip(this.lblRotY, "The rotation of the camera on the y-axis (yaw).\r\n>0 -> turn right\r\n<0 -> turn lef" +
+        "t");
+            // 
+            // tableLayoutPanel15
+            // 
+            this.tableLayoutPanel15.AutoSize = true;
+            this.tableLayoutPanel15.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tableLayoutPanel15.ColumnCount = 2;
+            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel15.Controls.Add(this.numRotZ, 0, 0);
+            this.tableLayoutPanel15.Controls.Add(this.lblRotZ, 0, 0);
+            this.tableLayoutPanel15.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel15.Location = new System.Drawing.Point(3, 163);
+            this.tableLayoutPanel15.Name = "tableLayoutPanel15";
+            this.tableLayoutPanel15.RowCount = 1;
+            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.tableLayoutPanel15.Size = new System.Drawing.Size(254, 26);
+            this.tableLayoutPanel15.TabIndex = 5;
+            // 
+            // numRotZ
+            // 
+            this.numRotZ.DecimalPlaces = 5;
+            this.numRotZ.Location = new System.Drawing.Point(130, 3);
+            this.numRotZ.Maximum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            this.numRotZ.Minimum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            -2147483648});
+            this.numRotZ.Name = "numRotZ";
+            this.numRotZ.Size = new System.Drawing.Size(120, 20);
+            this.numRotZ.TabIndex = 1;
+            // 
+            // lblRotZ
+            // 
+            this.lblRotZ.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblRotZ.AutoSize = true;
+            this.lblRotZ.Location = new System.Drawing.Point(3, 0);
+            this.lblRotZ.Name = "lblRotZ";
+            this.lblRotZ.Size = new System.Drawing.Size(57, 26);
+            this.lblRotZ.TabIndex = 1;
+            this.lblRotZ.Text = "Z-Rotation";
+            this.lblRotZ.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ToolTip.SetToolTip(this.lblRotZ, "The rotation of the camera on the z-axis (roll).\r\n>0 -> roll to the right\r\n<0 -> " +
+        "roll to the left");
+            // 
             // SpiralControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -692,7 +860,7 @@ namespace MovementScriptGenerator
             this.Controls.Add(this.flpSpiralControl);
             this.MaximumSize = new System.Drawing.Size(290, 0);
             this.Name = "SpiralControl";
-            this.Size = new System.Drawing.Size(260, 385);
+            this.Size = new System.Drawing.Size(260, 481);
             this.Load += new System.EventHandler(this.SpiralControl_Load);
             this.flpSpiralControl.ResumeLayout(false);
             this.flpSpiralControl.PerformLayout();
@@ -707,10 +875,10 @@ namespace MovementScriptGenerator
             ((System.ComponentModel.ISupportInitialize)(this.numHeight)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numHorizontalRot)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numRotHorizontal)).EndInit();
             this.tableLayoutPanel10.ResumeLayout(false);
             this.tableLayoutPanel10.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numVerticalRot)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numRotVertical)).EndInit();
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numFOV)).EndInit();
@@ -730,6 +898,15 @@ namespace MovementScriptGenerator
             ((System.ComponentModel.ISupportInitialize)(this.numEndHoldTime)).EndInit();
             this.tableLayoutPanel12.ResumeLayout(false);
             this.tableLayoutPanel12.PerformLayout();
+            this.tableLayoutPanel13.ResumeLayout(false);
+            this.tableLayoutPanel13.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numRotX)).EndInit();
+            this.tableLayoutPanel14.ResumeLayout(false);
+            this.tableLayoutPanel14.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numRotY)).EndInit();
+            this.tableLayoutPanel15.ResumeLayout(false);
+            this.tableLayoutPanel15.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numRotZ)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -744,7 +921,7 @@ namespace MovementScriptGenerator
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label lblEndDistance;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.NumericUpDown numHorizontalRot;
+        private System.Windows.Forms.NumericUpDown numRotHorizontal;
         private System.Windows.Forms.Label lblHorizontalRot;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.NumericUpDown numFOV;
@@ -757,7 +934,7 @@ namespace MovementScriptGenerator
         private System.Windows.Forms.Label lblDuration;
         private System.Windows.Forms.ToolTip ToolTip;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
-        private System.Windows.Forms.NumericUpDown numVerticalRot;
+        private System.Windows.Forms.NumericUpDown numRotVertical;
         private System.Windows.Forms.Label lblVerticalRot;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.NumericUpDown numSpiralAmmount;
@@ -775,5 +952,14 @@ namespace MovementScriptGenerator
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
         private System.Windows.Forms.Label lblEase;
         private System.Windows.Forms.CheckBox checkEase;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
+        private System.Windows.Forms.NumericUpDown numRotX;
+        private System.Windows.Forms.Label lblRotX;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel14;
+        private System.Windows.Forms.NumericUpDown numRotY;
+        private System.Windows.Forms.Label lblRotY;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel15;
+        private System.Windows.Forms.NumericUpDown numRotZ;
+        private System.Windows.Forms.Label lblRotZ;
     }
 }

@@ -56,6 +56,8 @@ namespace MovementScriptGenerator
         public Main()
         {
             //TODO Create own form/implementation of MessageBox so that it can always be displayed in the middle of the parent window
+            //TODO Find better name for "other Elements"
+            //TODO Find name for Elements that change the behaviour of an existing move: MODIFIER / MODIFYING ELEMENTS
             InitializeComponent();
             InitializeComponentView();
             PopulateComponentsWithSavedSettings();
@@ -222,11 +224,11 @@ namespace MovementScriptGenerator
                 DisableElementOptionsAll();
             }
             tvChain.EndUpdate();
+            tvChain.SelectedNode.EnsureVisible();
         }
 
         private void UpdateChainWindow(int indexOfNodeToBeSelected)
         {
-            //TODO Dont scroll to top on update
             tvChain.BeginUpdate();
             tvChain.Nodes.Clear();
             for(int i = 0; i < chain.Elements.Count; i++)
@@ -250,6 +252,7 @@ namespace MovementScriptGenerator
                 DisableElementOptionsAll();
             }
             tvChain.EndUpdate();
+            tvChain.SelectedNode.EnsureVisible();
         }
 
         private bool GenerateMovementScriptFile(MovementScript script, string filePath)
@@ -401,6 +404,7 @@ namespace MovementScriptGenerator
         /// <returns>A List of Frames. If the script fails, it will return null</returns>
         public List<Frame> AddFramesToScript(Chain chainOfElements)
         {
+            //TODO perfect place to implement other Elements that can be applied to moves, for example changing fov. Get the generated frames of the corresponding move, then apply the logic of the new other element.
             List<Frame> frames = new List<Frame>();
             foreach(ChainElement chainEl in chainOfElements.Elements)
             {

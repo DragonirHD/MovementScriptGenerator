@@ -342,9 +342,8 @@ namespace MovementScriptGenerator
             this.lblChainName.TabIndex = 1;
             this.lblChainName.Text = "Name:";
             this.lblChainName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ToolTip.SetToolTip(this.lblChainName, "Defines the name of movement script file that will be generated / added to.\r\nAdd " +
-        "this name to the script list in your camera script to make the camera use this s" +
-        "cript.\r\n");
+            this.ToolTip.SetToolTip(this.lblChainName, "Defines the name of the chain.\r\nThis setting is mostly used for saving and loadin" +
+        "g chains from files.");
             // 
             // txtChainName
             // 
@@ -498,9 +497,7 @@ namespace MovementScriptGenerator
             this.btnElementGetSettings.Size = new System.Drawing.Size(115, 23);
             this.btnElementGetSettings.TabIndex = 3;
             this.btnElementGetSettings.Text = "Get Settings";
-            this.ToolTip.SetToolTip(this.btnElementGetSettings, "displays the settings of the selected element in the element settings tab.\r\nUsefu" +
-        "l for tweaking specific settings and then applying them again to the selected el" +
-        "ement.");
+            this.ToolTip.SetToolTip(this.btnElementGetSettings, resources.GetString("btnElementGetSettings.ToolTip"));
             this.btnElementGetSettings.UseVisualStyleBackColor = true;
             this.btnElementGetSettings.Click += new System.EventHandler(this.btnElementGetSettings_Click);
             // 
@@ -599,7 +596,8 @@ namespace MovementScriptGenerator
             this.btnInsert.Size = new System.Drawing.Size(43, 26);
             this.btnInsert.TabIndex = 3;
             this.btnInsert.Text = "Insert";
-            this.ToolTip.SetToolTip(this.btnInsert, "Inserts a new element into the chain after the selected element");
+            this.ToolTip.SetToolTip(this.btnInsert, "Inserts a new element with the current settings into the chain after the selected" +
+        " element");
             this.btnInsert.UseVisualStyleBackColor = true;
             this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
             // 
@@ -614,7 +612,7 @@ namespace MovementScriptGenerator
             this.btnResetMoveSettings.Size = new System.Drawing.Size(45, 26);
             this.btnResetMoveSettings.TabIndex = 4;
             this.btnResetMoveSettings.Text = "Reset";
-            this.ToolTip.SetToolTip(this.btnResetMoveSettings, "Resets the currently selected move settings to their default values.");
+            this.ToolTip.SetToolTip(this.btnResetMoveSettings, "Resets the current element settings to their default values.");
             this.btnResetMoveSettings.UseVisualStyleBackColor = true;
             this.btnResetMoveSettings.Click += new System.EventHandler(this.btnResetMoveControl_Click);
             // 
