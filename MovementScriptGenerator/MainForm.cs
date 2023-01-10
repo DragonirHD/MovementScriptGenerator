@@ -57,7 +57,7 @@ namespace MovementScriptGenerator
         {
             //TODO Create own form/implementation of MessageBox so that it can always be displayed in the middle of the parent window
             //TODO Find better name for "other Elements"
-            //TODO Find name for Elements that change the behaviour of an existing move: MODIFIER / MODIFYING ELEMENTS
+            //TODO Find name for Elements that change the behaviour of an existing move: modifier / modifying elements?
             InitializeComponent();
             InitializeComponentView();
             PopulateComponentsWithSavedSettings();
@@ -219,12 +219,18 @@ namespace MovementScriptGenerator
             {
                 tvChain.SelectedNode = tvChain.Nodes[tvChain.Nodes.Count - 1];
             }
+
+            tvChain.EndUpdate();
+
             if (tvChain.SelectedNode == null)
             {
                 DisableElementOptionsAll();
             }
-            tvChain.EndUpdate();
-            tvChain.SelectedNode.EnsureVisible();
+            else
+            {
+                //Can't be done while in update block
+                tvChain.SelectedNode.EnsureVisible();
+            }
         }
 
         private void UpdateChainWindow(int indexOfNodeToBeSelected)
@@ -247,12 +253,16 @@ namespace MovementScriptGenerator
                     tvChain.SelectedNode = tvChain.Nodes[tvChain.Nodes.Count - 1];
                 }
             }
-            if(tvChain.SelectedNode == null)
+            tvChain.EndUpdate();
+            if (tvChain.SelectedNode == null)
             {
                 DisableElementOptionsAll();
             }
-            tvChain.EndUpdate();
-            tvChain.SelectedNode.EnsureVisible();
+            else
+            {
+                //Can't be done while in update block
+                tvChain.SelectedNode.EnsureVisible();
+            }
         }
 
         private bool GenerateMovementScriptFile(MovementScript script, string filePath)

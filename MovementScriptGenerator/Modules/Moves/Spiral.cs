@@ -71,14 +71,14 @@ namespace MovementScriptGenerator
                 {
                     x = xHorizontal * zVertical * StartDistance,
                     y = yVertical * StartDistance + Height,
-                    z = zHorizontal * zVertical * StartDistance
+                    z = (zHorizontal *-1) * zVertical * StartDistance
                 },
 
                 Rotation = new Rotation()
                 {
-                    x = RotVertical + RotX,
-                    y = RotHorizontal + RotY - 180,
-                    z = 0 + RotZ
+                    x = RotVertical + (RotX * -1),
+                    y = (RotHorizontal * -1) + RotY,
+                    z = 0 + (RotZ * -1)
                 },
                 
                 HoldTime = StartHold,
@@ -103,14 +103,14 @@ namespace MovementScriptGenerator
                         {
                             x = xHorizontal * zVertical * spiralFrameDistance,
                             y = yVertical * spiralFrameDistance + Height,
-                            z = zHorizontal * zVertical * spiralFrameDistance
+                            z = (zHorizontal * -1) * zVertical * spiralFrameDistance
                         },
 
                         Rotation = new Rotation()
                         {
-                            x = RotVertical + RotX,
-                            y = RotHorizontal + RotY - 180,
-                            z = SpiralClockwise ? -rotation + RotZ : rotation + RotZ
+                            x = RotVertical + (RotX * -1),
+                            y = (RotHorizontal * -1) + RotY,
+                            z = SpiralClockwise ? -rotation + (RotZ * -1): rotation + (RotZ * -1)
                         },
 
                         Duration = Duration / SpiralAmmount / 360,
@@ -130,14 +130,14 @@ namespace MovementScriptGenerator
                 {
                     x = xHorizontal * zVertical * EndDistance,
                     y = yVertical * EndDistance + Height,
-                    z = zHorizontal * zVertical * EndDistance
+                    z = (zHorizontal *-1) * zVertical * EndDistance
                 },
 
                 Rotation = new Rotation()
                 {
-                    x = RotVertical + RotX,
-                    y = RotHorizontal + RotY - 180,
-                    z = SpiralAmmount > 0 ? (SpiralClockwise ? -360 + RotZ : 360 + RotZ) : 0 + RotZ
+                    x = RotVertical + (RotX * -1),
+                    y = (RotHorizontal *-1) + RotY,
+                    z = SpiralAmmount > 0 ? (SpiralClockwise ? -360 + (RotZ * -1) : 360 + (RotZ * -1)) : 0 + (RotZ * -1)
                 },
 
                 HoldTime = EndHold,

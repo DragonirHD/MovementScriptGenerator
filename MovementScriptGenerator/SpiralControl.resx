@@ -125,4 +125,12 @@
 If this is left at 0, the FOV of the last move that overwrites the FOV will be used.
 If no previous move has overwritten the cameras FOV, the original FOV will be used.</value>
   </data>
+  <data name="lblDuration.ToolTip" xml:space="preserve">
+    <value>How long the move should take (in seconds) from the start distance to the end distance.
+(Also effects the rotation speed of the spirals)
+(Has no effect on the "start hold time" and "end hold time" settings)</value>
+  </data>
+  <metadata name="ToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>

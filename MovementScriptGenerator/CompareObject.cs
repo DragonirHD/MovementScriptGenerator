@@ -12,7 +12,7 @@ namespace MovementScriptGenerator
         public static bool Compare<T>(T e1, T e2)
         {
             bool flag = true;
-            bool match = false;
+            bool match;
             int countFirst, countSecond;
             foreach (PropertyInfo propObj1 in e1.GetType().GetProperties())
             {
@@ -32,6 +32,7 @@ namespace MovementScriptGenerator
                             countSecond = objList2.Count - 1;
                             while (countSecond > -1)
                             {
+                                //TODO Compare throws an error here sometimes. Message: The type arguments for method cannot be inferred from the usage
                                 match = Compare(objList1[countFirst], objList2[countSecond]);
                                 if (match)
                                 {
