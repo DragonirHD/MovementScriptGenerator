@@ -42,6 +42,7 @@ namespace MovementScriptGenerator
 
         public override List<Frame> GenerateFrames()
         {
+            //TODO Can this be simplified? Less inversion / *-1
             List<Frame> frames = new List<Frame>();
 
             double verticalRadiant = RotVertical * Math.PI / 180;
@@ -53,13 +54,13 @@ namespace MovementScriptGenerator
             float maxDegrees = SectorDegrees - 1;
             float initialDegreeAdded = 1;
 
-            if (!RotateClockwise) {
+            if (RotateClockwise) {
                 initialDegree *= -1;
                 maxDegrees *= -1;
                 initialDegreeAdded *= -1;
             }
 
-            for (float i = initialDegree; (RotateClockwise && i <= maxDegrees) || (!RotateClockwise && i >= maxDegrees); i += (float)initialDegreeAdded / Iterations)
+            for (float i = initialDegree; (!RotateClockwise && i <= maxDegrees) || (RotateClockwise && i >= maxDegrees); i += (float)initialDegreeAdded / Iterations)
             {
                 float currentHorizontalDegree = i + RotHorizontal;
                 double currentHorizontalRadiant = currentHorizontalDegree * Math.PI / 180;
@@ -73,11 +74,11 @@ namespace MovementScriptGenerator
 
                 frame.Position.x = xHorizontal * zVertical * Distance;
                 frame.Position.y = yVertical * Distance + Height;
-                frame.Position.z = zHorizontal * zVertical * Distance;
+                frame.Position.z = (zHorizontal * -1) * zVertical * Distance;
 
-                frame.Rotation.x = RotVertical + RotX;
-                frame.Rotation.y = currentHorizontalDegree + RotY -180;
-                frame.Rotation.z = RotZ;
+                frame.Rotation.x = RotVertical + (RotX * -1);
+                frame.Rotation.y = (currentHorizontalDegree * -1) + RotY;
+                frame.Rotation.z = (RotZ * -1);
 
                 frame.Duration = Duration / Math.Abs(maxDegrees) / Iterations;
 

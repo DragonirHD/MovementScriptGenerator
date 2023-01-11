@@ -228,7 +228,7 @@ namespace MovementScriptGenerator
             this.lblScriptName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.ToolTip.SetToolTip(this.lblScriptName, "Defines the name of the movement script file that will be generated / added to.\r\n" +
         "Add this name to the script list in your camera\'s Json file to make the camera u" +
-        "se this script.\r\n");
+        "se this script.");
             // 
             // checkSyncToSong
             // 

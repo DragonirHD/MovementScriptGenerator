@@ -204,7 +204,7 @@ namespace MovementScriptGenerator
             this.lblDuration.TabIndex = 1;
             this.lblDuration.Text = "Duration";
             this.lblDuration.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ToolTip.SetToolTip(this.lblDuration, "the duration in seconds how long it takes to complete the sector.");
+            this.ToolTip.SetToolTip(this.lblDuration, "the duration in seconds how long it takes to complete the move.");
             // 
             // tableLayoutPanel3
             // 
@@ -248,8 +248,7 @@ namespace MovementScriptGenerator
             this.lblHeight.TabIndex = 1;
             this.lblHeight.Text = "Height";
             this.lblHeight.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ToolTip.SetToolTip(this.lblHeight, "Defines the y-axis of the circle / how high the circle should be around the chara" +
-        "cter");
+            this.ToolTip.SetToolTip(this.lblHeight, "Defines at what height (on the y-axis) the move will be executed at.");
             // 
             // tableLayoutPanel4
             // 
@@ -298,8 +297,8 @@ namespace MovementScriptGenerator
             this.lblRotX.TabIndex = 1;
             this.lblRotX.Text = "X-Rotation";
             this.lblRotX.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ToolTip.SetToolTip(this.lblRotX, "The rotation of the camera on the x-axis (pitch).\r\n>0 -> tilt downwards\r\n<0 -> ti" +
-        "lt upwards");
+            this.ToolTip.SetToolTip(this.lblRotX, "The rotation of the camera on the x-axis (pitch).\r\n>0 -> tilt upwards\r\n<0 -> tilt" +
+        " downwards");
             // 
             // tableLayoutPanel11
             // 
@@ -398,8 +397,8 @@ namespace MovementScriptGenerator
             this.lblRotZ.TabIndex = 1;
             this.lblRotZ.Text = "Z-Rotation";
             this.lblRotZ.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ToolTip.SetToolTip(this.lblRotZ, "The rotation of the camera on the z-axis (roll).\r\n>0 -> roll left\r\n<0 -> roll rig" +
-        "ht");
+            this.ToolTip.SetToolTip(this.lblRotZ, "The rotation of the camera on the z-axis (roll).\r\n>0 -> roll right\r\n<0 -> roll le" +
+        "ft");
             // 
             // tableLayoutPanel12
             // 
@@ -449,7 +448,7 @@ namespace MovementScriptGenerator
             this.lblHorizontalRot.Text = "Horizontal Rotation";
             this.lblHorizontalRot.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.ToolTip.SetToolTip(this.lblHorizontalRot, "defines where the camera should be around the\r\nplayer on the horizontal axis (in " +
-        "degrees).\r\n0 -> infront of the player\r\n90 -> right of the player\r\n180 -> behind " +
+        "degrees).\r\n0 -> behind the player\r\n90 -> right of the player\r\n180 -> infront of " +
         "the player");
             // 
             // tableLayoutPanel13
@@ -500,7 +499,7 @@ namespace MovementScriptGenerator
             this.lblVerticalRot.Text = "Vertical Rotation";
             this.lblVerticalRot.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.ToolTip.SetToolTip(this.lblVerticalRot, "defines where the camera should be around the\r\nplayer on the vertical axis (in de" +
-        "grees).\r\n0 -> infront of the player\r\n90 -> above of the player\r\n180 -> behind th" +
+        "grees).\r\n0 -> behind the player\r\n90 -> above of the player\r\n180 -> infront of th" +
         "e player\r\n270 -> below the player");
             // 
             // tableLayoutPanel1
@@ -688,7 +687,7 @@ namespace MovementScriptGenerator
             this.lblRotation.TabIndex = 1;
             this.lblRotation.Text = "Rotation";
             this.lblRotation.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ToolTip.SetToolTip(this.lblRotation, "In which direction the camera should rotate around the character");
+            this.ToolTip.SetToolTip(this.lblRotation, "In which direction the camera should rotate around the character.");
             // 
             // ToolTip
             // 
