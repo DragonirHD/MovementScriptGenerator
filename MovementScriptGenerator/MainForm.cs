@@ -26,7 +26,7 @@ namespace MovementScriptGenerator
         private string savedChainDirectoryPath = string.IsNullOrEmpty(Settings.Default.ChainFullName) ? string.Empty : Path.GetDirectoryName(Settings.Default.ChainFullName);
         private string generateScriptPath = Settings.Default.GenerateScriptPath;
         private static readonly char[] illegalCharsForExplorer = "/<>:/\\\"|?*".ToCharArray();
-        private static readonly string defaultInitialDirectory = "C:\\Users";
+        private static readonly string defaultInitialDirectory = Path.GetPathRoot(Environment.SystemDirectory);
 
         //Info for Icons
         //Icon-Folder-Location changes in release version. That's why we check if we are currently in debug or release mode and change the path accordingly
