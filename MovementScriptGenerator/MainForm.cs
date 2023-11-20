@@ -31,7 +31,7 @@ namespace MovementScriptGenerator
         //Info for Icons
         //Icon-Folder-Location changes in release version. That's why we check if we are currently in debug or release mode and change the path accordingly
 #if DEBUG
-        private static readonly DirectoryInfo iconsDirectory = new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.GetDirectories().Where(directory => directory.Name == "Icons").FirstOrDefault();
+        private static readonly DirectoryInfo iconsDirectory = new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.Parent.GetDirectories().Where(directory => directory.Name == "Icons").FirstOrDefault();
 #else
         private static readonly DirectoryInfo iconsDirectory = new DirectoryInfo(Directory.GetCurrentDirectory()).GetDirectories().Where(directory => directory.Name == "Icons").FirstOrDefault();
 #endif
@@ -153,10 +153,16 @@ namespace MovementScriptGenerator
         {
             ImageList chainElementIcons = new ImageList();
             chainElementIcons.ImageSize = new System.Drawing.Size(32, 32);
-            FileInfo[] archives = iconsDirectory.GetFiles($"*{iconsDataType}");
-            foreach(FileInfo iconInfo in archives)
+            try
             {
-                chainElementIcons.Images.Add(System.Drawing.Image.FromFile(iconInfo.FullName));
+                FileInfo[] archives = iconsDirectory.GetFiles($"*{iconsDataType}");
+                foreach (FileInfo iconInfo in archives)
+                {
+                    chainElementIcons.Images.Add(System.Drawing.Image.FromFile(iconInfo.FullName));
+                }
+            }catch(Exception e)
+            {
+                MessageBox.Show($"Icons cannot be found in the given directory.\nDirectory: {iconsDirectory}\nError Message: {e}", "Error", MessageBoxButtons.OK);
             }
             tvChain.ImageList = chainElementIcons;
         }
