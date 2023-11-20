@@ -78,20 +78,20 @@ namespace MovementScriptGenerator
         {
             Spiral spiral = new Spiral(
                 moveName,
-                (int) numFOV.Value,
-                (float) numDuration.Value,
-                (float) numHeight.Value,
-                (float) numRotX.Value,
-                (float) numRotY.Value,
-                (float) numRotZ.Value,
-                (float) numRotHorizontal.Value,
-                (float) numRotVertical.Value,
-                (float) numStartDistance.Value,
-                (float) numEndDistance.Value,
-                (int) numSpiralAmmount.Value,
+                (int)numFOV.Value,
+                (float)numDuration.Value,
+                (float)numHeight.Value,
+                (float)numRotX.Value,
+                (float)numRotY.Value,
+                (float)numRotZ.Value,
+                (float)numRotHorizontal.Value,
+                (float)numRotVertical.Value,
+                (float)numStartDistance.Value,
+                (float)numEndDistance.Value,
+                (int)numSpiralAmmount.Value,
                 cbSpiralRotation.SelectedIndex == 0 ? true : false,
-                (float) numStartHoldTime.Value,
-                (float) numEndHoldTime.Value,
+                (float)numStartHoldTime.Value,
+                (float)numEndHoldTime.Value,
                 checkEase.Checked
                 );
 
